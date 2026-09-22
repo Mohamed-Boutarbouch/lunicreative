@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { cn } from "cn";
 import { Inter, Space_Grotesk } from "next/font/google";
 
+import { ThemeProvider } from "@/components/layout/theme-provider";
+import { Navbar } from "@/components/layout/navbar";
 import "./globals.css";
 
 const spaceGroteskHeading = Space_Grotesk({
@@ -19,7 +21,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
-      lang="en"
+      lang="fr-MA"
       className={cn(
         "h-full",
         "antialiased",
@@ -27,8 +29,20 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         inter.variable,
         spaceGroteskHeading.variable,
       )}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Navbar />
+          {children}
+        </ThemeProvider>
+        {children}
+      </body>
     </html>
   );
 }
