@@ -4,6 +4,7 @@ import { Inter, Space_Grotesk } from "next/font/google";
 
 import { ThemeProvider } from "@/components/layout/theme-provider";
 import { Navbar } from "@/components/layout/navbar";
+
 import "./globals.css";
 
 const spaceGroteskHeading = Space_Grotesk({
@@ -31,7 +32,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       )}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-screen bg-background">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

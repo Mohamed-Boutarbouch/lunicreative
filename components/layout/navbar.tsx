@@ -3,9 +3,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { IconMenu2 } from "@tabler/icons-react";
+import { IconChevronDown, IconMenu2 } from "@tabler/icons-react";
 
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { ToggleTheme } from "@/components/layout/toogle-theme";
 import { Separator } from "@/components/ui/separator";
 import {
@@ -69,30 +69,30 @@ const serviceList: ServiceProps[] = [
     href: "/services/conception-creation-graphique",
     title: "Conception & création graphique",
     description:
-      "Identité visuelle, supports de communication et création graphique.",
+      "Identité de marque, logos, cartes de visite, flyers et supports promotionnels.",
   },
   {
     href: "/services/impression-numerique-offset",
     title: "Impression numérique & offset",
     description:
-      "Solutions d'impression numérique et offset pour vos supports.",
+      "Impression numérique et offset : affiches, flyers et supports de communication.",
   },
   {
     href: "/services/creation-site-web",
     title: "Création de site web",
     description:
-      "Conception et développement de sites web adaptés à votre activité.",
+      "Sites vitrines, CMS dynamiques, e-commerce et applications web et desktop.",
   },
   {
     href: "/services/design-creation-3d",
     title: "Design & création 3D",
-    description: "Design, modélisation et création 3D pour vos projets.",
+    description: "Modélisation, rendu et design 3D pour vos projets.",
   },
   {
     href: "/services/conception-evenementielle",
     title: "Conception événementielle",
     description:
-      "Conception et accompagnement de vos événements et expériences.",
+      "Stands modulables, séminaires, colloques, inaugurations et production technique.",
   },
 ];
 
@@ -100,9 +100,11 @@ const mainRoutes = routeList.filter(({ href }) => href !== "/service");
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
 
   const closeMobileMenu = () => {
     setIsOpen(false);
+    setIsServicesOpen(false);
   };
 
   return (
@@ -124,7 +126,14 @@ export function Navbar() {
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger
             render={
-              <Button variant="ghost" size="icon" aria-label="Ouvrir le menu" />
+              <button
+                type="button"
+                className={buttonVariants({
+                  variant: "ghost",
+                  size: "icon",
+                })}
+                aria-label="Ouvrir le menu"
+              />
             }
           >
             <IconMenu2 />
@@ -152,39 +161,79 @@ export function Navbar() {
                   </Link>
                 </SheetTitle>
               </SheetHeader>
-
               <nav className="flex flex-col gap-1 px-2">
-                {routeList.map(({ href, label }) => (
-                  <Button
-                    key={href}
-                    variant="ghost"
-                    className="justify-start text-base"
-                    onClick={closeMobileMenu}
-                    render={<Link href={href} />}
-                  >
-                    {label}
-                  </Button>
-                ))}
+                {mainRoutes
+                  .filter(
+                    ({ href }) =>
+                      href !== "/realisations" &&
+                      href !== "/carriere" &&
+                      href !== "/contact",
+                  )
+                  .map(({ href, label }) => (
+                    <Link
+                      key={href}
+                      href={href}
+                      onClick={closeMobileMenu}
+                      className={buttonVariants({
+                        variant: "ghost",
+                        className: "justify-start text-base",
+                      })}
+                    >
+                      {label}
+                    </Link>
+                  ))}
 
-                <div className="my-2 px-3">
-                  <Separator />
-                </div>
+                {/* Services */}
+                <button
+                  type="button"
+                  onClick={() => setIsServicesOpen((open) => !open)}
+                  aria-expanded={isServicesOpen}
+                  className="flex h-9 w-full items-center justify-between rounded-md px-3 text-base font-normal outline-none transition-colors hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring"
+                >
+                  <span>Nos Services</span>
 
-                <p className="px-3 py-1 text-sm font-semibold text-muted-foreground">
-                  Services
-                </p>
+                  <IconChevronDown
+                    className={`size-4 shrink-0 transition-transform duration-200 ${
+                      isServicesOpen ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
 
-                {serviceList.map(({ href, title }) => (
-                  <Button
-                    key={href}
-                    variant="ghost"
-                    className="h-auto justify-start whitespace-normal py-2 pl-6 text-left text-sm"
-                    onClick={closeMobileMenu}
-                    render={<Link href={href} />}
-                  >
-                    {title}
-                  </Button>
-                ))}
+                {isServicesOpen && (
+                  <div className="ml-3 flex flex-col border-l pl-3">
+                    {serviceList.map(({ href, title }) => (
+                      <Link
+                        key={href}
+                        href={href}
+                        onClick={closeMobileMenu}
+                        className="rounded-md px-3 py-2 text-left text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                      >
+                        {title}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+
+                {mainRoutes
+                  .filter(
+                    ({ href }) =>
+                      href === "/realisations" ||
+                      href === "/carriere" ||
+                      href === "/contact",
+                  )
+                  .map(({ href, label }) => (
+                    <Link
+                      key={href}
+                      href={href}
+                      onClick={closeMobileMenu}
+                      className={buttonVariants({
+                        variant: "ghost",
+                        className: "justify-start text-base",
+                      })}
+                    >
+                      {label}
+                    </Link>
+                  ))}
               </nav>
             </div>
 
@@ -217,7 +266,7 @@ export function Navbar() {
           {/* Services */}
           <NavigationMenuItem>
             <NavigationMenuTrigger className="bg-transparent px-2 text-base">
-              Services
+              Nos Services
             </NavigationMenuTrigger>
 
             <NavigationMenuContent>
