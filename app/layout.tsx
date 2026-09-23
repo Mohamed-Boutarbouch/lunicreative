@@ -38,15 +38,24 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       )}
       suppressHydrationWarning
     >
-      <body className="min-h-screen bg-background">
+      <body className="relative min-h-screen bg-background">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
-          <Navbar />
-          {children}
+          <div id="scroll-sentinel" className="absolute top-0 h-px w-full" />
+
+          <div className="relative">
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-125 bg-[radial-gradient(ellipse_90%_55%_at_50%_35%,color-mix(in_oklch,var(--primary)_25%,transparent),transparent_72%)] sm:h-140 md:h-175"
+            />
+
+            <Navbar />
+            {children}
+          </div>
         </ThemeProvider>
       </body>
     </html>

@@ -11,10 +11,6 @@ export function HeroSection() {
   return (
     <section className="relative z-10">
       <div className="relative isolate">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-x-0 top-8 -z-10 h-125 bg-[radial-gradient(ellipse_90%_55%_at_50%_35%,color-mix(in_oklch,var(--primary)_25%,transparent),transparent_72%)] sm:top-10 sm:h-140 md:top-16 md:h-175"
-        />
         <div className="container mx-auto">
           <div className="mx-auto flex max-w-5xl flex-col gap-10 py-18 md:py-28">
             <div className="flex flex-col items-center gap-4 text-center sm:gap-6">

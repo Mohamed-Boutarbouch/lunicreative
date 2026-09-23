@@ -2,8 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IconChevronDown, IconMenu2 } from "@tabler/icons-react";
+import { cn } from "cn";
 
 import { buttonVariants } from "@/components/ui/button";
 import { ToggleTheme } from "@/components/layout/toogle-theme";
@@ -37,31 +38,15 @@ interface ServiceProps {
   description: string;
 }
 
-const routeList: RouteProps[] = [
-  {
-    href: "/",
-    label: "Accueil",
-  },
-  {
-    href: "/a-propos",
-    label: "À propos",
-  },
-  {
-    href: "/service",
-    label: "Nos Services",
-  },
-  {
-    href: "/realisations",
-    label: "Réalisations",
-  },
-  {
-    href: "/carriere",
-    label: "Carrière",
-  },
-  {
-    href: "/contact",
-    label: "Contact",
-  },
+const primaryRoutes: RouteProps[] = [
+  { href: "/", label: "Accueil" },
+  { href: "/a-propos", label: "À propos" },
+];
+
+const secondaryRoutes: RouteProps[] = [
+  { href: "/realisations", label: "Réalisations" },
+  { href: "/carriere", label: "Carrière" },
+  { href: "/contact", label: "Contact" },
 ];
 
 const serviceList: ServiceProps[] = [
@@ -95,15 +80,39 @@ const serviceList: ServiceProps[] = [
   },
 ];
 
-const mainRoutes = routeList.filter(({ href }) => href !== "/service");
-
 const navLinkClass = navigationMenuTriggerStyle({
   className: "px-2 text-base text-muted-foreground hover:text-foreground",
 });
 
+const mobileLinkClass = buttonVariants({
+  variant: "ghost",
+  className:
+    "justify-start text-base text-muted-foreground hover:text-foreground",
+});
+
+function useScrolled() {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const sentinel = document.getElementById("scroll-sentinel");
+    if (!sentinel) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsScrolled(!entry.isIntersecting),
+      { threshold: 0 },
+    );
+
+    observer.observe(sentinel);
+    return () => observer.disconnect();
+  }, []);
+
+  return isScrolled;
+}
+
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const isScrolled = useScrolled();
 
   const closeMobileMenu = () => {
     setIsOpen(false);
@@ -111,7 +120,14 @@ export function Navbar() {
   };
 
   return (
-    <header className="sticky top-5 z-40 mx-auto flex w-[90%] items-center justify-between rounded-2xl border border-secondary bg-card/95 p-2 shadow-inner backdrop-blur-sm md:w-[70%] lg:w-[75%] lg:max-w-7xl">
+    <header
+      className={cn(
+        "sticky top-5 z-40 mx-auto flex w-[90%] items-center justify-between rounded-2xl border p-2 shadow-inner backdrop-blur-sm transition-colors duration-300 md:w-[70%] lg:w-[75%] lg:max-w-7xl",
+        isScrolled
+          ? "border-secondary bg-card/95"
+          : "border-transparent bg-transparent shadow-none backdrop-blur-none",
+      )}
+    >
       {/* Logo */}
       <Link href="/" aria-label="Lunicreative - Accueil">
         <Image
@@ -131,10 +147,7 @@ export function Navbar() {
             render={
               <button
                 type="button"
-                className={buttonVariants({
-                  variant: "ghost",
-                  size: "icon",
-                })}
+                className={buttonVariants({ variant: "ghost", size: "icon" })}
                 aria-label="Ouvrir le menu"
               />
             }
@@ -166,28 +179,16 @@ export function Navbar() {
               </SheetHeader>
 
               <nav className="flex flex-col gap-1 px-2">
-                {/* Main links */}
-                {mainRoutes
-                  .filter(
-                    ({ href }) =>
-                      href !== "/realisations" &&
-                      href !== "/carriere" &&
-                      href !== "/contact",
-                  )
-                  .map(({ href, label }) => (
-                    <Link
-                      key={href}
-                      href={href}
-                      onClick={closeMobileMenu}
-                      className={buttonVariants({
-                        variant: "ghost",
-                        className:
-                          "justify-start text-base text-muted-foreground hover:text-foreground",
-                      })}
-                    >
-                      {label}
-                    </Link>
-                  ))}
+                {primaryRoutes.map(({ href, label }) => (
+                  <Link
+                    key={href}
+                    href={href}
+                    onClick={closeMobileMenu}
+                    className={mobileLinkClass}
+                  >
+                    {label}
+                  </Link>
+                ))}
 
                 {/* Services */}
                 <button
@@ -197,11 +198,11 @@ export function Navbar() {
                   className="flex h-9 w-full items-center justify-between rounded-md px-3 text-base font-normal text-muted-foreground outline-none transition-colors hover:bg-muted hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring"
                 >
                   <span>Nos Services</span>
-
                   <IconChevronDown
-                    className={`size-4 shrink-0 transition-transform duration-200 ${
-                      isServicesOpen ? "rotate-180" : ""
-                    }`}
+                    className={cn(
+                      "size-4 shrink-0 transition-transform duration-200",
+                      isServicesOpen && "rotate-180",
+                    )}
                   />
                 </button>
 
@@ -220,32 +221,19 @@ export function Navbar() {
                   </div>
                 )}
 
-                {/* Remaining links */}
-                {mainRoutes
-                  .filter(
-                    ({ href }) =>
-                      href === "/realisations" ||
-                      href === "/carriere" ||
-                      href === "/contact",
-                  )
-                  .map(({ href, label }) => (
-                    <Link
-                      key={href}
-                      href={href}
-                      onClick={closeMobileMenu}
-                      className={buttonVariants({
-                        variant: "ghost",
-                        className:
-                          "justify-start text-base text-muted-foreground hover:text-foreground",
-                      })}
-                    >
-                      {label}
-                    </Link>
-                  ))}
+                {secondaryRoutes.map(({ href, label }) => (
+                  <Link
+                    key={href}
+                    href={href}
+                    onClick={closeMobileMenu}
+                    className={mobileLinkClass}
+                  >
+                    {label}
+                  </Link>
+                ))}
               </nav>
             </div>
 
-            {/* Mobile footer */}
             <SheetFooter className="flex-col items-start justify-start sm:flex-col">
               <Separator className="mb-2" />
               <ToggleTheme />
@@ -257,21 +245,17 @@ export function Navbar() {
       {/* Desktop navigation */}
       <NavigationMenu className="mx-auto hidden lg:block">
         <NavigationMenuList>
-          {/* Accueil + À propos */}
-          {mainRoutes
-            .filter(({ href }) => href === "/" || href === "/a-propos")
-            .map(({ href, label }) => (
-              <NavigationMenuItem key={href}>
-                <NavigationMenuLink
-                  render={<Link href={href} />}
-                  className={navLinkClass}
-                >
-                  {label}
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-            ))}
+          {primaryRoutes.map(({ href, label }) => (
+            <NavigationMenuItem key={href}>
+              <NavigationMenuLink
+                render={<Link href={href} />}
+                className={navLinkClass}
+              >
+                {label}
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+          ))}
 
-          {/* Services */}
           <NavigationMenuItem>
             <NavigationMenuTrigger className="bg-transparent px-2 text-base text-muted-foreground hover:bg-transparent hover:text-foreground">
               Nos Services
@@ -293,7 +277,6 @@ export function Navbar() {
                       <p className="mb-1 font-semibold leading-none text-foreground">
                         {title}
                       </p>
-
                       <p className="line-clamp-2 text-sm text-muted-foreground">
                         {description}
                       </p>
@@ -304,19 +287,16 @@ export function Navbar() {
             </NavigationMenuContent>
           </NavigationMenuItem>
 
-          {/* Réalisations + Carrière + Contact */}
-          {mainRoutes
-            .filter(({ href }) => href !== "/" && href !== "/a-propos")
-            .map(({ href, label }) => (
-              <NavigationMenuItem key={href}>
-                <NavigationMenuLink
-                  render={<Link href={href} />}
-                  className={navLinkClass}
-                >
-                  {label}
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-            ))}
+          {secondaryRoutes.map(({ href, label }) => (
+            <NavigationMenuItem key={href}>
+              <NavigationMenuLink
+                render={<Link href={href} />}
+                className={navLinkClass}
+              >
+                {label}
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+          ))}
         </NavigationMenuList>
       </NavigationMenu>
 
