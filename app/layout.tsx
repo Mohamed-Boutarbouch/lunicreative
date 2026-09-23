@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { cn } from "cn";
-import { Inter, Space_Grotesk } from "next/font/google";
+import { Space_Grotesk, Newsreader, Inter } from "next/font/google";
 
 import { ThemeProvider } from "@/components/layout/theme-provider";
 import { Navbar } from "@/components/layout/navbar";
@@ -10,6 +10,11 @@ import "./globals.css";
 const spaceGroteskHeading = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-heading",
+});
+
+const newsreaderSerif = Newsreader({
+  subsets: ["latin"],
+  variable: "--font-serif",
 });
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
@@ -27,8 +32,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         "h-full",
         "antialiased",
         "font-sans",
-        inter.variable,
+        newsreaderSerif.variable,
         spaceGroteskHeading.variable,
+        inter.variable,
       )}
       suppressHydrationWarning
     >
@@ -42,7 +48,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <Navbar />
           {children}
         </ThemeProvider>
-        {children}
       </body>
     </html>
   );

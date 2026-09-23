@@ -75,13 +75,12 @@ const serviceList: ServiceProps[] = [
     href: "/services/impression-numerique-offset",
     title: "Impression numérique & offset",
     description:
-      "Impression numérique et offset : affiches, flyers et supports de communication.",
+      "Affiches, flyers et supports imprimés en numérique et offset.",
   },
   {
     href: "/services/creation-site-web",
     title: "Création de site web",
-    description:
-      "Sites vitrines, CMS dynamiques, e-commerce et applications web et desktop.",
+    description: "Sites vitrines, CMS dynamiques et solutions e-commerce.",
   },
   {
     href: "/services/design-creation-3d",
@@ -97,6 +96,10 @@ const serviceList: ServiceProps[] = [
 ];
 
 const mainRoutes = routeList.filter(({ href }) => href !== "/service");
+
+const navLinkClass = navigationMenuTriggerStyle({
+  className: "px-2 text-base text-muted-foreground hover:text-foreground",
+});
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -161,7 +164,9 @@ export function Navbar() {
                   </Link>
                 </SheetTitle>
               </SheetHeader>
+
               <nav className="flex flex-col gap-1 px-2">
+                {/* Main links */}
                 {mainRoutes
                   .filter(
                     ({ href }) =>
@@ -176,7 +181,8 @@ export function Navbar() {
                       onClick={closeMobileMenu}
                       className={buttonVariants({
                         variant: "ghost",
-                        className: "justify-start text-base",
+                        className:
+                          "justify-start text-base text-muted-foreground hover:text-foreground",
                       })}
                     >
                       {label}
@@ -188,7 +194,7 @@ export function Navbar() {
                   type="button"
                   onClick={() => setIsServicesOpen((open) => !open)}
                   aria-expanded={isServicesOpen}
-                  className="flex h-9 w-full items-center justify-between rounded-md px-3 text-base font-normal outline-none transition-colors hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring"
+                  className="flex h-9 w-full items-center justify-between rounded-md px-3 text-base font-normal text-muted-foreground outline-none transition-colors hover:bg-muted hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring"
                 >
                   <span>Nos Services</span>
 
@@ -214,6 +220,7 @@ export function Navbar() {
                   </div>
                 )}
 
+                {/* Remaining links */}
                 {mainRoutes
                   .filter(
                     ({ href }) =>
@@ -228,7 +235,8 @@ export function Navbar() {
                       onClick={closeMobileMenu}
                       className={buttonVariants({
                         variant: "ghost",
-                        className: "justify-start text-base",
+                        className:
+                          "justify-start text-base text-muted-foreground hover:text-foreground",
                       })}
                     >
                       {label}
@@ -237,6 +245,7 @@ export function Navbar() {
               </nav>
             </div>
 
+            {/* Mobile footer */}
             <SheetFooter className="flex-col items-start justify-start sm:flex-col">
               <Separator className="mb-2" />
               <ToggleTheme />
@@ -248,15 +257,14 @@ export function Navbar() {
       {/* Desktop navigation */}
       <NavigationMenu className="mx-auto hidden lg:block">
         <NavigationMenuList>
+          {/* Accueil + À propos */}
           {mainRoutes
             .filter(({ href }) => href === "/" || href === "/a-propos")
             .map(({ href, label }) => (
               <NavigationMenuItem key={href}>
                 <NavigationMenuLink
                   render={<Link href={href} />}
-                  className={navigationMenuTriggerStyle({
-                    className: "px-2 text-base",
-                  })}
+                  className={navLinkClass}
                 >
                   {label}
                 </NavigationMenuLink>
@@ -265,7 +273,7 @@ export function Navbar() {
 
           {/* Services */}
           <NavigationMenuItem>
-            <NavigationMenuTrigger className="bg-transparent px-2 text-base">
+            <NavigationMenuTrigger className="bg-transparent px-2 text-base text-muted-foreground hover:bg-transparent hover:text-foreground">
               Nos Services
             </NavigationMenuTrigger>
 
@@ -280,7 +288,7 @@ export function Navbar() {
                   >
                     <NavigationMenuLink
                       render={<Link href={href} />}
-                      className="block rounded-md p-3 transition-colors hover:bg-muted"
+                      className="block rounded-md p-3 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
                     >
                       <p className="mb-1 font-semibold leading-none text-foreground">
                         {title}
@@ -296,15 +304,14 @@ export function Navbar() {
             </NavigationMenuContent>
           </NavigationMenuItem>
 
+          {/* Réalisations + Carrière + Contact */}
           {mainRoutes
             .filter(({ href }) => href !== "/" && href !== "/a-propos")
             .map(({ href, label }) => (
               <NavigationMenuItem key={href}>
                 <NavigationMenuLink
                   render={<Link href={href} />}
-                  className={navigationMenuTriggerStyle({
-                    className: "px-2 text-base",
-                  })}
+                  className={navLinkClass}
                 >
                   {label}
                 </NavigationMenuLink>
