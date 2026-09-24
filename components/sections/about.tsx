@@ -1,0 +1,84 @@
+import {
+  IconConfetti,
+  IconDeviceLaptop,
+  IconPlus,
+  IconPrinter,
+} from "@tabler/icons-react";
+
+import { Card, CardContent } from "@/components/ui/card";
+
+const pillars = [
+  { label: "Print & digital", icon: IconPrinter },
+  { label: "Web & applications", icon: IconDeviceLaptop },
+  { label: "Événementiel", icon: IconConfetti },
+];
+
+const stats = [
+  { value: "7 000", label: "Projets réalisés" },
+  { value: "300", label: "Clients heureux" },
+  { value: "12", label: "Ans d'expérience" },
+];
+
+export function AboutSection() {
+  return (
+    <section
+      id="a-propos"
+      aria-labelledby="about-heading"
+      className="py-14 sm:py-22"
+    >
+      <div className="flex flex-col items-center gap-10 text-center sm:gap-14">
+        <div className="flex max-w-4xl flex-col items-center gap-6">
+          <h2
+            id="about-heading"
+            className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl"
+          >
+            Une seule agence pour le print, le digital et l&apos;événementiel
+          </h2>
+
+          <p className="max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+            Basée à Fès, L&apos;unicreative conçoit, produit et déploie vos
+            supports de communication d&apos;un bout à l&apos;autre — sans
+            multiplier les prestataires.
+          </p>
+
+          <div className="flex flex-wrap justify-center gap-6">
+            {pillars.map(({ label, icon: Icon }) => (
+              <article key={label} className="flex" aria-label={label}>
+                <Card className="w-fit shrink-0 flex-row items-center gap-3 rounded-full border-0 bg-muted py-2 text-muted-foreground shadow-none transition-colors hover:bg-primary hover:text-primary-foreground">
+                  <Icon aria-hidden="true" className="ml-5 size-6 shrink-0" />
+
+                  <CardContent className="p-0 pr-5">
+                    <span className="font-serif text-2xl font-normal italic sm:text-3xl">
+                      {label}
+                    </span>
+                  </CardContent>
+                </Card>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <dl className="flex w-full flex-col divide-y divide-border sm:flex-row sm:divide-x sm:divide-y-0">
+          {stats.map(({ value, label }) => (
+            <div
+              key={label}
+              className="flex flex-1 flex-col items-center justify-center gap-1.5 py-6 sm:py-0"
+            >
+              <dt className="text-sm text-muted-foreground sm:text-base">
+                {label}
+              </dt>
+
+              <dd className="order-first flex items-center justify-center font-heading text-5xl font-semibold tracking-tight sm:text-6xl lg:text-7xl">
+                {value}
+                <IconPlus
+                  aria-hidden="true"
+                  className="ml-1 size-7 text-primary sm:size-8 lg:size-9"
+                />
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </section>
+  );
+}

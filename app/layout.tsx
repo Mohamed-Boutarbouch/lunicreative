@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { cn } from "cn";
-import { Space_Grotesk, Newsreader, Inter } from "next/font/google";
+import { Space_Grotesk, Instrument_Serif, Inter } from "next/font/google";
 
 import { ThemeProvider } from "@/components/layout/theme-provider";
 import { Navbar } from "@/components/layout/navbar";
@@ -12,7 +12,8 @@ const spaceGroteskHeading = Space_Grotesk({
   variable: "--font-heading",
 });
 
-const newsreaderSerif = Newsreader({
+const instrumentSerif = Instrument_Serif({
+  weight: "400",
   subsets: ["latin"],
   variable: "--font-serif",
 });
@@ -32,7 +33,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         "h-full",
         "antialiased",
         "font-sans",
-        newsreaderSerif.variable,
+        instrumentSerif.variable,
         spaceGroteskHeading.variable,
         inter.variable,
       )}
