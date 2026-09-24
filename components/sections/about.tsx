@@ -14,9 +14,9 @@ const pillars = [
 ];
 
 const stats = [
-  { value: "7 000", label: "Projets réalisés" },
-  { value: "300", label: "Clients heureux" },
-  { value: "12", label: "Ans d'expérience" },
+  { value: 7000, label: "Projets réalisés" },
+  { value: 300, label: "Clients heureux" },
+  { value: 12, label: "Ans d'expérience" },
 ];
 
 export function AboutSection() {
@@ -58,18 +58,18 @@ export function AboutSection() {
           </div>
         </div>
 
-        <dl className="flex w-full flex-col divide-y divide-border sm:flex-row sm:divide-x sm:divide-y-0">
+        <dl className="flex w-fit flex-col divide-y divide-border sm:flex-row sm:divide-x sm:divide-y-0">
           {stats.map(({ value, label }) => (
             <div
               key={label}
-              className="flex flex-1 flex-col items-center justify-center gap-1.5 py-6 sm:py-0"
+              className="flex flex-col items-center justify-center gap-1.5 px-10 py-6 sm:py-0"
             >
               <dt className="text-sm text-muted-foreground sm:text-base">
                 {label}
               </dt>
 
               <dd className="order-first flex items-center justify-center font-heading text-5xl font-semibold tracking-tight sm:text-6xl lg:text-7xl">
-                {value}
+                {new Intl.NumberFormat("fr-FR").format(value)}
                 <IconPlus
                   aria-hidden="true"
                   className="ml-1 size-7 text-primary sm:size-8 lg:size-9"
