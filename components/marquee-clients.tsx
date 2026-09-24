@@ -1,8 +1,7 @@
+import Link from "next/link";
 import Image from "next/image";
 
 import { Marquee } from "@/components/animations/marquee";
-import { Separator } from "@/components/ui/separator";
-import Link from "next/link";
 
 type Client = {
   image: string;
@@ -125,19 +124,7 @@ const clientList: Client[] = [
 
 export function MarqueeClients() {
   return (
-    <div className="w-full overflow-hidden">
-      <div className="relative my-4 mb-6 px-4">
-        <div className="absolute left-1/2 top-1/2 w-[50%] max-w-5xl -translate-x-1/2">
-          <Separator />
-        </div>
-
-        <div className="relative flex justify-center text-xs uppercase">
-          <span className="bg-background px-2 text-muted-foreground">
-            Nos Clients
-          </span>
-        </div>
-      </div>
-
+    <div className="relative w-full overflow-hidden">
       <Marquee className="[--duration:90s] w-full p-0" pauseOnHover>
         {clientList.map((client) => (
           <div
@@ -156,6 +143,15 @@ export function MarqueeClients() {
           </div>
         ))}
       </Marquee>
+
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-linear-to-r from-background to-transparent lg:w-40"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-linear-to-l from-background to-transparent lg:w-40"
+      />
     </div>
   );
 }
