@@ -4,6 +4,7 @@ import { Space_Grotesk, Instrument_Serif, Inter } from "next/font/google";
 
 import { ThemeProvider } from "@/components/layout/theme-provider";
 import { Navbar } from "@/components/layout/navbar";
+import { Toaster } from "@/components/ui/toast";
 
 import "./globals.css";
 
@@ -39,7 +40,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       )}
       suppressHydrationWarning
     >
-      <body className="relative min-h-screen bg-background">
+      <body className="relative min-h-screen bg-background selection:bg-primary selection:text-primary-foreground">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -60,6 +61,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               {children}
             </div>
           </div>
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>
