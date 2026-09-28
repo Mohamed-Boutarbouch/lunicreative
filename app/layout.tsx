@@ -1,10 +1,11 @@
-import type { Metadata } from "next";
-import { cn } from "cn";
 import { Space_Grotesk, Instrument_Serif, Inter } from "next/font/google";
+import { cn } from "cn";
+import type { Metadata } from "next";
 
 import { ThemeProvider } from "@/components/layout/theme-provider";
 import { Navbar } from "@/components/layout/navbar";
 import { Toaster } from "@/components/ui/toast";
+import { Footer } from "@/components/layout/footer";
 
 import "./globals.css";
 
@@ -60,6 +61,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             <div className="mx-auto w-full max-w-[1600px] px-4 sm:px-6 lg:px-10 xl:px-16">
               {children}
             </div>
+
+            <Footer />
           </div>
           <Toaster />
         </ThemeProvider>
