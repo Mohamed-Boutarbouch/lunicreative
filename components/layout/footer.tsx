@@ -1,328 +1,161 @@
 "use client";
 
+import Link from "next/link";
 import { motion, type Variants } from "motion/react";
 
-// Animation variants for reusability
-const containerVariants: Variants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.8,
-      ease: "easeOut",
-      staggerChildren: 0.1,
-    },
-  },
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
+
+const navigation = [
+  { label: "Accueil", href: "/" },
+  { label: "Services", href: "/services" },
+  { label: "Réalisations", href: "/realisations" },
+  { label: "À propos", href: "/a-propos" },
+  { label: "Contact", href: "/contact" },
+];
+
+const services = [
+  { label: "Événementiel & Stands", href: "/services#evenementiel" },
+  { label: "Digital & Développement", href: "/services#digital" },
+  { label: "Branding & Design graphique", href: "/services#branding" },
+  { label: "Impression & Grand format", href: "/services#impression" },
+];
+
+const container: Variants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.08, delayChildren: 0.15 } },
 };
 
-const itemVariants: Variants = {
-  hidden: { opacity: 0, x: -20 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.6, ease: "easeOut" },
-  },
+const item: Variants = {
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
 };
 
-const linkVariants: Variants = {
-  hidden: { opacity: 0, y: 10 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.4, ease: "easeOut" },
-  },
-};
-
-const socialVariants: Variants = {
-  hidden: { opacity: 0, scale: 0 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: {
-      type: "spring",
-      stiffness: 200,
-      damping: 10,
-    },
-  },
-};
-
-const backgroundVariants: Variants = {
-  hidden: { opacity: 0, scale: 0.8 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: {
-      duration: 2,
-      ease: "easeOut",
-    },
-  },
-};
-
-// Footer data for better maintainability
-const footerData = {
-  sections: [
-    {
-      title: "About",
-      links: ["Home", "Projects", "Our Mission", "Contact Us"],
-    },
-    {
-      title: "Education",
-      links: ["News", "Learn", "Certification", "Publications"],
-    },
-    {
-      title: "Services",
-      links: ["Web Design", "Development", "Consulting", "Support"],
-    },
-    {
-      title: "Resources",
-      links: ["Blog", "Documentation", "Community", "Help Center"],
-    },
-  ],
-  social: [
-    { href: "#", label: "Twitter", icon: "T" },
-    { href: "#", label: "GitHub", icon: "G" },
-    { href: "#", label: "LinkedIn", icon: "L" },
-  ],
-  title: "Sticky Footer",
-  subtitle: "Scroll-triggered design",
-  copyright: "©2024 All rights reserved",
-};
-
-// Reusable components
-const NavSection = ({
+function FooterLinkGroup({
   title,
   links,
-  index,
 }: {
   title: string;
-  links: string[];
-  index: number;
-}) => (
-  <motion.div
-    variants={itemVariants}
-    custom={index}
-    className="flex flex-col gap-2"
-  >
-    <motion.h3
-      initial={{ opacity: 0, y: -10 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.3 + index * 0.1, duration: 0.5 }}
-      className="mb-2 uppercase text-muted-foreground text-xs font-semibold tracking-wider border-b border-border pb-1 hover:text-foreground transition-colors duration-300"
-    >
-      {title}
-    </motion.h3>
-    {links.map((link, linkIndex) => (
-      <motion.a
-        key={linkIndex}
-        variants={linkVariants}
-        custom={linkIndex}
-        href="#"
-        whileHover={{
-          x: 8,
-          transition: { type: "spring", stiffness: 300, damping: 20 },
-        }}
-        className="text-muted-foreground hover:text-foreground transition-colors duration-300 font-sans text-xs md:text-sm group relative"
-      >
-        <span className="relative">
-          {link}
-          <motion.span
-            className="absolute bottom-0 left-0 h-0.5 bg-primary"
-            initial={{ width: 0 }}
-            whileHover={{ width: "100%" }}
-            transition={{ duration: 0.3 }}
-          />
-        </span>
-      </motion.a>
-    ))}
-  </motion.div>
-);
+  links: { label: string; href: string }[];
+}) {
+  return (
+    <div>
+      <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+        {title}
+      </p>
 
-const SocialLink = ({
-  href,
-  label,
-  icon,
-  index,
-}: {
-  href: string;
-  label: string;
-  icon: string;
-  index: number;
-}) => (
-  <motion.a
-    variants={socialVariants}
-    custom={index}
-    href={href}
-    whileHover={{
-      scale: 1.2,
-      rotate: 12,
-      transition: { type: "spring", stiffness: 300, damping: 15 },
-    }}
-    whileTap={{ scale: 0.9 }}
-    className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-muted hover:bg-linear-to-r hover:from-primary hover:to-secondary flex items-center justify-center transition-colors duration-300 group"
-    aria-label={label}
-  >
-    <motion.span
-      className="text-xs md:text-sm font-bold text-muted-foreground group-hover:text-primary-foreground"
-      whileHover={{ scale: 1.1 }}
-    >
-      {icon}
-    </motion.span>
-  </motion.a>
-);
+      <ul className="mt-3 flex flex-col gap-2 sm:mt-4 sm:gap-2.5">
+        {links.map((link) => (
+          <li key={link.href}>
+            <Link
+              href={link.href}
+              className="text-sm text-foreground/80 transition-colors hover:text-primary"
+            >
+              {link.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
 
 export function Footer() {
   return (
     <div className="mx-auto w-full max-w-[1600px] px-4 sm:px-6 lg:px-10 xl:px-16">
       <div
-        className="relative h-[70vh]"
+        className="relative h-[85dvh] lg:h-[70dvh]"
         style={{ clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}
       >
-        <div className="relative h-[170vh] top-[-100vh]">
-          <div className="h-[70vh] sticky top-[30vh]">
-            <motion.div
+        <div className="relative top-[-100dvh] h-[185dvh] lg:h-[170dvh]">
+          <div className="sticky top-[15dvh] h-[85dvh] lg:top-[30dvh] lg:h-[70dvh]">
+            <motion.footer
+              variants={container}
               initial="hidden"
-              animate="visible"
-              variants={containerVariants}
-              className="from-card via-muted to-card/90 h-full w-full flex flex-col justify-between relative overflow-hidden"
+              animate="show"
+              className="dark relative flex h-full w-full flex-col justify-between gap-8 overflow-hidden bg-background p-6 text-foreground sm:p-10 lg:p-14"
             >
-              {/* Animated Background Elements */}
-              <div className="absolute inset-0 bg-linear-to-t from-background/20 to-transparent pointer-events-none" />
-
+              {/* Top: restored from old code */}
               <motion.div
-                variants={backgroundVariants}
-                className="absolute top-0 right-0 w-48 h-48 md:w-96 md:h-96 bg-primary/5 rounded-full blur-3xl"
-                animate={{
-                  scale: [1, 1.1, 1],
-                  opacity: [0.3, 0.6, 0.3],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Number.POSITIVE_INFINITY,
-                  ease: "easeInOut",
-                }}
-              />
-
-              <motion.div
-                variants={backgroundVariants}
-                className="absolute bottom-0 left-0 w-48 h-48 md:w-96 md:h-96 bg-secondary/5 rounded-full blur-3xl"
-                animate={{
-                  scale: [1, 1.2, 1],
-                  opacity: [0.2, 0.5, 0.2],
-                }}
-                transition={{
-                  duration: 5,
-                  repeat: Number.POSITIVE_INFINITY,
-                  ease: "easeInOut",
-                  delay: 1,
-                }}
-              />
-
-              {/* Navigation Section */}
-              <motion.div
-                variants={containerVariants}
-                className="relative z-10"
+                variants={container}
+                className="grid gap-10 lg:grid-cols-12"
               >
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-12 lg:gap-20">
-                  {footerData.sections.map((section, index) => (
-                    <NavSection
-                      key={section.title}
-                      title={section.title}
-                      links={section.links}
-                      index={index}
-                    />
-                  ))}
-                </div>
-              </motion.div>
+                <motion.div variants={item} className="lg:col-span-6">
+                  <p className="text-xs font-semibold uppercase tracking-widest text-primary">
+                    Un projet en tête ?
+                  </p>
 
-              {/* Footer Bottom Section */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8, duration: 0.8, ease: "easeOut" }}
-                className="flex flex-col md:flex-row justify-between items-start md:items-end relative z-10 gap-4 md:gap-6 mt-6"
-              >
-                <div className="flex-1">
-                  <motion.h1
-                    initial={{ opacity: 0, x: -50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 1, duration: 0.8, ease: "easeOut" }}
-                    whileHover={{
-                      scale: 1.02,
-                      transition: {
-                        type: "spring",
-                        stiffness: 300,
-                        damping: 20,
-                      },
-                    }}
-                    className="text-[12vw] md:text-[10vw] lg:text-[8vw] xl:text-[6vw] leading-[0.8] font-serif bg-linear-to-r from-foreground via-muted-foreground to-foreground/60 bg-clip-text text-transparent cursor-default"
+                  <h2 className="mt-4 font-heading text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+                    Parlons de votre
+                    <br />
+                    prochain projet.
+                  </h2>
+
+                  <Button
+                    size="lg"
+                    className="mt-6"
+                    nativeButton={false}
+                    render={<Link href="/contact" />}
                   >
-                    {footerData.title}
-                  </motion.h1>
+                    Demander un devis →
+                  </Button>
+                </motion.div>
 
-                  <motion.div
-                    initial={{ opacity: 0, width: 0 }}
-                    animate={{ opacity: 1, width: "auto" }}
-                    transition={{ delay: 1.2, duration: 0.6 }}
-                    className="flex items-center gap-3 md:gap-4 mt-3 md:mt-4"
-                  >
-                    <motion.div
-                      className="w-8 md:w-12 h-0.5 bg-linear-to-r from-primary to-secondary"
-                      animate={{
-                        scaleX: [1, 1.2, 1],
-                      }}
-                      transition={{
-                        duration: 2,
-                        repeat: Number.POSITIVE_INFINITY,
-                        ease: "easeInOut",
-                      }}
-                    />
-                    <motion.p
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 1.4, duration: 0.5 }}
-                      className="text-muted-foreground text-xs md:text-sm font-sans hover:text-foreground transition-colors duration-300"
-                    >
-                      {footerData.subtitle}
-                    </motion.p>
-                  </motion.div>
-                </div>
-
-                <motion.div
-                  initial={{ opacity: 0, x: 50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 1.6, duration: 0.6 }}
-                  className="text-left md:text-right"
+                <motion.nav
+                  variants={item}
+                  aria-label="Navigation du pied de page"
+                  className="lg:col-span-2"
                 >
-                  <motion.p
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 1.8, duration: 0.5 }}
-                    className="text-muted-foreground text-xs md:text-sm mb-2 md:mb-3 hover:text-foreground transition-colors duration-300"
-                  >
-                    {footerData.copyright}
-                  </motion.p>
+                  <FooterLinkGroup title="Navigation" links={navigation} />
+                </motion.nav>
 
-                  <motion.div
-                    variants={containerVariants}
-                    initial="hidden"
-                    animate="visible"
-                    transition={{ delay: 2, staggerChildren: 0.1 }}
-                    className="flex gap-2 md:gap-3"
-                  >
-                    {footerData.social.map((social, index) => (
-                      <SocialLink
-                        key={social.label}
-                        href={social.href}
-                        label={social.label}
-                        icon={social.icon}
-                        index={index}
-                      />
-                    ))}
-                  </motion.div>
+                <motion.div variants={item} className="lg:col-span-4">
+                  <FooterLinkGroup title="Nos services" links={services} />
                 </motion.div>
               </motion.div>
-            </motion.div>
+
+              {/* Bottom: unchanged */}
+              <div className="flex flex-col gap-5 sm:gap-6">
+                <Separator />
+
+                <motion.div
+                  variants={item}
+                  className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between"
+                >
+                  <div>
+                    <Link
+                      href="/"
+                      aria-label="L'unicreative, accueil"
+                      className="font-heading text-3xl font-bold tracking-tight sm:text-5xl lg:text-6xl"
+                    >
+                      L<span className="text-primary">’</span>uni
+                      <span className="text-primary">creative</span>
+                    </Link>
+
+                    <p className="mt-2 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                      Digital Printing Solutions
+                    </p>
+                  </div>
+
+                  <address className="text-sm not-italic text-foreground/70 md:text-right">
+                    Avenue Lalla Hasnae, près de l’Institut Français
+                    <br />
+                    Fès, Maroc
+                  </address>
+                </motion.div>
+
+                <motion.div
+                  variants={item}
+                  className="flex flex-col gap-1 text-xs text-muted-foreground sm:flex-row sm:justify-between sm:text-sm"
+                >
+                  <p>
+                    &copy; {new Date().getFullYear()} L’unicreative. Tous droits
+                    réservés.
+                  </p>
+                  <p>Anciennement Imagin Creative</p>
+                </motion.div>
+              </div>
+            </motion.footer>
           </div>
         </div>
       </div>
