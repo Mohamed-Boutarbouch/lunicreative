@@ -313,7 +313,8 @@ export function WorkSection() {
                   className="shrink-0 gap-2"
                 >
                   <Icon className="size-4" stroke={1.8} />
-                  {item.label}
+
+                  <span className="hidden sm:inline">{item.label}</span>
                 </TabsTrigger>
               );
             })}

@@ -3,8 +3,8 @@
 import Link from "next/link";
 import { motion, type Variants } from "motion/react";
 
-import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { CtaButton } from "../cta-button";
 
 const navigation = [
   { label: "Accueil", href: "/" },
@@ -91,14 +91,9 @@ export function Footer() {
                     prochain projet.
                   </h2>
 
-                  <Button
-                    size="lg"
-                    className="mt-6"
-                    nativeButton={false}
-                    render={<Link href="/contact" />}
-                  >
-                    Demander un devis →
-                  </Button>
+                  <CtaButton href="/contact" className="mt-6">
+                    Demander un devis
+                  </CtaButton>
                 </motion.div>
 
                 <motion.nav
