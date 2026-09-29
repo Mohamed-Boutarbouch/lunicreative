@@ -5,7 +5,7 @@ import { ContactUsInfo } from "@/components/contact-us-info";
 
 export function ContactUsSection() {
   return (
-    <section>
+    <section id="contact">
       <div className="mx-auto mb-10 w-full max-w-3xl text-left sm:mb-14 sm:text-center">
         <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
           Un projet en{" "}

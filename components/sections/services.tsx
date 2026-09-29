@@ -8,7 +8,7 @@ import { services } from "@/data/services";
 
 export function ServicesSection() {
   return (
-    <section className="py-14 sm:py-22">
+    <section id="services" className="py-14 sm:py-22">
       <div className="mx-auto mb-10 w-full max-w-3xl text-left sm:mb-14 sm:text-center">
         <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
           Tout ce qu&apos;il faut pour{" "}

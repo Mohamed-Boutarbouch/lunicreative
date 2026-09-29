@@ -70,22 +70,34 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        "sticky top-5 z-40 mx-auto flex w-[90%] items-center justify-between rounded-2xl border p-2 shadow-inner backdrop-blur-sm transition-colors duration-300 md:w-[70%] lg:w-[75%] lg:max-w-7xl",
+        "sticky top-5 z-40 mx-auto flex w-[90%] items-center justify-between rounded-2xl border p-2 transition-all duration-300 ease-out md:w-[70%] lg:w-[75%] lg:max-w-7xl",
         isScrolled
-          ? "border-secondary bg-card/95"
+          ? [
+              "border-border/70 bg-card/90 shadow-xl shadow-black/8 backdrop-blur-xl",
+              "ring-1 ring-black/5 dark:ring-white/5",
+            ]
           : "border-transparent bg-transparent shadow-none backdrop-blur-none",
       )}
     >
       {/* Logo */}
-      <Link href="/" aria-label="Lunicreative - Accueil">
+      <Link
+        href="/"
+        aria-label="Lunicreative - Accueil"
+        className="flex shrink-0 items-center gap-1.5 sm:gap-2"
+      >
         <Image
-          src="/logo.png"
-          alt="Lunicreative"
-          className="h-auto w-40"
-          width={1525}
-          height={688}
+          src="/logo.webp"
+          alt=""
+          width={500}
+          height={500}
           priority
+          className="size-7 object-contain sm:size-8"
         />
+
+        <span className="font-heading text-lg font-bold tracking-tight sm:text-2xl">
+          L<span className="text-primary">’</span>uni
+          <span className="text-primary">creative</span>
+        </span>
       </Link>
 
       {/* Mobile navigation */}
@@ -108,20 +120,27 @@ export function Navbar() {
             className="flex flex-col justify-between rounded-br-2xl rounded-tr-2xl border-secondary bg-card"
           >
             <div>
-              <SheetHeader className="mb-4 ml-4">
+              <SheetHeader className="mb-6 px-2">
                 <SheetTitle>
                   <Link
                     href="/"
                     onClick={closeMobileMenu}
                     aria-label="Lunicreative - Accueil"
+                    className="flex items-center gap-2"
                   >
                     <Image
-                      src="/logo.png"
-                      alt="Lunicreative"
-                      className="h-auto w-40"
-                      width={1525}
-                      height={688}
+                      src="/logo.webp"
+                      alt=""
+                      width={500}
+                      height={500}
+                      priority
+                      className="size-8 object-contain"
                     />
+
+                    <span className="font-heading text-xl font-bold tracking-tight">
+                      L<span className="text-primary">’</span>uni
+                      <span className="text-primary">creative</span>
+                    </span>
                   </Link>
                 </SheetTitle>
               </SheetHeader>
@@ -146,6 +165,7 @@ export function Navbar() {
                   className="flex h-9 w-full items-center justify-between rounded-md px-3 text-base font-normal text-muted-foreground outline-none transition-colors hover:bg-muted hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring"
                 >
                   <span>Nos Services</span>
+
                   <IconChevronDown
                     className={cn(
                       "size-4 shrink-0 transition-transform duration-200",

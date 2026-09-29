@@ -176,7 +176,7 @@ export const projects = [
     title: "Rêves d'Orient",
     tags: ["Site web", "Développement web"],
     image: "/work/website/03_reves-dorient.jpeg",
-    href: "http://www.revedorient.net/",
+    href: "http://www.revedorient.com/",
   },
   {
     category: "website",
@@ -197,14 +197,14 @@ export const projects = [
     title: "Huiles de Saïss",
     tags: ["Site web", "Développement web"],
     image: "/work/website/06_olive.jpeg",
-    href: "http://www.huilesdesaiss.com/",
+    href: "https://www.huilesdesaiss.com/",
   },
   {
     category: "website",
     title: "hostOweb",
     tags: ["Site web", "Développement web"],
     image: "/work/website/07_website.jpeg",
-    href: "https://www.hostoweb.com/",
+    href: "https://www.classcof.com/",
   },
   {
     category: "website",

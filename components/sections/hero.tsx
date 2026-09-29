@@ -29,7 +29,7 @@ export function HeroSection() {
               </p>
             </div>
             <div className="flex flex-col items-center justify-center gap-8 md:flex-row">
-              <CtaButton href="/contact">Démarrer un projet</CtaButton>
+              <CtaButton href="#contact">Démarrer un projet</CtaButton>
               <div className="flex items-center gap-3 sm:gap-5">
                 <div className="flex items-center gap-2 text-muted-foreground">
                   <IconMapPin className="size-5 shrink-0 text-primary" />

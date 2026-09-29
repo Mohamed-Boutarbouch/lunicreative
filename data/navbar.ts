@@ -10,14 +10,14 @@ interface ServiceProps {
 }
 
 export const primaryRoutes: RouteProps[] = [
-  { href: "/", label: "Accueil" },
-  { href: "/a-propos", label: "À propos" },
+  // { href: "/", label: "Accueil" },
+  { href: "/#a-propos", label: "À propos" },
 ];
 
 export const secondaryRoutes: RouteProps[] = [
-  { href: "/realisations", label: "Réalisations" },
+  { href: "/#realisations", label: "Réalisations" },
   { href: "/carriere", label: "Carrière" },
-  { href: "/contact", label: "Contact" },
+  { href: "/#contact", label: "Contact" },
 ];
 
 export const services: ServiceProps[] = [

@@ -223,7 +223,7 @@ export function ContactUsForm() {
 
         <div className="flex w-full justify-center sm:justify-end">
           <CtaButton type="submit" form="contact-form">
-            Collaborons
+            Envoyer
           </CtaButton>
         </div>
       </FieldGroup>
