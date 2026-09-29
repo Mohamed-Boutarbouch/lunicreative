@@ -302,7 +302,7 @@ export function WorkSection() {
         </div>
 
         <Tabs value={category} onValueChange={handleCategoryChange}>
-          <TabsList className="h-auto max-w-full overflow-x-auto">
+          <TabsList className="h-auto max-w-full overflow-x-auto overflow-y-hidden">
             {categories.map((item) => {
               const Icon = item.icon;
 

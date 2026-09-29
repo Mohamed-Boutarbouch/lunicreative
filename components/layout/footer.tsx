@@ -62,96 +62,100 @@ function FooterLinkGroup({
 
 export function Footer() {
   return (
-    <div className="mx-auto w-full max-w-[1600px] px-4 sm:px-6 lg:px-10 xl:px-16">
-      <div
-        className="relative h-[85dvh] lg:h-[70dvh]"
-        style={{ clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}
-      >
-        <div className="relative top-[-100dvh] h-[185dvh] lg:h-[170dvh]">
-          <div className="sticky top-[15dvh] h-[85dvh] lg:top-[30dvh] lg:h-[70dvh]">
-            <motion.footer
-              variants={container}
-              initial="hidden"
-              animate="show"
-              className="dark relative flex h-full w-full flex-col justify-between gap-8 overflow-hidden bg-background p-6 text-foreground sm:p-10 lg:p-14"
-            >
-              {/* Top: restored from old code */}
-              <motion.div
-                variants={container}
-                className="grid gap-10 lg:grid-cols-12"
-              >
-                <motion.div variants={item} className="lg:col-span-6">
-                  <p className="text-xs font-semibold uppercase tracking-widest text-primary">
-                    Un projet en tête ?
-                  </p>
-
-                  <h2 className="mt-4 font-heading text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-                    Parlons de votre
-                    <br />
-                    prochain projet.
-                  </h2>
-
-                  <CtaButton href="/contact" className="mt-6">
-                    Demander un devis
-                  </CtaButton>
-                </motion.div>
-
-                <motion.nav
-                  variants={item}
-                  aria-label="Navigation du pied de page"
-                  className="lg:col-span-2"
-                >
-                  <FooterLinkGroup title="Navigation" links={navigation} />
-                </motion.nav>
-
-                <motion.div variants={item} className="lg:col-span-4">
-                  <FooterLinkGroup title="Nos services" links={services} />
-                </motion.div>
-              </motion.div>
-
-              {/* Bottom: unchanged */}
-              <div className="flex flex-col gap-5 sm:gap-6">
-                <Separator />
-
+    <div
+      className="relative h-(--footer-h) [--footer-h:max(85dvh,44rem)] lg:[--footer-h:max(70dvh,36rem)]"
+      style={{ clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}
+    >
+      <div className="relative top-[-100dvh] h-[calc(var(--footer-h)+100dvh)]">
+        <div className="sticky top-[calc(100dvh-var(--footer-h))] h-(--footer-h)">
+          <motion.footer
+            variants={container}
+            initial="hidden"
+            animate="show"
+            className="dark relative h-full w-full overflow-hidden bg-background text-foreground"
+          >
+            <div className="mx-auto h-full w-full max-w-[1600px] px-4 sm:px-6 lg:px-10 xl:px-16">
+              <div className="flex h-full flex-col justify-between gap-6 p-6 sm:gap-8 sm:p-10 lg:p-14">
                 <motion.div
-                  variants={item}
-                  className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between"
+                  variants={container}
+                  className="grid grid-cols-2 gap-x-6 gap-y-10 lg:grid-cols-12 lg:gap-10"
                 >
-                  <div>
-                    <Link
-                      href="/"
-                      aria-label="L'unicreative, accueil"
-                      className="font-heading text-3xl font-bold tracking-tight sm:text-5xl lg:text-6xl"
-                    >
-                      L<span className="text-primary">’</span>uni
-                      <span className="text-primary">creative</span>
-                    </Link>
-
-                    <p className="mt-2 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                      Digital Printing Solutions
+                  <motion.div
+                    variants={item}
+                    className="col-span-2 lg:col-span-6"
+                  >
+                    <p className="text-xs font-semibold uppercase tracking-widest text-primary">
+                      Un projet en tête ?
                     </p>
-                  </div>
 
-                  <address className="text-sm not-italic text-foreground/70 md:text-right">
-                    Avenue Lalla Hasnae, près de l’Institut Français
-                    <br />
-                    Fès, Maroc
-                  </address>
+                    <h2 className="mt-4 font-heading text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+                      Parlons de votre
+                      <br />
+                      prochain projet.
+                    </h2>
+
+                    <CtaButton href="/contact" className="mt-6">
+                      Demander un devis
+                    </CtaButton>
+                  </motion.div>
+
+                  <motion.nav
+                    variants={item}
+                    aria-label="Navigation du pied de page"
+                    className="lg:col-span-2"
+                  >
+                    <FooterLinkGroup title="Navigation" links={navigation} />
+                  </motion.nav>
+
+                  <motion.div variants={item} className="lg:col-span-4">
+                    <FooterLinkGroup title="Nos services" links={services} />
+                  </motion.div>
                 </motion.div>
 
-                <motion.div
-                  variants={item}
-                  className="flex flex-col gap-1 text-xs text-muted-foreground sm:flex-row sm:justify-between sm:text-sm"
-                >
-                  <p>
-                    &copy; {new Date().getFullYear()} L’unicreative. Tous droits
-                    réservés.
-                  </p>
-                  <p>Anciennement Imagin Creative</p>
-                </motion.div>
+                {/* Bottom */}
+                <div className="flex flex-col gap-5 sm:gap-6">
+                  <Separator />
+
+                  <motion.div
+                    variants={item}
+                    className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between"
+                  >
+                    <div>
+                      <Link
+                        href="/"
+                        aria-label="L'unicreative, accueil"
+                        className="font-heading text-3xl font-bold tracking-tight sm:text-5xl lg:text-6xl"
+                      >
+                        L<span className="text-primary">’</span>uni
+                        <span className="text-primary">creative</span>
+                      </Link>
+
+                      <p className="mt-2 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                        Digital Printing Solutions
+                      </p>
+                    </div>
+
+                    <address className="text-sm not-italic text-foreground/70 md:text-right">
+                      Avenue Lalla Hasnae, près de l’Institut Français
+                      <br />
+                      Fès, Maroc
+                    </address>
+                  </motion.div>
+
+                  <motion.div
+                    variants={item}
+                    className="flex flex-col gap-1 text-xs text-muted-foreground sm:flex-row sm:justify-between sm:text-sm"
+                  >
+                    <p>
+                      &copy; {new Date().getFullYear()} L’unicreative. Tous
+                      droits réservés.
+                    </p>
+                    <p>Anciennement Imagin Creative</p>
+                  </motion.div>
+                </div>
               </div>
-            </motion.footer>
-          </div>
+            </div>
+          </motion.footer>
         </div>
       </div>
     </div>
