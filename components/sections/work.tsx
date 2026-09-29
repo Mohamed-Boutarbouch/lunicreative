@@ -290,7 +290,7 @@ export function WorkSection() {
         <div className="max-w-2xl text-center">
           <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
             Nos{" "}
-            <span className="font-serif font-semibold italic text-primary">
+            <span className="font-serif font-semibold italic text-primary tracking-wide">
               réalisations
             </span>
           </h2>

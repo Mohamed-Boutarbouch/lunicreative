@@ -9,14 +9,14 @@ import { CtaButton } from "@/components/cta-button";
 
 export function HeroSection() {
   return (
-    <section className="relative z-10">
+    <section className="relative z-10 mt-26">
       <div className="relative isolate">
         <div className="container mx-auto">
           <div className="mx-auto flex max-w-5xl flex-col gap-10 py-18 md:py-28">
             <div className="flex flex-col items-center gap-4 text-center sm:gap-6">
               <h1 className="font-heading text-5xl font-semibold tracking-tight md:text-6xl lg:text-8xl">
                 Chaque projet, une{" "}
-                <span className="font-serif font-semibold italic text-primary">
+                <span className="font-serif font-semibold italic text-primary tracking-wide">
                   création{" "}
                 </span>
                 sur mesure
