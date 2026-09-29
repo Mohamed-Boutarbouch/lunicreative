@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/components/layout/theme-provider";
 import { Navbar } from "@/components/layout/navbar";
 import { Toaster } from "@/components/ui/toast";
 import { Footer } from "@/components/layout/footer";
+import { AuroraGlow } from "@/components/ui/aurora-glow";
 
 import "./globals.css";
 
@@ -54,9 +55,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <div id="scroll-sentinel" className="absolute top-0 h-px w-full" />
 
           <div className="relative overflow-x-clip">
-            <div
-              aria-hidden
-              className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-svh min-h-160 bg-[radial-gradient(ellipse_60%_50%_at_50%_50%,color-mix(in_oklch,var(--primary)_22%,transparent)_0%,color-mix(in_oklch,var(--primary)_8%,transparent)_45%,transparent_75%)]"
+            <AuroraGlow
+              intensity="subtle"
+              grid
+              className="inset-x-0 top-0 -z-10 h-svh min-h-160"
             />
 
             <Navbar />

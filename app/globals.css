@@ -46,6 +46,41 @@
     --radius-2xl: calc(var(--radius) * 1.8);
     --radius-3xl: calc(var(--radius) * 2.2);
     --radius-4xl: calc(var(--radius) * 2.6);
+
+    --animate-aurora-spin: aurora-spin 60s linear infinite;
+    --animate-aurora-1: aurora-1 18s ease-in-out infinite alternate;
+    --animate-aurora-2: aurora-2 24s ease-in-out infinite alternate;
+    --animate-aurora-3: aurora-3 30s ease-in-out infinite alternate;
+
+    @keyframes aurora-spin {
+        to {
+            transform: rotate(360deg);
+        }
+    }
+    @keyframes aurora-1 {
+        from {
+            transform: translate3d(0, 0, 0) scale(1);
+        }
+        to {
+            transform: translate3d(18%, 20%, 0) scale(1.25);
+        }
+    }
+    @keyframes aurora-2 {
+        from {
+            transform: translate3d(0, 0, 0) scale(1.15);
+        }
+        to {
+            transform: translate3d(-22%, 14%, 0) scale(0.9);
+        }
+    }
+    @keyframes aurora-3 {
+        from {
+            transform: translate3d(0, 0, 0) scale(1);
+        }
+        to {
+            transform: translate3d(14%, -18%, 0) scale(1.3);
+        }
+    }
 }
 
 :root {
@@ -81,6 +116,10 @@
     --sidebar-accent-foreground: oklch(0.205 0 0);
     --sidebar-border: oklch(0.922 0 0);
     --sidebar-ring: oklch(0.708 0 0);
+
+    --aurora-from: var(--primary);
+    --aurora-via: oklch(from var(--primary) l c calc(h + 40));
+    --aurora-to: oklch(from var(--primary) l c calc(h - 40));
 }
 
 .dark {
