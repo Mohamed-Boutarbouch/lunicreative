@@ -13,15 +13,15 @@ export function HeroSection() {
       <div className="relative isolate">
         <div className="container mx-auto">
           <div className="mx-auto flex max-w-5xl flex-col gap-10 py-18 md:py-28">
-            <div className="flex flex-col items-center gap-4 text-center sm:gap-6">
-              <h1 className="font-heading text-5xl font-semibold tracking-tight md:text-6xl lg:text-8xl">
+            <div className="flex flex-col items-start gap-4 text-left sm:items-center sm:text-center sm:gap-6">
+              <h1 className="font-heading text-5xl font-semibold tracking-tight sm:text-6xl lg:text-7xl">
                 Chaque projet, une{" "}
-                <span className="font-serif font-semibold italic text-primary tracking-wide">
-                  création{" "}
-                </span>
-                sur mesure
+                <span className="font-serif font-semibold italic tracking-normal text-primary">
+                  création
+                </span>{" "}
+                qui a du sens
               </h1>
-              <p className="max-w-2xl text-base text-muted-foreground sm:text-lg">
+              <p className="max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
                 Communication, publicité et événementiel. De l&apos;identité de
                 marque à l&apos;impression, du web à la production
                 d&apos;événements, L&apos;unicreative accompagne votre projet du

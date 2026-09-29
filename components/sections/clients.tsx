@@ -3,21 +3,21 @@ import Image from "next/image";
 import { Marquee } from "@/components/animations/marquee";
 import { clients } from "@/data/clients";
 
-export function MarqueeClientsSection() {
+export function ClientsSection() {
   return (
     <section className="relative mb-20 w-full overflow-hidden md:mb-28 lg:mb-36">
       {/* Section heading */}
-      <div className="mx-auto mb-12 max-w-2xl px-4 text-center sm:mb-16 md:mb-20">
+      <div className="mx-auto mb-12 w-full max-w-3xl px-4 text-left sm:mb-16 sm:text-center md:mb-20">
         <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
-          Ils nous{" "}
-          <span className="font-serif font-semibold italic text-primary">
-            font confiance
+          Des collaborations{" "}
+          <span className="font-serif font-normal italic tracking-normal text-primary">
+            qui comptent
           </span>
         </h2>
 
-        <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-          Nous accompagnons des entreprises, institutions et marques dans leurs
-          projets de communication, de création et de développement.
+        <p className="mt-3 max-w-xl text-base leading-relaxed text-muted-foreground sm:mx-auto sm:text-lg">
+          Entreprises, institutions et marques nous confient leurs projets pour
+          donner vie à leurs idées, de la conception à la réalisation.
         </p>
       </div>
 

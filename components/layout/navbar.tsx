@@ -26,59 +26,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-
-interface RouteProps {
-  href: string;
-  label: string;
-}
-
-interface ServiceProps {
-  href: string;
-  title: string;
-  description: string;
-}
-
-const primaryRoutes: RouteProps[] = [
-  { href: "/", label: "Accueil" },
-  { href: "/a-propos", label: "À propos" },
-];
-
-const secondaryRoutes: RouteProps[] = [
-  { href: "/realisations", label: "Réalisations" },
-  { href: "/carriere", label: "Carrière" },
-  { href: "/contact", label: "Contact" },
-];
-
-const serviceList: ServiceProps[] = [
-  {
-    href: "/services/conception-creation-graphique",
-    title: "Conception & création graphique",
-    description:
-      "Identité de marque, logos, cartes de visite, flyers et supports promotionnels.",
-  },
-  {
-    href: "/services/impression-numerique-offset",
-    title: "Impression numérique & offset",
-    description:
-      "Affiches, flyers et supports imprimés en numérique et offset.",
-  },
-  {
-    href: "/services/creation-site-web",
-    title: "Création de site web",
-    description: "Sites vitrines, CMS dynamiques et solutions e-commerce.",
-  },
-  {
-    href: "/services/design-creation-3d",
-    title: "Design & création 3D",
-    description: "Modélisation, rendu et design 3D pour vos projets.",
-  },
-  {
-    href: "/services/conception-evenementielle",
-    title: "Conception événementielle",
-    description:
-      "Stands modulables, séminaires, colloques, inaugurations et production technique.",
-  },
-];
+import { primaryRoutes, secondaryRoutes, services } from "@/data/navbar";
 
 const navLinkClass = navigationMenuTriggerStyle({
   className: "px-2 text-base text-muted-foreground hover:text-foreground",
@@ -208,7 +156,7 @@ export function Navbar() {
 
                 {isServicesOpen && (
                   <div className="ml-3 flex flex-col border-l pl-3">
-                    {serviceList.map(({ href, title }) => (
+                    {services.map(({ href, title }) => (
                       <Link
                         key={href}
                         href={href}
@@ -263,11 +211,11 @@ export function Navbar() {
 
             <NavigationMenuContent>
               <ul className="grid w-150 grid-cols-2 gap-1 p-2">
-                {serviceList.map(({ href, title, description }, index) => (
+                {services.map(({ href, title, description }, index) => (
                   <li
                     key={href}
                     className={
-                      index === serviceList.length - 1 ? "col-span-2" : ""
+                      index === services.length - 1 ? "col-span-2" : ""
                     }
                   >
                     <NavigationMenuLink

@@ -9,14 +9,19 @@ import { services } from "@/data/services";
 export function ServicesSection() {
   return (
     <section className="py-14 sm:py-22">
-      <div className="mx-auto mb-10 flex max-w-3xl flex-col gap-3 sm:mb-14">
-        <h2 className="font-heading text-3xl font-semibold tracking-tight md:text-4xl lg:text-6xl md:text-center">
-          Nos services
+      <div className="mx-auto mb-10 w-full max-w-3xl text-left sm:mb-14 sm:text-center">
+        <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
+          Tout ce qu&apos;il faut pour{" "}
+          <span className="font-serif font-normal italic tracking-normal text-primary">
+            donner vie
+          </span>{" "}
+          à vos projets
         </h2>
-        <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">
-          Développement web et applicatif, impression numérique et offset,
-          conception graphique, design 3D et événementiel : L&apos;unicreative
-          accompagne vos projets de communication à Fès et partout au Maroc.
+
+        <p className="mt-3 text-base leading-relaxed text-muted-foreground sm:text-lg">
+          Du développement web à l&apos;impression, de la création graphique à
+          l&apos;événementiel, nous réunissons les savoir-faire nécessaires pour
+          transformer une idée en réalisation.
         </p>
       </div>
 

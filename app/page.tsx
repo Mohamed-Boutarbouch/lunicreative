@@ -1,9 +1,9 @@
-import { MarqueeClientsSection } from "@/components/marquee-clients";
-import { AboutSection } from "@/components/sections/about";
-import { ContactUsSection } from "@/components/sections/contact-us";
 import { HeroSection } from "@/components/sections/hero";
+import { AboutSection } from "@/components/sections/about";
 import { ServicesSection } from "@/components/sections/services";
 import { WorkSection } from "@/components/sections/work";
+import { ContactUsSection } from "@/components/sections/contact-us";
+import { ClientsSection } from "@/components/sections/clients";
 
 export default function Home() {
   return (
@@ -13,7 +13,7 @@ export default function Home() {
       <ServicesSection />
       <WorkSection />
       <ContactUsSection />
-      <MarqueeClientsSection />
+      <ClientsSection />
     </main>
   );
 }

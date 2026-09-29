@@ -6,14 +6,18 @@ import { ContactUsInfo } from "@/components/contact-us-info";
 export function ContactUsSection() {
   return (
     <section>
-      <div className="mx-auto mb-10 flex max-w-3xl flex-col gap-3 sm:mb-14">
-        <h2 className="font-heading text-3xl font-semibold tracking-tight md:text-4xl lg:text-6xl md:text-center">
-          Connectons-nous
+      <div className="mx-auto mb-10 w-full max-w-3xl text-left sm:mb-14 sm:text-center">
+        <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
+          Un projet en{" "}
+          <span className="font-serif font-normal italic tracking-normal text-primary">
+            tête
+          </span>
+          ?
         </h2>
-        <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">
-          Vous avez un projet de communication, de création graphique,
-          d&apos;événementiel ou de développement web ? Notre équipe est à votre
-          écoute pour en discuter.
+
+        <p className="mt-3 text-base leading-relaxed text-muted-foreground sm:text-lg">
+          Une idée, un besoin ou un projet à construire ? Parlons-en et
+          imaginons ensemble la meilleure façon de lui donner vie.
         </p>
       </div>
 

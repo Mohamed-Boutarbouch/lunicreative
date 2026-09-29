@@ -10,19 +10,19 @@ export function AboutSection() {
       aria-labelledby="about-heading"
       className="py-14 sm:py-22"
     >
-      <div className="flex flex-col items-center gap-10 text-center sm:gap-14">
-        <div className="flex max-w-4xl flex-col items-center gap-6">
-          <h2
-            id="about-heading"
-            className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl"
-          >
-            Une seule agence pour le print, le digital et l&apos;événementiel
+      <div className="flex flex-col items-center gap-10 sm:gap-14">
+        <div className="w-full max-w-4xl text-left sm:text-center">
+          <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
+            Une agence qui donne{" "}
+            <span className="font-serif font-normal italic tracking-normal text-primary">
+              forme aux idées
+            </span>
           </h2>
 
-          <p className="max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-            Basée à Fès, L&apos;unicreative conçoit, produit et déploie vos
-            supports de communication d&apos;un bout à l&apos;autre — sans
-            multiplier les prestataires.
+          <p className="mt-3 text-base leading-relaxed text-muted-foreground sm:text-lg">
+            Basée à Fès, L&apos;unicreative imagine, conçoit et produit des
+            expériences de communication qui réunissent le print, le digital et
+            l&apos;événementiel.
           </p>
 
           <div className="flex flex-wrap justify-center gap-6">

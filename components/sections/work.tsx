@@ -40,17 +40,17 @@ export function WorkSection() {
   return (
     <section id="realisations" className="py-14 sm:py-22">
       <div className="flex flex-col items-center gap-10 md:gap-16">
-        <div className="max-w-2xl text-center">
+        <div className="w-full max-w-3xl text-left sm:text-center">
           <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
-            Nos{" "}
-            <span className="font-serif font-semibold italic text-primary tracking-wide">
-              réalisations
+            Des projets{" "}
+            <span className="font-serif font-normal italic tracking-normal text-primary">
+              qui prennent vie
             </span>
           </h2>
 
-          <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
-            Découvrez une sélection de nos projets en communication, création
-            graphique, impression et développement web.
+          <p className="mt-3 text-base leading-relaxed text-muted-foreground sm:text-lg">
+            Découvrez une sélection de projets imaginés et réalisés pour des
+            marques, entreprises et événements.
           </p>
         </div>
 
