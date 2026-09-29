@@ -14,7 +14,7 @@ export function AboutSection() {
         <div className="w-full max-w-4xl text-left sm:text-center">
           <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
             Une agence qui donne{" "}
-            <span className="font-serif font-normal italic tracking-normal text-primary">
+            <span className="font-serif font-semibold italic tracking-normal text-primary">
               forme aux idées
             </span>
           </h2>
@@ -25,7 +25,7 @@ export function AboutSection() {
             l&apos;événementiel.
           </p>
 
-          <div className="flex flex-wrap justify-center gap-6">
+          <div className="flex flex-wrap justify-center gap-6 mt-8">
             {pillars.map(({ label, icon: Icon }) => (
               <article key={label} className="flex" aria-label={label}>
                 <Card className="w-fit shrink-0 flex-row items-center gap-3 rounded-full border-0 bg-muted py-2 text-muted-foreground shadow-none transition-colors hover:bg-primary hover:text-primary-foreground">

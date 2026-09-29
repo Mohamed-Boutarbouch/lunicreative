@@ -14,9 +14,7 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { SpotlightCard } from "@/components/spotlight-card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { categories, projects } from "@/data/work";
-
-const PROJECTS_LIMIT = 8;
+import { categories, projects, PROJECTS_LIMIT } from "@/data/work";
 
 export function WorkSection() {
   const [category, setCategory] = useState("website");
@@ -43,7 +41,7 @@ export function WorkSection() {
         <div className="w-full max-w-3xl text-left sm:text-center">
           <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
             Des projets{" "}
-            <span className="font-serif font-normal italic tracking-normal text-primary">
+            <span className="font-serif font-semibold italic tracking-normal text-primary">
               qui prennent vie
             </span>
           </h2>
@@ -85,6 +83,7 @@ export function WorkSection() {
                     src={project.image}
                     alt={project.title}
                     fill
+                    sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, (min-width: 640px) 50vw, 100vw"
                     className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                   />
 
@@ -117,7 +116,7 @@ export function WorkSection() {
                       className="w-fit gap-1.5 transition-colors group-hover:bg-primary group-hover:text-primary-foreground"
                     >
                       <IconWorld className="size-3.5" />
-                      Visiter le site
+                      {project.href}
                       <IconArrowUpRight className="size-3.5" />
                     </Badge>
                   )}

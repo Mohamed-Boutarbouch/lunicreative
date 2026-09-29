@@ -166,7 +166,7 @@ export const projects = [
   },
   {
     category: "website",
-    title: "Projet Web",
+    title: "Oldy",
     tags: ["Site web", "Développement web"],
     image: "/work/website/02_website.jpeg",
     href: "https://oldy.ma/",
@@ -180,31 +180,31 @@ export const projects = [
   },
   {
     category: "website",
-    title: "Projet Web",
+    title: "Filali Maths",
     tags: ["Site web", "Développement web"],
     image: "/work/website/04_website.jpeg",
     href: "https://filalimaths.com/",
   },
   {
     category: "website",
-    title: "INDH",
+    title: "INDH Ifrane",
     tags: ["Site web", "Développement web"],
     image: "/work/website/05_indh.jpeg",
     href: "https://indh-ifrane.ma/",
   },
   {
     category: "website",
-    title: "Olive",
+    title: "Huiles de Saïss",
     tags: ["Site web", "Développement web"],
     image: "/work/website/06_olive.jpeg",
     href: "http://www.huilesdesaiss.com/",
   },
   {
     category: "website",
-    title: "Projet Web",
+    title: "hostOweb",
     tags: ["Site web", "Développement web"],
     image: "/work/website/07_website.jpeg",
-    href: "www.classcof.com",
+    href: "https://www.hostoweb.com/",
   },
   {
     category: "website",
@@ -215,14 +215,14 @@ export const projects = [
   },
   {
     category: "website",
-    title: "INDH",
+    title: "INDH Taounate",
     tags: ["Site web", "Développement web"],
     image: "/work/website/09_indh.jpeg",
     href: "https://indh-taounate.ma/",
   },
   {
     category: "website",
-    title: "INDH",
+    title: "INDH Sefrou",
     tags: ["Site web", "Développement web"],
     image: "/work/website/10_indh.jpeg",
     href: "https://indh-sefrou.ma/",
@@ -249,3 +249,5 @@ export const categories = [
   { value: "impression", label: "Impression", icon: IconPrinter },
   { value: "graphic", label: "Création graphique", icon: IconPalette },
 ];
+
+export const PROJECTS_LIMIT = 8;

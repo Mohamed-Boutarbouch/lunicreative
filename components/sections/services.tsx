@@ -12,7 +12,7 @@ export function ServicesSection() {
       <div className="mx-auto mb-10 w-full max-w-3xl text-left sm:mb-14 sm:text-center">
         <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
           Tout ce qu&apos;il faut pour{" "}
-          <span className="font-serif font-normal italic tracking-normal text-primary">
+          <span className="font-serif font-semibold italic tracking-normal text-primary">
             donner vie
           </span>{" "}
           à vos projets
@@ -67,6 +67,7 @@ export function ServicesSection() {
                     src={service.image}
                     alt={service.title}
                     fill
+                    sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                     className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                   />
                 </div>

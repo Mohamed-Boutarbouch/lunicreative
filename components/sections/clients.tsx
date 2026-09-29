@@ -10,7 +10,7 @@ export function ClientsSection() {
       <div className="mx-auto mb-12 w-full max-w-3xl px-4 text-left sm:mb-16 sm:text-center md:mb-20">
         <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
           Des collaborations{" "}
-          <span className="font-serif font-normal italic tracking-normal text-primary">
+          <span className="font-serif font-semibold italic tracking-normal text-primary">
             qui comptent
           </span>
         </h2>
