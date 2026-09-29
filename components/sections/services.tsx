@@ -2,7 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { IconArrowUpRight } from "@tabler/icons-react";
 
-import { Card, CardContent } from "@/components/ui/card";
+import { CardContent } from "@/components/ui/card";
+import { SpotlightCard } from "@/components/spotlight-card";
 
 const services = [
   {
@@ -64,12 +65,12 @@ export function ServicesSection() {
             href={service.href}
             className={`group block h-full ${service.className ?? ""}`}
           >
-            <Card className="relative h-full overflow-hidden border border-border/60 bg-muted/40 p-0 shadow-none transition-all duration-300 ease-out hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10">
+            <SpotlightCard className="relative h-full overflow-hidden border border-border/60 bg-muted/40 p-0 shadow-none transition-all duration-300 ease-out hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10">
               <CardContent
                 className={
                   index === 0
-                    ? "grid h-full grid-cols-1 gap-0 p-0 lg:grid-cols-2"
-                    : "flex h-full flex-col gap-0 p-0"
+                    ? "relative z-10 grid h-full grid-cols-1 gap-0 p-0 lg:grid-cols-2"
+                    : "relative z-10 flex h-full flex-col gap-0 p-0"
                 }
               >
                 <div
@@ -110,7 +111,7 @@ export function ServicesSection() {
                   <IconArrowUpRight className="size-4" />
                 </span>
               </CardContent>
-            </Card>
+            </SpotlightCard>
           </Link>
         ))}
       </div>

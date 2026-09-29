@@ -14,9 +14,9 @@ import {
 import { useState } from "react";
 
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { SpotlightCard } from "@/components/spotlight-card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 
 const PROJECTS_LIMIT = 8;
 
@@ -324,8 +324,8 @@ export function WorkSection() {
         <div className="grid w-full gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {visibleProjects.map((project) => {
             const card = (
-              <Card className="relative h-full overflow-hidden border border-border/60 bg-muted/40 p-0 shadow-none transition-all duration-300 ease-out hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10">
-                <div className="relative aspect-625/410 overflow-hidden bg-muted">
+              <SpotlightCard className="relative h-full overflow-hidden border border-border/60 bg-muted/40 p-0 shadow-none transition-all duration-300 ease-out hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10">
+                <div className="relative z-10 aspect-625/410 overflow-hidden bg-muted">
                   <div className="absolute inset-0 z-10 bg-linear-to-t from-black/30 via-black/0 to-black/0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
                   <Image
@@ -345,7 +345,7 @@ export function WorkSection() {
                   )}
                 </div>
 
-                <div className="flex flex-col gap-3 p-5">
+                <div className="relative z-10 flex flex-col gap-3 p-5">
                   <h3 className="font-heading text-xl font-semibold tracking-tight transition-colors duration-300 group-hover:text-primary sm:text-2xl">
                     {project.title}
                   </h3>
@@ -369,7 +369,7 @@ export function WorkSection() {
                     </Badge>
                   )}
                 </div>
-              </Card>
+              </SpotlightCard>
             );
 
             if (project.href) {
