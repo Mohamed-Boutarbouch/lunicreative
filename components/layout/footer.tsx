@@ -4,22 +4,8 @@ import Link from "next/link";
 import { motion, type Variants } from "motion/react";
 
 import { Separator } from "@/components/ui/separator";
-import { CtaButton } from "../cta-button";
-
-const navigation = [
-  { label: "Accueil", href: "/" },
-  { label: "Services", href: "/services" },
-  { label: "Réalisations", href: "/realisations" },
-  { label: "À propos", href: "/a-propos" },
-  { label: "Contact", href: "/contact" },
-];
-
-const services = [
-  { label: "Événementiel & Stands", href: "/services#evenementiel" },
-  { label: "Digital & Développement", href: "/services#digital" },
-  { label: "Branding & Design graphique", href: "/services#branding" },
-  { label: "Impression & Grand format", href: "/services#impression" },
-];
+import { CtaButton } from "@/components/cta-button";
+import { navigation, services } from "@/data/footer";
 
 const container: Variants = {
   hidden: {},

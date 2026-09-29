@@ -9,14 +9,32 @@ import {
 } from "@/components/ui/craft-button";
 
 type CtaButtonProps = {
-  href: string;
+  href?: string;
+  type?: "button" | "submit" | "reset";
+  form?: string;
   children: ReactNode;
   className?: string;
 };
 
-export function CtaButton({ href, children, className }: CtaButtonProps) {
+export function CtaButton({
+  href,
+  type = "button",
+  form,
+  children,
+  className,
+}: CtaButtonProps) {
   return (
-    <CraftButton render={<Link href={href} />} className={className}>
+    <CraftButton
+      {...(href
+        ? {
+            render: <Link href={href} />,
+          }
+        : {
+            type,
+            form,
+          })}
+      className={className}
+    >
       <CraftButtonLabel>&ensp;{children}</CraftButtonLabel>
 
       <CraftButtonIcon>

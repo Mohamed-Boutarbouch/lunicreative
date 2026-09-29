@@ -1,23 +1,7 @@
-import {
-  IconConfetti,
-  IconDeviceLaptop,
-  IconPlus,
-  IconPrinter,
-} from "@tabler/icons-react";
+import { IconPlus } from "@tabler/icons-react";
 
 import { Card, CardContent } from "@/components/ui/card";
-
-const pillars = [
-  { label: "Print & digital", icon: IconPrinter },
-  { label: "Web & applications", icon: IconDeviceLaptop },
-  { label: "Événementiel", icon: IconConfetti },
-];
-
-const stats = [
-  { value: 7000, label: "Projets réalisés" },
-  { value: 300, label: "Clients heureux" },
-  { value: 12, label: "Ans d'expérience" },
-];
+import { pillars, stats } from "@/data/about";
 
 export function AboutSection() {
   return (

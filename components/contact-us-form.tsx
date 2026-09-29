@@ -2,16 +2,13 @@
 
 import { Form, Field as FormischField, useForm } from "@formisch/react";
 import type { SubmitHandler } from "@formisch/react";
-import * as v from "valibot";
 
-import { Button } from "@/components/ui/button";
 import {
   Field,
   FieldError,
   FieldGroup,
   FieldLabel,
 } from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
 import {
   InputGroup,
   InputGroupAddon,
@@ -26,77 +23,19 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { contactUsDefaultValues, contactUsSchema } from "@/lib/schemas";
+import { Input } from "@/components/ui/input";
 import { toast } from "@/components/ui/toast";
-
-const services = [
-  {
-    value: "conception-creation-graphique",
-    label: "Conception & création graphique",
-  },
-  {
-    value: "impression-numerique-offset",
-    label: "Impression numérique & offset",
-  },
-  {
-    value: "creation-sites-web",
-    label: "Création de sites web",
-  },
-  {
-    value: "design-creation-3d",
-    label: "Design & création 3D",
-  },
-  {
-    value: "conception-evenementielle",
-    label: "Conception événementielle",
-  },
-  {
-    value: "autre",
-    label: "Autre",
-  },
-] as const;
-
-const FormSchema = v.object({
-  nom: v.pipe(
-    v.string(),
-    v.minLength(2, "Le nom doit contenir au moins 2 caractères."),
-  ),
-  prenom: v.pipe(
-    v.string(),
-    v.minLength(2, "Le prénom doit contenir au moins 2 caractères."),
-  ),
-  email: v.pipe(
-    v.string(),
-    v.email("Veuillez saisir une adresse email valide."),
-  ),
-  telephone: v.pipe(
-    v.string(),
-    v.regex(/^(?:6|7)\d{8}$/, "Veuillez saisir un numéro valide."),
-  ),
-  service: v.pipe(
-    v.string(),
-    v.minLength(1, "Veuillez sélectionner un service."),
-  ),
-  message: v.pipe(
-    v.string(),
-    v.minLength(10, "Le message doit contenir au moins 10 caractères."),
-    v.maxLength(1000, "Le message doit contenir au maximum 1000 caractères."),
-  ),
-});
+import { services } from "@/data/contact";
+import { CtaButton } from "./cta-button";
 
 export function ContactUsForm() {
   const form = useForm({
-    schema: FormSchema,
-    initialInput: {
-      nom: "",
-      prenom: "",
-      email: "",
-      telephone: "",
-      service: "",
-      message: "",
-    },
+    schema: contactUsSchema,
+    initialInput: contactUsDefaultValues,
   });
 
-  const handleSubmit: SubmitHandler<typeof FormSchema> = (output) => {
+  const handleSubmit: SubmitHandler<typeof contactUsSchema> = (output) => {
     console.log(JSON.stringify(output, null, 2));
 
     toast.promise(
@@ -115,27 +54,6 @@ export function ContactUsForm() {
     <Form of={form} id="contact-form" onSubmit={handleSubmit}>
       <FieldGroup>
         <div className="grid gap-6 sm:grid-cols-2">
-          <FormischField of={form} path={["nom"]}>
-            {(field) => (
-              <Field data-invalid={field.errors !== null}>
-                <FieldLabel htmlFor="contact-nom">Nom</FieldLabel>
-                <Input
-                  {...field.props}
-                  id="contact-nom"
-                  value={field.input ?? ""}
-                  aria-invalid={field.errors !== null}
-                  placeholder="Votre nom"
-                  autoComplete="family-name"
-                />
-                {field.errors && (
-                  <FieldError
-                    errors={field.errors.map((message) => ({ message }))}
-                  />
-                )}
-              </Field>
-            )}
-          </FormischField>
-
           <FormischField of={form} path={["prenom"]}>
             {(field) => (
               <Field data-invalid={field.errors !== null}>
@@ -147,6 +65,27 @@ export function ContactUsForm() {
                   aria-invalid={field.errors !== null}
                   placeholder="Votre prénom"
                   autoComplete="given-name"
+                />
+                {field.errors && (
+                  <FieldError
+                    errors={field.errors.map((message) => ({ message }))}
+                  />
+                )}
+              </Field>
+            )}
+          </FormischField>
+
+          <FormischField of={form} path={["nom"]}>
+            {(field) => (
+              <Field data-invalid={field.errors !== null}>
+                <FieldLabel htmlFor="contact-nom">Nom</FieldLabel>
+                <Input
+                  {...field.props}
+                  id="contact-nom"
+                  value={field.input ?? ""}
+                  aria-invalid={field.errors !== null}
+                  placeholder="Votre nom"
+                  autoComplete="family-name"
                 />
                 {field.errors && (
                   <FieldError
@@ -282,9 +221,11 @@ export function ContactUsForm() {
           )}
         </FormischField>
 
-        <Button type="submit" form="contact-form" className="w-full sm:w-auto">
-          Collaborons
-        </Button>
+        <div className="flex w-full justify-center sm:justify-end">
+          <CtaButton type="submit" form="contact-form">
+            Collaborons
+          </CtaButton>
+        </div>
       </FieldGroup>
     </Form>
   );
