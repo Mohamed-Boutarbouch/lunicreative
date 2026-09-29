@@ -20,7 +20,10 @@ const instrumentSerif = Instrument_Serif({
   variable: "--font-serif",
 });
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
 
 export const metadata: Metadata = {
   title: "L'unicreative",
@@ -50,20 +53,21 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         >
           <div id="scroll-sentinel" className="absolute top-0 h-px w-full" />
 
-          <div className="relative">
+          <div className="relative overflow-x-clip">
             <div
               aria-hidden
-              className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-125 bg-[radial-gradient(ellipse_90%_55%_at_50%_35%,color-mix(in_oklch,var(--primary)_25%,transparent),transparent_72%)] sm:h-140 md:h-175"
+              className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-svh min-h-160 bg-[radial-gradient(ellipse_60%_50%_at_50%_50%,color-mix(in_oklch,var(--primary)_22%,transparent)_0%,color-mix(in_oklch,var(--primary)_8%,transparent)_45%,transparent_75%)]"
             />
 
             <Navbar />
 
-            <div className="mx-auto w-full max-w-[1600px] px-4 sm:px-6 lg:px-10 xl:px-16">
+            <div className="relative mx-auto w-full max-w-[1600px] px-4 sm:px-6 lg:px-10 xl:px-16">
               {children}
             </div>
 
             <Footer />
           </div>
+
           <Toaster />
         </ThemeProvider>
       </body>
