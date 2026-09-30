@@ -5,19 +5,18 @@ import { ContactUsInfo } from "@/components/contact-us-info";
 
 export function ContactUsSection() {
   return (
-    <section id="contact">
+    <section id="contact" className="mb-20 md:mb-28 lg:mb-36">
       <div className="mx-auto mb-10 w-full max-w-3xl text-left sm:mb-14 sm:text-center">
         <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
           Un projet en{" "}
           <span className="font-serif font-semibold italic tracking-normal text-primary">
-            tête{" "}
+            tête&nbsp;?
           </span>
-          ?
         </h2>
 
         <p className="mt-3 text-base leading-relaxed text-muted-foreground sm:text-lg">
-          Une idée, un besoin ou un projet à construire ? Parlons-en et
-          imaginons ensemble la meilleure façon de lui donner vie.
+          Décrivez-nous votre projet par le formulaire, par téléphone ou
+          directement dans nos bureaux à Fès. Notre équipe est à votre écoute.
         </p>
       </div>
 

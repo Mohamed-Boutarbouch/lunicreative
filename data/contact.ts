@@ -1,11 +1,13 @@
 import { IconMail, IconMapPin, IconPhone } from "@tabler/icons-react";
 
+import { services as allServices } from "@/data/services";
+
 export const contactItems = [
   {
     icon: IconMapPin,
     title: "Retrouvez-nous",
     content:
-      "Bureaux Ibn Yassin à côté de l'institut français, Ave Lalla Hasnae, Fès, Maroc",
+      "Bureaux Ibn Yassin, à côté de l'Institut Français, avenue Lalla Hasnae, Fès, Maroc",
     href: "https://www.google.com/maps/search/?api=1&query=L%27UNICREATIVE+Fes",
   },
   {
@@ -23,28 +25,6 @@ export const contactItems = [
 ];
 
 export const services = [
-  {
-    value: "conception-creation-graphique",
-    label: "Conception & création graphique",
-  },
-  {
-    value: "impression-numerique-offset",
-    label: "Impression numérique & offset",
-  },
-  {
-    value: "creation-sites-web",
-    label: "Création de sites web",
-  },
-  {
-    value: "design-creation-3d",
-    label: "Design & création 3D",
-  },
-  {
-    value: "conception-evenementielle",
-    label: "Conception événementielle",
-  },
-  {
-    value: "autre",
-    label: "Autre",
-  },
+  ...allServices.map(({ value, title }) => ({ value, label: title })),
+  { value: "autre", label: "Autre" },
 ] as const;
