@@ -2,17 +2,24 @@ import { Card, CardContent } from "@/components/ui/card";
 import { GoogleMapsIframe } from "@/components/google-maps-iframe";
 import { ContactUsForm } from "@/components/contact-us-form";
 import { ContactUsInfo } from "@/components/contact-us-info";
+import { FuseReveal } from "@/components/animations/fuse-reveal";
 
 export function ContactUsSection() {
   return (
     <section id="contact" className="mb-20 md:mb-28 lg:mb-36">
       <div className="mx-auto mb-10 w-full max-w-3xl text-left sm:mb-14 sm:text-center">
-        <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
-          Un projet en{" "}
-          <span className="font-serif font-semibold italic tracking-normal text-primary">
-            tête&nbsp;?
-          </span>
-        </h2>
+        <FuseReveal
+          as="h2"
+          className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl"
+          parts={[
+            "Un projet en ",
+            {
+              text: "tête ?",
+              className:
+                "font-serif font-semibold italic tracking-normal text-primary",
+            },
+          ]}
+        />
 
         <p className="mt-3 text-base leading-relaxed text-muted-foreground sm:text-lg">
           Décrivez-nous votre projet par le formulaire, par téléphone ou

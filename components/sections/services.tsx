@@ -5,18 +5,25 @@ import { IconArrowUpRight } from "@tabler/icons-react";
 import { CardContent } from "@/components/ui/card";
 import { SpotlightCard } from "@/components/spotlight-card";
 import { services } from "@/data/services";
+import { FuseReveal } from "@/components/animations/fuse-reveal";
 
 export function ServicesSection() {
   return (
     <section id="services" className="py-14 sm:py-22">
       <div className="mx-auto mb-10 w-full max-w-3xl text-left sm:mb-14 sm:text-center">
-        <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
-          Tout ce qu&apos;il faut pour{" "}
-          <span className="font-serif font-semibold italic tracking-normal text-primary">
-            donner vie
-          </span>{" "}
-          à vos projets
-        </h2>
+        <FuseReveal
+          as="h2"
+          className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl"
+          parts={[
+            "Tout ce qu'il faut pour ",
+            {
+              text: "donner vie",
+              className:
+                "font-serif font-semibold italic tracking-wider text-primary",
+            },
+            " à vos projets",
+          ]}
+        />
 
         <p className="mt-3 text-base leading-relaxed text-muted-foreground sm:text-lg">
           Du développement web à l&apos;impression, de la création graphique à

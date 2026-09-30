@@ -15,6 +15,7 @@ import { SpotlightCard } from "@/components/spotlight-card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { categories, projects, PROJECTS_LIMIT } from "@/data/work";
+import { FuseReveal } from "@/components/animations/fuse-reveal";
 
 export function WorkSection() {
   const [category, setCategory] = useState("website");
@@ -39,12 +40,18 @@ export function WorkSection() {
     <section id="realisations" className="py-14 sm:py-22">
       <div className="flex flex-col items-center gap-10 md:gap-16">
         <div className="w-full max-w-3xl text-left sm:text-center">
-          <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
-            Des projets{" "}
-            <span className="font-serif font-semibold italic tracking-normal text-primary">
-              qui prennent vie
-            </span>
-          </h2>
+          <FuseReveal
+            as="h2"
+            className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl"
+            parts={[
+              "Des projets ",
+              {
+                text: "qui prennent vie",
+                className:
+                  "font-serif font-semibold italic tracking-wider text-primary",
+              },
+            ]}
+          />
 
           <p className="mt-3 text-base leading-relaxed text-muted-foreground sm:text-lg">
             Découvrez une sélection de projets imaginés et réalisés pour des

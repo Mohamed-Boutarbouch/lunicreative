@@ -3,6 +3,7 @@ import { IconArrowDown } from "@tabler/icons-react";
 
 import { buttonVariants } from "@/components/ui/button";
 import { CtaButton } from "@/components/cta-button";
+import { FuseReveal } from "@/components/animations/fuse-reveal";
 
 export function HeroSection() {
   return (
@@ -15,13 +16,20 @@ export function HeroSection() {
                 Agence de communication et de publicité · Fès, Maroc
               </p>
 
-              <h1 className="font-heading text-5xl font-semibold tracking-tight sm:text-6xl lg:text-7xl">
-                Chaque projet, une{" "}
-                <span className="font-serif font-semibold italic tracking-normal text-primary">
-                  création
-                </span>{" "}
-                qui a du sens
-              </h1>
+              <FuseReveal
+                as="h1"
+                delay={0.2}
+                className="font-heading text-5xl font-semibold tracking-tight sm:text-6xl lg:text-7xl"
+                parts={[
+                  "Chaque projet, une ",
+                  {
+                    text: "création",
+                    className:
+                      "font-serif font-semibold italic tracking-wider text-primary",
+                  },
+                  " qui a du sens",
+                ]}
+              />
 
               <p className="max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
                 Identité visuelle, impression, sites web, stands et événements :

@@ -3,6 +3,7 @@ import { IconPlus } from "@tabler/icons-react";
 import { CardContent } from "@/components/ui/card";
 import { SpotlightCard } from "@/components/spotlight-card";
 import { stats, values } from "@/data/about";
+import { FuseReveal } from "@/components/animations/fuse-reveal";
 
 export function AboutSection() {
   return (
@@ -13,15 +14,18 @@ export function AboutSection() {
     >
       <div className="flex flex-col items-center gap-10 sm:gap-14">
         <div className="w-full max-w-4xl text-left sm:text-center">
-          <h2
-            id="about-heading"
+          <FuseReveal
+            as="h2"
             className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl"
-          >
-            Une agence qui donne{" "}
-            <span className="font-serif font-semibold italic tracking-normal text-primary">
-              forme aux idées
-            </span>
-          </h2>
+            parts={[
+              "Une agence qui donne ",
+              {
+                text: "forme aux idées",
+                className:
+                  "font-serif font-semibold italic tracking-normal text-primary",
+              },
+            ]}
+          />
 
           <p className="mt-3 text-base leading-relaxed text-muted-foreground sm:text-lg">
             L&apos;unicreative accompagne PME, institutions et marques dans

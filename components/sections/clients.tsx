@@ -2,17 +2,24 @@ import Image from "next/image";
 
 import { Marquee } from "@/components/animations/marquee";
 import { clients } from "@/data/clients";
+import { FuseReveal } from "@/components/animations/fuse-reveal";
 
 export function ClientsSection() {
   return (
     <section className="relative w-full overflow-hidden">
       <div className="mx-auto mb-12 w-full max-w-3xl px-4 text-left sm:mb-16 sm:text-center md:mb-20">
-        <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
-          Ils nous font{" "}
-          <span className="font-serif font-semibold italic tracking-normal text-primary">
-            confiance
-          </span>
-        </h2>
+        <FuseReveal
+          as="h2"
+          className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl"
+          parts={[
+            "Ils nous font ",
+            {
+              text: "confiance",
+              className:
+                "font-serif font-semibold italic tracking-normal text-primary",
+            },
+          ]}
+        />
 
         <p className="mt-3 max-w-xl text-base leading-relaxed text-muted-foreground sm:mx-auto sm:text-lg">
           Une sélection des entreprises, institutions et marques que nous
