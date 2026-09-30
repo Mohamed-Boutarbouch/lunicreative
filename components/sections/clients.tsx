@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Marquee } from "@/components/animations/marquee";
 import { clients } from "@/data/clients";
 import { FuseReveal } from "@/components/animations/fuse-reveal";
+import { Reveal } from "@/components/animations/reveal";
 
 export function ClientsSection() {
   return (
@@ -21,29 +22,36 @@ export function ClientsSection() {
           ]}
         />
 
-        <p className="mt-3 max-w-xl text-base leading-relaxed text-muted-foreground sm:mx-auto sm:text-lg">
+        <Reveal
+          as="p"
+          variant="blurIn"
+          delay={0.3}
+          className="mt-3 text-base leading-relaxed text-muted-foreground sm:text-lg"
+        >
           Une sélection des entreprises, institutions et marques que nous
           accompagnons.
-        </p>
+        </Reveal>
       </div>
 
       <div className="relative">
-        <Marquee className="w-full p-0 [--duration:90s]" pauseOnHover>
-          {clients.map((client) => (
-            <div
-              key={client.name}
-              className="group/client flex h-16 w-40 shrink-0 cursor-pointer items-center justify-center lg:h-25 lg:w-48"
-            >
-              <Image
-                src={client.image}
-                alt={client.name}
-                width={275}
-                height={170}
-                className="max-h-full max-w-full object-contain px-4 grayscale transition-[filter,transform] duration-300 ease-out group-hover/client:scale-[1.04] group-hover/client:grayscale-0"
-              />
-            </div>
-          ))}
-        </Marquee>
+        <Reveal variant="fadeIn" duration={8}>
+          <Marquee className="w-full p-0 [--duration:90s]" pauseOnHover>
+            {clients.map((client) => (
+              <div
+                key={client.name}
+                className="group/client flex h-16 w-40 shrink-0 cursor-pointer items-center justify-center lg:h-25 lg:w-48"
+              >
+                <Image
+                  src={client.image}
+                  alt={client.name}
+                  width={275}
+                  height={170}
+                  className="max-h-full max-w-full object-contain px-4 grayscale transition-[filter,transform] duration-300 ease-out group-hover/client:scale-[1.04] group-hover/client:grayscale-0"
+                />
+              </div>
+            ))}
+          </Marquee>
+        </Reveal>
 
         <div
           aria-hidden

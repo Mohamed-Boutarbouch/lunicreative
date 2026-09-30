@@ -1,22 +1,36 @@
 "use client";
 
 import Link from "next/link";
-import { motion, type Variants } from "motion/react";
+import { motion, useInView, type Variants } from "motion/react";
+import { useRef } from "react";
 
 import { Separator } from "@/components/ui/separator";
 import { CtaButton } from "@/components/cta-button";
 import { navigation, services } from "@/data/footer";
+import { EASE } from "@/lib/animations";
 
+// Footer-level: children animate bottom → top
+const footerContainer: Variants = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.14,
+      delayChildren: 0.1,
+      staggerDirection: -1,
+    },
+  },
+};
+
+// The top grid keeps a normal left-to-right stagger
 const container: Variants = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.08, delayChildren: 0.15 } },
+  show: { transition: { staggerChildren: 0.08 } },
 };
 
 const item: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  hidden: { opacity: 0, y: 40 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: EASE } },
 };
-
 function FooterLinkGroup({
   title,
   links,
@@ -47,17 +61,21 @@ function FooterLinkGroup({
 }
 
 export function Footer() {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, amount: 0.2 });
+
   return (
     <div
+      ref={ref}
       className="relative h-(--footer-h) [--footer-h:max(85dvh,44rem)] lg:[--footer-h:max(70dvh,36rem)]"
       style={{ clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}
     >
       <div className="relative top-[-100dvh] h-[calc(var(--footer-h)+100dvh)]">
         <div className="sticky top-[calc(100dvh-var(--footer-h))] h-(--footer-h)">
           <motion.footer
-            variants={container}
+            variants={footerContainer}
             initial="hidden"
-            animate="show"
+            animate={inView ? "show" : "hidden"}
             className="dark relative h-full w-full overflow-hidden bg-background text-foreground"
           >
             <div className="mx-auto h-full w-full max-w-[1600px] px-4 sm:px-6 lg:px-10 xl:px-16">

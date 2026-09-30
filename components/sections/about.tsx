@@ -4,6 +4,12 @@ import { CardContent } from "@/components/ui/card";
 import { SpotlightCard } from "@/components/spotlight-card";
 import { stats, values } from "@/data/about";
 import { FuseReveal } from "@/components/animations/fuse-reveal";
+import {
+  Reveal,
+  RevealGroup,
+  RevealItem,
+} from "@/components/animations/reveal";
+import { CountUp } from "../animations/count-up";
 
 export function AboutSection() {
   return (
@@ -27,16 +33,21 @@ export function AboutSection() {
             ]}
           />
 
-          <p className="mt-3 text-base leading-relaxed text-muted-foreground sm:text-lg">
+          <Reveal
+            as="p"
+            variant="blurIn"
+            delay={1.2}
+            className="mt-3 text-base leading-relaxed text-muted-foreground sm:text-lg"
+          >
             L&apos;unicreative accompagne PME, institutions et marques dans
             toute leur communication : identité visuelle, impression, web, 3D et
             événementiel. Une seule équipe pour une image cohérente sur tous vos
             supports.
-          </p>
+          </Reveal>
         </div>
 
         <dl className="flex w-fit flex-col divide-y divide-border sm:flex-row sm:divide-x sm:divide-y-0">
-          {stats.map(({ value, label, plus }) => (
+          {stats.map(({ value, label, plus }, index) => (
             <div
               key={label}
               className="flex flex-col items-center justify-center gap-1.5 px-10 py-6 sm:py-0"
@@ -46,7 +57,7 @@ export function AboutSection() {
               </dt>
 
               <dd className="order-first flex items-center justify-center font-heading text-5xl font-semibold tracking-tight sm:text-6xl lg:text-7xl">
-                {new Intl.NumberFormat("fr-FR").format(value)}
+                <CountUp value={value} delay={index * 0.15} />
                 {plus && (
                   <IconPlus
                     aria-hidden="true"
@@ -58,9 +69,12 @@ export function AboutSection() {
           ))}
         </dl>
 
-        <ul className="grid w-full max-w-6xl gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <RevealGroup
+          className="grid w-full max-w-6xl gap-4 sm:grid-cols-2 lg:grid-cols-4"
+          stagger={0.3}
+        >
           {values.map(({ title, description, icon: Icon }) => (
-            <li key={title} className="group">
+            <RevealItem key={title} variant="fadeUp" className="group">
               <SpotlightCard className="h-full overflow-hidden border border-border/60 bg-muted/40 p-0 shadow-none transition-all duration-300 ease-out hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10">
                 <CardContent className="relative z-10 flex h-full flex-col gap-4 p-5 sm:p-6">
                   <span
@@ -80,9 +94,9 @@ export function AboutSection() {
                   </div>
                 </CardContent>
               </SpotlightCard>
-            </li>
+            </RevealItem>
           ))}
-        </ul>
+        </RevealGroup>
       </div>
     </section>
   );

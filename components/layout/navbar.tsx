@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { IconChevronDown, IconMenu2 } from "@tabler/icons-react";
+import { motion } from "motion/react";
 import { cn } from "cn";
 
 import { buttonVariants } from "@/components/ui/button";
@@ -27,6 +28,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { primaryRoutes, secondaryRoutes, services } from "@/data/navbar";
+import { EASE } from "@/lib/animations";
 
 const navLinkClass = navigationMenuTriggerStyle({
   className: "px-2 text-base text-muted-foreground hover:text-foreground",
@@ -68,7 +70,10 @@ export function Navbar() {
   };
 
   return (
-    <header
+    <motion.header
+      initial={{ y: -120, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
       className={cn(
         "sticky top-5 z-40 mx-auto flex w-[90%] items-center justify-between rounded-2xl border p-2 transition-all duration-300 ease-out md:w-[70%] lg:w-[75%] lg:max-w-7xl",
         isScrolled
@@ -272,6 +277,6 @@ export function Navbar() {
       <div className="hidden items-center lg:flex">
         <ToggleTheme />
       </div>
-    </header>
+    </motion.header>
   );
 }

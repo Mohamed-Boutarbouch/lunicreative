@@ -16,6 +16,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { categories, projects, PROJECTS_LIMIT } from "@/data/work";
 import { FuseReveal } from "@/components/animations/fuse-reveal";
+import { Reveal } from "@/components/animations/reveal";
 
 export function WorkSection() {
   const [category, setCategory] = useState("website");
@@ -53,34 +54,41 @@ export function WorkSection() {
             ]}
           />
 
-          <p className="mt-3 text-base leading-relaxed text-muted-foreground sm:text-lg">
+          <Reveal
+            as="p"
+            variant="blurIn"
+            delay={1.2}
+            className="mt-3 text-base leading-relaxed text-muted-foreground sm:text-lg"
+          >
             Découvrez une sélection de projets imaginés et réalisés pour des
             marques, entreprises et événements.
-          </p>
+          </Reveal>
         </div>
 
-        <Tabs value={category} onValueChange={handleCategoryChange}>
-          <TabsList className="h-auto max-w-full overflow-x-auto overflow-y-hidden">
-            {categories.map((item) => {
-              const Icon = item.icon;
+        <Reveal variant="blurIn" delay={0.2}>
+          <Tabs value={category} onValueChange={handleCategoryChange}>
+            <TabsList className="h-auto max-w-full overflow-x-auto overflow-y-hidden">
+              {categories.map((item) => {
+                const Icon = item.icon;
 
-              return (
-                <TabsTrigger
-                  key={item.value}
-                  value={item.value}
-                  className="shrink-0 gap-2"
-                >
-                  <Icon className="size-4" stroke={1.8} />
+                return (
+                  <TabsTrigger
+                    key={item.value}
+                    value={item.value}
+                    className="shrink-0 gap-2"
+                  >
+                    <Icon className="size-4" stroke={1.8} />
 
-                  <span className="hidden sm:inline">{item.label}</span>
-                </TabsTrigger>
-              );
-            })}
-          </TabsList>
-        </Tabs>
+                    <span className="hidden sm:inline">{item.label}</span>
+                  </TabsTrigger>
+                );
+              })}
+            </TabsList>
+          </Tabs>
+        </Reveal>
 
         <div className="grid w-full gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-          {visibleProjects.map((project) => {
+          {visibleProjects.map((project, index) => {
             const card = (
               <SpotlightCard className="relative h-full overflow-hidden border border-border/60 bg-muted/40 p-0 shadow-none transition-all duration-300 ease-out hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10">
                 <div className="relative z-10 aspect-625/410 overflow-hidden bg-muted">
@@ -131,24 +139,28 @@ export function WorkSection() {
               </SpotlightCard>
             );
 
-            if (project.href) {
-              return (
-                <Link
-                  key={project.image}
-                  href={project.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group block h-full"
-                >
-                  {card}
-                </Link>
-              );
-            }
+            const content = project.href ? (
+              <Link
+                href={project.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group block h-full"
+              >
+                {card}
+              </Link>
+            ) : (
+              <div className="group block h-full">{card}</div>
+            );
 
             return (
-              <div key={project.image} className="group block h-full">
-                {card}
-              </div>
+              <Reveal
+                key={project.image}
+                variant="fadeUp"
+                delay={(index % 4) * 0.08}
+                className="h-full"
+              >
+                {content}
+              </Reveal>
             );
           })}
         </div>

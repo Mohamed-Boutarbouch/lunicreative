@@ -4,6 +4,11 @@ import { IconArrowDown } from "@tabler/icons-react";
 import { buttonVariants } from "@/components/ui/button";
 import { CtaButton } from "@/components/cta-button";
 import { FuseReveal } from "@/components/animations/fuse-reveal";
+import {
+  Reveal,
+  RevealGroup,
+  RevealItem,
+} from "@/components/animations/reveal";
 
 export function HeroSection() {
   return (
@@ -12,9 +17,13 @@ export function HeroSection() {
         <div className="container mx-auto">
           <div className="mx-auto flex max-w-5xl flex-col gap-10 py-18 md:py-28">
             <div className="flex flex-col items-start gap-4 text-left sm:items-center sm:text-center sm:gap-6">
-              <p className="text-sm font-semibold uppercase tracking-wider text-primary">
+              <Reveal
+                as="p"
+                variant="wipe"
+                className="text-sm font-semibold uppercase tracking-wider text-primary"
+              >
                 Agence de communication et de publicité · Fès, Maroc
-              </p>
+              </Reveal>
 
               <FuseReveal
                 as="h1"
@@ -31,21 +40,36 @@ export function HeroSection() {
                 ]}
               />
 
-              <p className="max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+              <Reveal
+                as="p"
+                variant="blurIn"
+                delay={1.2}
+                className="max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg"
+              >
                 Identité visuelle, impression, sites web, stands et événements :
                 un seul interlocuteur, du concept à la réalisation.
-              </p>
+              </Reveal>
             </div>
 
             <div className="flex flex-col items-start justify-center gap-4 sm:flex-row sm:items-center">
-              <CtaButton href="/#contact">Démarrer un projet</CtaButton>
-              <Link
-                href="/#realisations"
-                className={buttonVariants({ variant: "ghost", size: "lg" })}
+              <RevealGroup
+                delay={1.6}
+                stagger={0.12}
+                className="flex flex-col items-start justify-center gap-4 sm:flex-row sm:items-center"
               >
-                Voir nos réalisations
-                <IconArrowDown className="ml-2 size-4" aria-hidden="true" />
-              </Link>
+                <RevealItem variant="pop">
+                  <CtaButton href="/#contact">Démarrer un projet</CtaButton>
+                </RevealItem>
+                <RevealItem variant="pop">
+                  <Link
+                    href="/#realisations"
+                    className={buttonVariants({ variant: "ghost", size: "lg" })}
+                  >
+                    Voir nos réalisations
+                    <IconArrowDown className="ml-2 size-4" aria-hidden="true" />
+                  </Link>
+                </RevealItem>
+              </RevealGroup>
             </div>
           </div>
         </div>
