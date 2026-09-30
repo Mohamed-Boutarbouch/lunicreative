@@ -1,6 +1,7 @@
 import { services as allServices } from "@/data/services";
 
 export const navigation = [
+  { label: "Accueil", href: "/" },
   { label: "Services", href: "/#services" },
   { label: "Réalisations", href: "/#realisations" },
   { label: "À propos", href: "/#a-propos" },

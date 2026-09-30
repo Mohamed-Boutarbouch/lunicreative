@@ -7,6 +7,7 @@ import { IconChevronDown, IconMenu2 } from "@tabler/icons-react";
 import { motion } from "motion/react";
 import { cn } from "cn";
 
+import { CtaButton } from "@/components/cta-button";
 import { buttonVariants } from "@/components/ui/button";
 import { ToggleTheme } from "@/components/layout/toogle-theme";
 import { Separator } from "@/components/ui/separator";
@@ -53,6 +54,7 @@ function useScrolled() {
     );
 
     observer.observe(sentinel);
+
     return () => observer.disconnect();
   }, []);
 
@@ -73,9 +75,13 @@ export function Navbar() {
     <motion.header
       initial={{ y: -120, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
+      transition={{
+        duration: 0.8,
+        delay: 0.1,
+        ease: EASE,
+      }}
       className={cn(
-        "sticky top-5 z-40 mx-auto flex w-[90%] items-center justify-between rounded-2xl border p-2 transition-all duration-300 ease-out md:w-[70%] lg:w-[75%] lg:max-w-7xl",
+        "sticky top-5 z-40 mx-auto grid w-[90%] grid-cols-[auto_1fr_auto] items-center rounded-2xl border p-2 transition-all duration-300 ease-out md:w-[70%] lg:w-[75%] lg:max-w-7xl",
         isScrolled
           ? [
               "border-border/70 bg-card/90 shadow-xl shadow-black/8 backdrop-blur-xl",
@@ -106,13 +112,16 @@ export function Navbar() {
       </Link>
 
       {/* Mobile navigation */}
-      <div className="flex items-center lg:hidden">
+      <div className="col-start-3 flex items-center lg:hidden">
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger
             render={
               <button
                 type="button"
-                className={buttonVariants({ variant: "ghost", size: "icon" })}
+                className={buttonVariants({
+                  variant: "ghost",
+                  size: "icon",
+                })}
                 aria-label="Ouvrir le menu"
               />
             }
@@ -207,16 +216,28 @@ export function Navbar() {
               </nav>
             </div>
 
-            <SheetFooter className="flex-col items-start justify-start sm:flex-col">
-              <Separator className="mb-2" />
-              <ToggleTheme />
+            {/* Mobile actions */}
+            <SheetFooter className="flex-col items-start gap-3 px-2 sm:flex-col">
+              <CtaButton
+                href="/#contact"
+                onClick={closeMobileMenu}
+                className="w-fit shrink-0"
+              >
+                Nous contacter
+              </CtaButton>
+
+              <Separator className="mb-1" />
+
+              <div className="shrink-0">
+                <ToggleTheme />
+              </div>
             </SheetFooter>
           </SheetContent>
         </Sheet>
       </div>
 
       {/* Desktop navigation */}
-      <NavigationMenu className="mx-auto hidden lg:block">
+      <NavigationMenu className="hidden justify-self-center lg:block">
         <NavigationMenuList>
           {primaryRoutes.map(({ href, label }) => (
             <NavigationMenuItem key={href}>
@@ -237,12 +258,7 @@ export function Navbar() {
             <NavigationMenuContent>
               <ul className="grid w-150 grid-cols-2 gap-1 p-2">
                 {services.map(({ href, title, description }, index) => (
-                  <li
-                    key={href}
-                    className={
-                      index === services.length - 1 ? "col-span-2" : ""
-                    }
-                  >
+                  <li key={href} className={index === 0 ? "col-span-2" : ""}>
                     <NavigationMenuLink
                       render={<Link href={href} />}
                       className="block rounded-md p-3 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
@@ -250,6 +266,7 @@ export function Navbar() {
                       <p className="mb-1 font-semibold leading-none text-foreground">
                         {title}
                       </p>
+
                       <p className="line-clamp-2 text-sm text-muted-foreground">
                         {description}
                       </p>
@@ -273,9 +290,15 @@ export function Navbar() {
         </NavigationMenuList>
       </NavigationMenu>
 
-      {/* Theme */}
-      <div className="hidden items-center lg:flex">
-        <ToggleTheme />
+      {/* Desktop actions */}
+      <div className="hidden shrink-0 items-center justify-self-end gap-2 lg:flex">
+        <div className="shrink-0">
+          <ToggleTheme />
+        </div>
+
+        <CtaButton href="/#contact" className="shrink-0">
+          Nous contacter
+        </CtaButton>
       </div>
     </motion.header>
   );

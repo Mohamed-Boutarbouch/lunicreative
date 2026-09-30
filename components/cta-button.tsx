@@ -14,6 +14,7 @@ type CtaButtonProps = {
   form?: string;
   children: ReactNode;
   className?: string;
+  onClick?: () => void;
 };
 
 export function CtaButton({
@@ -22,16 +23,18 @@ export function CtaButton({
   form,
   children,
   className,
+  onClick,
 }: CtaButtonProps) {
   return (
     <CraftButton
       {...(href
         ? {
-            render: <Link href={href} />,
+            render: <Link href={href} onClick={onClick} />,
           }
         : {
             type,
             form,
+            onClick,
           })}
       className={className}
     >

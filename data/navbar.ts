@@ -11,15 +11,12 @@ interface ServiceProps {
   description: string;
 }
 
-// « Nos services » (menu déroulant) s'affiche en premier, puis ces liens.
-// Ordre aligné sur le pied de page : Services, Réalisations, À propos, Contact.
-export const primaryRoutes: RouteProps[] = [];
+export const primaryRoutes: RouteProps[] = [{ href: "/", label: "Accueil" }];
 
 export const secondaryRoutes: RouteProps[] = [
   { href: "/#realisations", label: "Réalisations" },
   { href: "/#a-propos", label: "À propos" },
   { href: "/carriere", label: "Carrière" },
-  { href: "/#contact", label: "Contact" },
 ];
 
 export const services: ServiceProps[] = allServices.map(
