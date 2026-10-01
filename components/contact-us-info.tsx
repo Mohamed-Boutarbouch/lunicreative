@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { IconClock } from "@tabler/icons-react";
 
 import { contactItems } from "@/data/contact";
@@ -10,10 +11,11 @@ export function ContactUsInfo() {
           const Icon = item.icon;
 
           return (
-            <a
+            <Link
               key={item.title}
               href={item.href}
               className="group flex items-start gap-4 rounded-lg p-2 -mx-2 transition-colors hover:bg-muted/60"
+              target="_blank"
             >
               <div className="flex size-10 shrink-0 items-center justify-center rounded-lg border bg-background shadow-sm">
                 <Icon className="size-5 text-foreground" stroke={1.8} />
@@ -25,7 +27,7 @@ export function ContactUsInfo() {
                   {item.content}
                 </p>
               </div>
-            </a>
+            </Link>
           );
         })}
       </div>

@@ -17,7 +17,7 @@ export function ContactUsSection() {
             {
               text: "tête ?",
               className:
-                "font-serif font-semibold italic tracking-normal text-primary",
+                "font-serif font-semibold italic tracking-wider text-primary",
             },
           ]}
         />
