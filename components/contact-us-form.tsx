@@ -27,7 +27,7 @@ import { contactUsDefaultValues, contactUsSchema } from "@/lib/schemas";
 import { Input } from "@/components/ui/input";
 import { toast } from "@/components/ui/toast";
 import { services } from "@/data/contact";
-import { CtaButton } from "./cta-button";
+import { CtaButton } from "@/components/cta-button";
 
 export function ContactUsForm() {
   const form = useForm({
