@@ -9,7 +9,7 @@ import {
   RevealGroup,
   RevealItem,
 } from "@/components/animations/reveal";
-import { CountUp } from "../animations/count-up";
+import { CountUp } from "@/components/animations/count-up";
 
 export function AboutSection() {
   return (

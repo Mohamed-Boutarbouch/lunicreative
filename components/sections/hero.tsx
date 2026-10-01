@@ -10,70 +10,85 @@ import { buttonVariants } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { CtaButton } from "@/components/cta-button";
 import { FuseReveal } from "@/components/animations/fuse-reveal";
+import { HeroCarousel } from "@/components/hero-carousel";
 
 export function HeroSection() {
   return (
     <section className="relative z-10 mt-26">
       <div className="relative isolate">
         <div className="container mx-auto">
-          <div className="mx-auto flex max-w-5xl flex-col gap-10 py-18 md:py-28">
-            <div className="flex flex-col items-start gap-4 text-left sm:items-center sm:text-center sm:gap-6">
-              <Reveal variant="fadeUp">
-                <Badge
-                  variant="ghost"
-                  className="h-auto gap-2 px-3 py-1.5 text-xs font-semibold uppercase tracking-wider whitespace-normal text-primary sm:text-sm"
-                >
-                  <IconMapPin aria-hidden="true" />
-                  Agence de communication et de publicité · Fès, Maroc
-                </Badge>
-              </Reveal>
-
-              <FuseReveal
-                as="h1"
-                delay={0.2}
-                className="font-heading text-5xl font-semibold tracking-tight sm:text-6xl lg:text-7xl"
-                parts={[
-                  "Chaque projet, une ",
-                  {
-                    text: "création",
-                    className:
-                      "font-serif font-semibold italic tracking-wider text-primary",
-                  },
-                  " qui a du sens",
-                ]}
-              />
-
-              <Reveal
-                as="p"
-                variant="blurIn"
-                delay={1.2}
-                className="max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg"
-              >
-                Identité visuelle, impression, sites web, stands et événements :
-                un seul interlocuteur, du concept à la réalisation.
-              </Reveal>
-            </div>
-
-            <div className="flex flex-col items-start justify-center gap-4 sm:flex-row sm:items-center">
-              <RevealGroup
-                delay={1.6}
-                stagger={0.12}
-                className="flex flex-col items-start justify-center gap-4 sm:flex-row sm:items-center"
-              >
-                <RevealItem variant="pop">
-                  <CtaButton href="/#contact">Démarrer un projet</CtaButton>
-                </RevealItem>
-                <RevealItem variant="pop">
-                  <Link
-                    href="/#realisations"
-                    className={buttonVariants({ variant: "ghost", size: "lg" })}
+          <div className="mx-auto grid max-w-7xl items-center gap-12 py-4 md:py-8 lg:grid-cols-2 lg:gap-16">
+            {/* Text column */}
+            <div className="flex flex-col gap-10">
+              <div className="flex flex-col items-start gap-4 text-left sm:items-center sm:gap-6 sm:text-center lg:items-start lg:text-left">
+                <Reveal variant="fadeUp">
+                  <Badge
+                    variant="ghost"
+                    className="h-auto gap-2 px-3 py-1.5 text-xs font-semibold uppercase tracking-wider whitespace-normal text-primary sm:text-sm"
                   >
-                    Voir nos réalisations
-                    <IconArrowDown className="ml-2 size-4" aria-hidden="true" />
-                  </Link>
-                </RevealItem>
-              </RevealGroup>
+                    <IconMapPin aria-hidden="true" />
+                    Agence de communication et de publicité · Fès, Maroc
+                  </Badge>
+                </Reveal>
+
+                <FuseReveal
+                  as="h1"
+                  delay={0.2}
+                  className="font-heading text-5xl font-semibold tracking-tight sm:text-6xl lg:text-5xl xl:text-6xl"
+                  parts={[
+                    "Chaque projet, une ",
+                    {
+                      text: "création",
+                      className:
+                        "font-serif font-semibold italic tracking-wider text-primary",
+                    },
+                    " qui a du sens",
+                  ]}
+                />
+
+                <Reveal
+                  as="p"
+                  variant="blurIn"
+                  delay={1.2}
+                  className="max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg"
+                >
+                  Identité visuelle, impression, sites web, stands et événements
+                  : un seul interlocuteur, du concept à la réalisation.
+                </Reveal>
+              </div>
+
+              <div className="flex flex-col items-start justify-center gap-4 sm:flex-row sm:items-center lg:justify-start">
+                <RevealGroup
+                  delay={1.6}
+                  stagger={0.12}
+                  className="flex flex-col items-start justify-center gap-4 sm:flex-row sm:items-center lg:justify-start"
+                >
+                  <RevealItem variant="pop">
+                    <CtaButton href="/#contact">Démarrer un projet</CtaButton>
+                  </RevealItem>
+                  <RevealItem variant="pop">
+                    <Link
+                      href="/#realisations"
+                      className={buttonVariants({
+                        variant: "ghost",
+                        size: "lg",
+                      })}
+                    >
+                      Voir nos réalisations
+                      <IconArrowDown
+                        className="ml-2 size-4"
+                        aria-hidden="true"
+                      />
+                    </Link>
+                  </RevealItem>
+                </RevealGroup>
+              </div>
             </div>
+
+            {/* Carousel column */}
+            <Reveal variant="fadeUp" delay={0.8} className="w-full">
+              <HeroCarousel />
+            </Reveal>
           </div>
         </div>
       </div>

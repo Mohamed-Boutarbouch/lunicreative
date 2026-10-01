@@ -3,7 +3,7 @@ import { GoogleMapsIframe } from "@/components/google-maps-iframe";
 import { ContactUsForm } from "@/components/contact-us-form";
 import { ContactUsInfo } from "@/components/contact-us-info";
 import { FuseReveal } from "@/components/animations/fuse-reveal";
-import { Reveal } from "../animations/reveal";
+import { Reveal } from "@/components/animations/reveal";
 
 export function ContactUsSection() {
   return (
