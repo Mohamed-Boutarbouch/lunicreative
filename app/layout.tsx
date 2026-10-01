@@ -35,6 +35,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="fr-MA"
+      translate="no"
       data-scroll-behavior="smooth"
       className={cn(
         "h-full",
@@ -46,7 +47,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       )}
       suppressHydrationWarning
     >
-      <body className="relative min-h-screen bg-background selection:bg-primary selection:text-primary-foreground">
+      <body
+        suppressHydrationWarning
+        className="relative min-h-screen bg-background selection:bg-primary selection:text-primary-foreground"
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

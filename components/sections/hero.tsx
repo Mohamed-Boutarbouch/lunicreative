@@ -1,14 +1,15 @@
 import Link from "next/link";
-import { IconArrowDown } from "@tabler/icons-react";
+import { IconArrowDown, IconMapPin } from "@tabler/icons-react";
 
-import { buttonVariants } from "@/components/ui/button";
-import { CtaButton } from "@/components/cta-button";
-import { FuseReveal } from "@/components/animations/fuse-reveal";
 import {
   Reveal,
   RevealGroup,
   RevealItem,
 } from "@/components/animations/reveal";
+import { buttonVariants } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { CtaButton } from "@/components/cta-button";
+import { FuseReveal } from "@/components/animations/fuse-reveal";
 
 export function HeroSection() {
   return (
@@ -17,12 +18,14 @@ export function HeroSection() {
         <div className="container mx-auto">
           <div className="mx-auto flex max-w-5xl flex-col gap-10 py-18 md:py-28">
             <div className="flex flex-col items-start gap-4 text-left sm:items-center sm:text-center sm:gap-6">
-              <Reveal
-                as="p"
-                variant="wipe"
-                className="text-sm font-semibold uppercase tracking-wider text-primary"
-              >
-                Agence de communication et de publicité · Fès, Maroc
+              <Reveal variant="fadeUp">
+                <Badge
+                  variant="ghost"
+                  className="h-auto gap-2 px-3 py-1.5 text-xs font-semibold uppercase tracking-wider whitespace-normal text-primary sm:text-sm"
+                >
+                  <IconMapPin aria-hidden="true" />
+                  Agence de communication et de publicité · Fès, Maroc
+                </Badge>
               </Reveal>
 
               <FuseReveal
