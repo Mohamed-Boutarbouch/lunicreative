@@ -3,13 +3,15 @@ import type { Metadata } from "next";
 
 import { getService, serviceDetails } from "@/data/services";
 import { ServiceHero } from "@/components/services/hero";
-import { ServiceGallery } from "@/components/services/gallery";
+// import { ServiceGallery } from "@/components/services/gallery";
 import { ServiceIntro } from "@/components/services/intro";
 import { ServiceItems } from "@/components/services/items";
 import { ServiceReasons } from "@/components/services/reasons";
 import { ServiceFaq } from "@/components/services/faq";
 import { QuoteCta } from "@/components/services/quote-cta";
 import { RelatedServices } from "@/components/services/related";
+import { Reveal } from "@/components/animations/reveal";
+import { HeroCarousel } from "@/components/hero-carousel";
 
 export function generateStaticParams() {
   return serviceDetails.map(({ slug }) => ({ slug }));
@@ -31,16 +33,29 @@ export default async function ServicePage(
 
   return (
     <main className="space-y-16 pb-8 md:space-y-24">
-      <ServiceHero {...service.hero} />
-      <ServiceGallery images={service.gallery} />
+      <section className="relative z-10 pt-26">
+        <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,520px)] lg:gap-16">
+          <ServiceHero {...service.hero} />
+
+          <Reveal variant="fadeUp" delay={0.8} className="w-full">
+            <HeroCarousel
+              items={service.gallery}
+              className="max-w-xl lg:max-w-none"
+            />
+          </Reveal>
+        </div>
+      </section>
 
       <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-16">
         <div className="space-y-16 md:space-y-20">
           <ServiceIntro paragraphs={service.intro} />
+
           {service.items && (
             <ServiceItems title={service.itemsTitle} items={service.items} />
           )}
+
           {service.reasons && <ServiceReasons reasons={service.reasons} />}
+
           {service.faq && <ServiceFaq items={service.faq} />}
         </div>
 

@@ -28,7 +28,7 @@ export function ServiceHero({
   return (
     <section className="relative z-10 pt-26">
       <div className="max-w-4xl">
-        <Reveal variant="fadeUp">
+        <Reveal variant="fadeUp" delay={1}>
           <Link
             href="/services"
             className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
@@ -51,7 +51,7 @@ export function ServiceHero({
         <FuseReveal
           as="h1"
           delay={0.2}
-          className="mt-3 font-heading text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl"
+          className="mt-3 font-heading text-5xl font-semibold tracking-tight sm:text-6xl lg:text-5xl"
           parts={parts}
         />
 

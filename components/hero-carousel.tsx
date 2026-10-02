@@ -65,7 +65,7 @@ export function HeroCarousel({
   return (
     <div
       className={cn(
-        "mx-auto flex w-full max-w-xl flex-col gap-3 sm:gap-4 lg:mx-0 lg:ml-auto lg:max-w-none",
+        "mx-auto flex w-full max-w-xl flex-col gap-3 sm:gap-4",
         className,
       )}
     >
@@ -92,7 +92,7 @@ export function HeroCarousel({
                   src={item.src}
                   alt={item.alt}
                   fill
-                  sizes="(max-width: 1024px) 100vw, 640px"
+                  sizes="(max-width: 640px) 100vw, 576px"
                   className="object-cover"
                   priority={index === 0}
                 />

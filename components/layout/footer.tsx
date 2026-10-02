@@ -98,7 +98,7 @@ export function Footer() {
                       prochain projet.
                     </h2>
 
-                    <CtaButton href="#contact" className="mt-6">
+                    <CtaButton href="/demande-devis" className="mt-6">
                       Demander un devis
                     </CtaButton>
                   </motion.div>

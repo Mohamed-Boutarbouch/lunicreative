@@ -122,22 +122,21 @@ export const serviceDetails: ServiceDetail[] = [
     },
     gallery: [
       {
-        src: "/images/services/site-web-1.png",
+        src: "/services/creation-site-web-1.png",
         alt: "Création de site web à Fès - L'unicreative",
       },
       {
-        src: "/images/services/site-web-2.png",
+        src: "/services/creation-site-web-2.png",
         alt: "Site web dynamique, vitrine ou eCommerce - L'unicreative",
       },
       {
-        src: "/images/services/site-web-3.png",
+        src: "/services/creation-site-web-3.png",
         alt: "Site internet réalisé par L'unicreative",
       },
     ],
     intro: [
       "Vous cherchez une agence capable de créer un site web professionnel ? L'unicreative est une agence web basée à Fès, spécialisée dans la création de sites internet et le référencement SEO.",
       "Nous aidons les entreprises et les particuliers à tirer parti du numérique : site e-commerce, site vitrine, WordPress, blog. Chaque site adopte un design moderne, entièrement adapté aux téléphones, tablettes et ordinateurs.",
-      // Scope: this figure appears on the web-design page of the old site only.
       "L'unicreative existe depuis 12 ans et compte plus de 100 réalisations réparties entre le Maroc et la France. Nous vous accompagnons à chaque étape : étude, UX/UI, conception, design, développement, hébergement et maintenance.",
     ],
     reasons: [
@@ -205,7 +204,20 @@ export const serviceDetails: ServiceDetail[] = [
       subtitle:
         "Applications web, desktop et logiciels développés pour vos besoins.",
     },
-    gallery: [],
+    gallery: [
+      {
+        src: "/services/creation-application-logiciel-1.png",
+        alt: "test",
+      },
+      {
+        src: "/services/creation-application-logiciel-2.png",
+        alt: "test",
+      },
+      {
+        src: "/services/creation-application-logiciel-3.png",
+        alt: "test",
+      },
+    ],
     intro: [
       "L'unicreative développe des applications web et des applications desktop, ainsi que des logiciels adaptés à votre activité.",
     ],
@@ -226,7 +238,20 @@ export const serviceDetails: ServiceDetail[] = [
       subtitle:
         "Identité de marque et supports de communication, pensés pour être reconnus.",
     },
-    gallery: [],
+    gallery: [
+      {
+        src: "/services/conception-creation-graphique-1.png",
+        alt: "test",
+      },
+      {
+        src: "/services/conception-creation-graphique-2.png",
+        alt: "test",
+      },
+      {
+        src: "/services/conception-creation-graphique-3.png",
+        alt: "test",
+      },
+    ],
     intro: [
       "Nous créons votre identité visuelle : logos, cartes de visite, flyers et documentation promotionnelle.",
     ],
@@ -247,7 +272,20 @@ export const serviceDetails: ServiceDetail[] = [
       subtitle:
         "Affiches, flyers, habillage de véhicules et enseignes publicitaires.",
     },
-    gallery: [],
+    gallery: [
+      {
+        src: "/services/impression-numerique-offset-1.jpeg",
+        alt: "test",
+      },
+      {
+        src: "/services/impression-numerique-offset-2.png",
+        alt: "test",
+      },
+      {
+        src: "/services/impression-numerique-offset-3.jpeg",
+        alt: "test",
+      },
+    ],
     intro: [
       "Nous réalisons vos impressions numériques et offset : affiches, flyers et supports marketing, ainsi que l'habillage de véhicules et les enseignes extérieures.",
     ],
@@ -267,7 +305,20 @@ export const serviceDetails: ServiceDetail[] = [
       accent: "création 3D",
       subtitle: "Modélisation, rendu et design 3D pour visualiser vos projets.",
     },
-    gallery: [],
+    gallery: [
+      {
+        src: "/services/design-creation-3d-1.jpeg",
+        alt: "test",
+      },
+      {
+        src: "/services/design-creation-3d-2.png",
+        alt: "test",
+      },
+      {
+        src: "/services/design-creation-3d-3.png",
+        alt: "test",
+      },
+    ],
     intro: [
       "Nous proposons la modélisation, le rendu et le design 3D pour donner forme à vos projets avant leur réalisation.",
     ],
@@ -288,7 +339,20 @@ export const serviceDetails: ServiceDetail[] = [
       subtitle:
         "Stands, salons, séminaires et réceptions : du design à la production technique.",
     },
-    gallery: [],
+    gallery: [
+      {
+        src: "/services/conception-evenementielle-1.jpeg",
+        alt: "test",
+      },
+      {
+        src: "/services/conception-evenementielle-2.png",
+        alt: "test",
+      },
+      {
+        src: "/services/conception-evenementielle-3.png",
+        alt: "test",
+      },
+    ],
     intro: [
       "Nous concevons et organisons vos événements : stands sur mesure et modulaires pour foires et salons, séminaires, colloques et réceptions, avec la production technique audio et visuelle.",
     ],
