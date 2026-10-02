@@ -1,4 +1,12 @@
-// Source unique pour les services : cartes d'accueil, navbar, footer et formulaire de contact.
+export enum ServiceSlug {
+  CreationSiteWeb = "creation-site-web",
+  CreationApplicationLogiciel = "creation-application-logiciel",
+  ConceptionCreationGraphique = "conception-creation-graphique",
+  ImpressionNumeriqueOffset = "impression-numerique-offset",
+  DesignCreation3d = "design-creation-3d",
+  ConceptionEvenementielle = "conception-evenementielle",
+}
+
 export const services = [
   {
     value: "conception-creation-graphique",
