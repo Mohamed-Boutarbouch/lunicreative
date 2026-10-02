@@ -90,19 +90,19 @@ export function HeroSection() {
               <HeroCarousel
                 items={[
                   {
-                    src: "/slides/slide-1.jpeg",
+                    src: "/slides/home-1.jpeg",
                     alt: "L'unicreative — création et communication",
                   },
                   {
-                    src: "/slides/slide-2.jpeg",
+                    src: "/slides/home-2.jpeg",
                     alt: "L'unicreative — événementiel",
                   },
                   {
-                    src: "/slides/slide-3.jpeg",
+                    src: "/slides/home-3.jpeg",
                     alt: "L'unicreative — impression",
                   },
                   {
-                    src: "/slides/slide-4.jpeg",
+                    src: "/slides/home-4.jpeg",
                     alt: "L'unicreative — identité visuelle",
                   },
                 ]}

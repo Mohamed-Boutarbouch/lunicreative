@@ -9,53 +9,60 @@ export enum ServiceSlug {
 
 export const services = [
   {
-    value: "conception-creation-graphique",
-    title: "Conception & création graphique",
-    short: "Logos, chartes graphiques, cartes de visite, flyers et brochures.",
+    value: "creation-site-web",
+    title: "Création de sites web",
+    short: "Sites vitrines, e-commerce, CMS et sites web sur mesure.",
     description:
-      "Logos, chartes graphiques, cartes de visite, flyers, brochures et bannières : une identité visuelle cohérente sur tous vos supports.",
+      "Sites vitrines, e-commerce, CMS et sites web sur mesure, adaptés à tous les écrans et optimisés pour offrir une expérience moderne et performante.",
+    href: "/services/creation-site-web",
+    image: "/services/web-placeholder.jpeg",
+    className: "lg:col-span-2",
+  },
+  {
+    value: "conception-creation-graphique",
+    title: "Conception graphique",
+    short:
+      "Logos, identités visuelles, flyers, brochures et supports de communication.",
+    description:
+      "Logos, chartes graphiques, cartes de visite, flyers, brochures et bannières pour construire une identité visuelle cohérente et reconnaissable.",
     image: "/services/graphic-design-placeholder.png",
     href: "/services/conception-creation-graphique",
-    className: "lg:col-span-2",
   },
   {
     value: "impression-numerique-offset",
     title: "Impression numérique & offset",
-    short:
-      "Affiches, menus, bâches, packaging, signalétique et habillage véhicule.",
+    short: "Affiches, bâches, packaging, signalétique et supports imprimés.",
     description:
-      "Affiches, menus, étiquettes, bâches et packaging, en petit ou grand format. Signalétique, panneaux publicitaires et habillage de véhicules.",
+      "Affiches, menus, étiquettes, bâches et packaging, en petit ou grand format. Nous réalisons également la signalétique, les panneaux publicitaires et l'habillage de véhicules.",
     href: "/services/impression-numerique-offset",
     image: "/services/printing-placeholder.jpeg",
   },
   {
-    value: "creation-site-web",
-    title: "Sites web & applications",
-    short: "Sites vitrines, e-commerce, CMS et applications web ou desktop.",
+    value: "conception-evenementielle",
+    title: "Événementiel",
+    short: "Stands, salons, séminaires, inaugurations et production technique.",
     description:
-      "Sites vitrines, e-commerce et CMS, adaptés à tous les écrans et optimisés pour le référencement. Applications web et desktop selon vos besoins.",
-    href: "/services/creation-site-web",
-    image: "/services/web-placeholder.jpeg",
+      "Conception de stands design et modulaires pour foires et salons, organisation de séminaires, inaugurations et cocktails d'entreprise, avec production technique son, image et média.",
+    href: "/services/conception-evenementielle",
+    image: "/services/events-placeholder.jpeg",
   },
   {
     value: "design-creation-3d",
     title: "Design & création 3D",
-    short:
-      "Plans de masse, images d'architecture et illustrations 3D de produits.",
+    short: "Plans de masse, architecture, modélisation et visualisation 3D.",
     description:
-      "Plans de masse, images d'architecture et illustrations 3D de vos produits, pour vos catalogues, plaquettes et présentations.",
+      "Plans de masse, images d'architecture et illustrations 3D de vos produits pour vos catalogues, plaquettes, présentations et projets.",
     href: "/services/design-creation-3d",
     image: "/services/3d-placeholder.jpeg",
   },
   {
-    value: "conception-evenementielle",
-    title: "Conception événementielle",
-    short:
-      "Stands, foires, salons, séminaires, inaugurations et production technique.",
+    value: "creation-application-logiciel",
+    title: "Création d'applications",
+    short: "Applications web, desktop et solutions logicielles sur mesure.",
     description:
-      "Stands design et modulaires, foires, salons, séminaires, inaugurations et cocktails d'entreprise, avec production technique son, image et média.",
-    href: "/services/conception-evenementielle",
-    image: "/services/events-placeholder.jpeg",
+      "Conception et développement d'applications web, desktop et solutions logicielles adaptées aux besoins spécifiques de votre activité.",
+    href: "/services/creation-application-logiciel",
+    image: "/services/application-placeholder.jpeg",
   },
 ];
 

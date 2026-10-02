@@ -257,22 +257,26 @@ export function Navbar() {
 
             <NavigationMenuContent>
               <ul className="grid w-150 grid-cols-2 gap-1 p-2">
-                {services.map(({ href, title, description }, index) => (
-                  <li key={href} className={index === 0 ? "col-span-2" : ""}>
-                    <NavigationMenuLink
-                      render={<Link href={href} />}
-                      className="block rounded-md p-3 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-                    >
-                      <p className="mb-1 font-semibold leading-none text-foreground">
-                        {title}
-                      </p>
+                {services.map(({ href, title, description }, index) => {
+                  const isFeatured = services.length % 2 !== 0 && index === 0;
 
-                      <p className="line-clamp-2 text-sm text-muted-foreground">
-                        {description}
-                      </p>
-                    </NavigationMenuLink>
-                  </li>
-                ))}
+                  return (
+                    <li key={href} className={cn(isFeatured && "col-span-2")}>
+                      <NavigationMenuLink
+                        render={<Link href={href} />}
+                        className="block rounded-md p-3 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                      >
+                        <p className="mb-1 font-semibold leading-none text-foreground">
+                          {title}
+                        </p>
+
+                        <p className="line-clamp-2 text-sm text-muted-foreground">
+                          {description}
+                        </p>
+                      </NavigationMenuLink>
+                    </li>
+                  );
+                })}
               </ul>
             </NavigationMenuContent>
           </NavigationMenuItem>
