@@ -1,5 +1,10 @@
-import { IconPlus } from "@tabler/icons-react";
-
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Reveal } from "@/components/animations/reveal";
 import type { ServiceDetail } from "@/data/services";
 
 export function ServiceFaq({
@@ -13,37 +18,47 @@ export function ServiceFaq({
     mainEntity: items.map(({ q, a }) => ({
       "@type": "Question",
       name: q,
-      acceptedAnswer: { "@type": "Answer", text: a.join(" ") },
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: a.join(" "),
+      },
     })),
   };
 
   return (
     <section aria-labelledby="faq-heading">
-      <h2
-        id="faq-heading"
-        className="font-heading text-2xl font-semibold tracking-tight sm:text-3xl"
-      >
-        Questions fréquentes
-      </h2>
+      <Reveal variant="fadeUp">
+        <h2
+          id="faq-heading"
+          className="font-heading text-2xl font-semibold tracking-tight sm:text-3xl"
+        >
+          Questions fréquentes
+        </h2>
+      </Reveal>
 
-      <div className="mt-6 divide-y divide-border border-y border-border">
-        {items.map(({ q, a }) => (
-          <details key={q} className="group py-1">
-            <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-4 font-heading text-base font-semibold tracking-tight marker:hidden sm:text-lg [&::-webkit-details-marker]:hidden">
-              {q}
-              <IconPlus
-                aria-hidden="true"
-                className="size-5 shrink-0 text-primary transition-transform duration-300 group-open:rotate-45"
-              />
-            </summary>
-            <div className="max-w-3xl space-y-3 pb-5 text-sm leading-6 text-muted-foreground sm:text-base sm:leading-7">
-              {a.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
-              ))}
-            </div>
-          </details>
-        ))}
-      </div>
+      <Reveal variant="fadeUp" delay={0.1} className="mt-6">
+        <Accordion className="border-y border-border">
+          {items.map(({ q, a }, index) => (
+            <AccordionItem
+              key={q}
+              value={`item-${index}`}
+              className="border-b border-border last:border-b-0"
+            >
+              <AccordionTrigger className="group py-5 font-heading text-base font-semibold tracking-tight hover:no-underline sm:text-lg">
+                <span>{q}</span>
+              </AccordionTrigger>
+
+              <AccordionContent className="max-w-3xl text-sm leading-6 text-muted-foreground sm:text-base sm:leading-7">
+                <div className="space-y-3">
+                  {a.map((paragraph) => (
+                    <p key={paragraph}>{paragraph}</p>
+                  ))}
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      </Reveal>
 
       <script
         type="application/ld+json"
