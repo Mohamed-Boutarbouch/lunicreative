@@ -12,14 +12,24 @@ import {
   type CarouselApi,
 } from "@/components/ui/carousel";
 
-const ITEMS_COUNT = 4;
+export type HeroCarouselItem = {
+  src: string;
+  alt: string;
+};
 
-const images = Array.from(
-  { length: ITEMS_COUNT },
-  (_, index) => `/slides/slide-${index + 1}.jpeg`,
-);
+type HeroCarouselProps = {
+  items: HeroCarouselItem[];
+  autoplayDelay?: number;
+  aspectClassName?: string;
+  className?: string;
+};
 
-export function HeroCarousel() {
+export function HeroCarousel({
+  items,
+  autoplayDelay = 5000,
+  aspectClassName = "aspect-4/3",
+  className,
+}: HeroCarouselProps) {
   const [mainApi, setMainApi] = useState<CarouselApi>();
   const [thumbApi, setThumbApi] = useState<CarouselApi>();
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -41,6 +51,8 @@ export function HeroCarousel() {
       thumbApi?.scrollTo(index);
     };
 
+    handleSelect();
+
     mainApi.on("select", handleSelect);
     mainApi.on("reInit", handleSelect);
 
@@ -51,28 +63,38 @@ export function HeroCarousel() {
   }, [mainApi, thumbApi]);
 
   return (
-    <div className="mx-auto flex w-full max-w-xl flex-col gap-3 sm:gap-4 lg:mx-0 lg:ml-auto lg:max-w-none">
+    <div
+      className={cn(
+        "mx-auto flex w-full max-w-xl flex-col gap-3 sm:gap-4 lg:mx-0 lg:ml-auto lg:max-w-none",
+        className,
+      )}
+    >
       {/* Main carousel */}
       <Carousel
         plugins={[
           Autoplay({
-            delay: 5000,
+            delay: autoplayDelay,
           }),
         ]}
         setApi={setMainApi}
         className="w-full"
       >
         <CarouselContent>
-          {images.map((src, index) => (
-            <CarouselItem key={src}>
-              <div className="relative aspect-4/3 overflow-hidden rounded-2xl bg-muted shadow-lg">
+          {items.map((item, index) => (
+            <CarouselItem key={item.src}>
+              <div
+                className={cn(
+                  "relative overflow-hidden rounded-2xl bg-muted shadow-lg",
+                  aspectClassName,
+                )}
+              >
                 <Image
-                  src={src}
-                  alt={`Slide ${index + 1}`}
+                  src={item.src}
+                  alt={item.alt}
                   fill
                   sizes="(max-width: 1024px) 100vw, 640px"
                   className="object-cover"
-                  loading="eager"
+                  priority={index === 0}
                 />
               </div>
             </CarouselItem>
@@ -90,9 +112,9 @@ export function HeroCarousel() {
         className="w-full"
       >
         <CarouselContent className="-ml-2 justify-center sm:-ml-3">
-          {images.map((src, index) => (
+          {items.map((item, index) => (
             <CarouselItem
-              key={src}
+              key={item.src}
               className="basis-16 cursor-pointer pl-2 sm:basis-20 sm:pl-3 lg:basis-24"
               onClick={() => onThumbClick(index)}
             >
@@ -105,12 +127,11 @@ export function HeroCarousel() {
                 )}
               >
                 <Image
-                  src={src}
-                  alt={`Thumb ${index + 1}`}
+                  src={item.src}
+                  alt={item.alt}
                   fill
                   sizes="96px"
                   className="object-cover"
-                  loading="eager"
                 />
               </div>
             </CarouselItem>

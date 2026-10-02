@@ -87,7 +87,26 @@ export function HeroSection() {
 
             {/* Carousel column */}
             <Reveal variant="fadeUp" delay={0.8} className="w-full">
-              <HeroCarousel />
+              <HeroCarousel
+                items={[
+                  {
+                    src: "/slides/slide-1.jpeg",
+                    alt: "L'unicreative — création et communication",
+                  },
+                  {
+                    src: "/slides/slide-2.jpeg",
+                    alt: "L'unicreative — événementiel",
+                  },
+                  {
+                    src: "/slides/slide-3.jpeg",
+                    alt: "L'unicreative — impression",
+                  },
+                  {
+                    src: "/slides/slide-4.jpeg",
+                    alt: "L'unicreative — identité visuelle",
+                  },
+                ]}
+              />
             </Reveal>
           </div>
         </div>
