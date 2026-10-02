@@ -5,7 +5,7 @@ import { motion } from "motion/react";
 
 import { EASE, variants, type AnimationVariant } from "@/lib/animations";
 
-type Tag = "div" | "span" | "p" | "li" | "ul" | "dl" | "section";
+type Tag = "div" | "span" | "h2" | "p" | "li" | "ul" | "dl" | "section";
 
 type BaseProps = {
   children: ReactNode;

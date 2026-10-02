@@ -26,7 +26,7 @@ export function ServiceHero({
         ].filter((part) => typeof part !== "string" || part.length > 0);
 
   return (
-    <section className="relative z-10 pt-26">
+    <section className="relative z-10 pt-10">
       <div className="max-w-4xl">
         <Reveal variant="fadeUp" delay={1}>
           <Link

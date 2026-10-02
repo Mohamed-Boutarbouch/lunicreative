@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 
 import { getService, serviceDetails } from "@/data/services";
 import { ServiceHero } from "@/components/services/hero";
-// import { ServiceGallery } from "@/components/services/gallery";
 import { ServiceIntro } from "@/components/services/intro";
 import { ServiceItems } from "@/components/services/items";
 import { ServiceReasons } from "@/components/services/reasons";
@@ -33,11 +32,11 @@ export default async function ServicePage(
 
   return (
     <main className="space-y-16 pb-8 md:space-y-24">
-      <section className="relative z-10 pt-26">
-        <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,520px)] lg:gap-16">
+      <section className="relative z-10">
+        <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,520px)] lg:gap-16">
           <ServiceHero {...service.hero} />
 
-          <Reveal variant="fadeUp" delay={0.8} className="w-full">
+          <Reveal variant="fadeUp" delay={0.45} className="w-full">
             <HeroCarousel
               items={service.gallery}
               className="max-w-xl lg:max-w-none"

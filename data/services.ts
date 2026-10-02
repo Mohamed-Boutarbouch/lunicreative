@@ -349,7 +349,7 @@ export const serviceDetails: ServiceDetail[] = [
         alt: "test",
       },
       {
-        src: "/services/conception-evenementielle-3.png",
+        src: "/services/conception-evenementielle-3.jpeg",
         alt: "test",
       },
     ],

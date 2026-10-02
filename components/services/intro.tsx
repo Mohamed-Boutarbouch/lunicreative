@@ -1,4 +1,8 @@
-import { Reveal } from "@/components/animations/reveal";
+import {
+  Reveal,
+  RevealGroup,
+  RevealItem,
+} from "@/components/animations/reveal";
 
 export function ServiceIntro({ paragraphs }: { paragraphs: string[] }) {
   const [lead, ...rest] = paragraphs;
@@ -13,14 +17,19 @@ export function ServiceIntro({ paragraphs }: { paragraphs: string[] }) {
       >
         {lead}
       </Reveal>
-      {rest.map((paragraph) => (
-        <p
-          key={paragraph}
-          className="text-base leading-relaxed text-muted-foreground sm:text-lg"
-        >
-          {paragraph}
-        </p>
-      ))}
+
+      <RevealGroup as="div" stagger={0.08} amount={0.2}>
+        {rest.map((paragraph) => (
+          <RevealItem
+            key={paragraph}
+            as="p"
+            variant="fadeUp"
+            className="text-base leading-relaxed text-muted-foreground sm:text-lg"
+          >
+            {paragraph}
+          </RevealItem>
+        ))}
+      </RevealGroup>
     </section>
   );
 }

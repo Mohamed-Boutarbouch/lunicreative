@@ -85,9 +85,9 @@ export default function ServicesPage() {
         ))}
       </div>
 
-      <Reveal variant="fadeUp" delay={0.2} className="mx-auto w-full max-w-md">
+      <div className="mx-auto w-full max-w-md">
         <QuoteCta />
-      </Reveal>
+      </div>
     </main>
   );
 }
