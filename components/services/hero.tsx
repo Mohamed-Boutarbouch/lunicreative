@@ -7,7 +7,7 @@ import { FuseReveal } from "@/components/animations/fuse-reveal";
 import type { ServiceDetail } from "@/data/services";
 
 const accentClass =
-  "font-serif font-semibold italic tracking-normal text-primary";
+  "font-serif font-semibold italic tracking-wider text-primary";
 
 export function ServiceHero({
   eyebrow = "Fès, Maroc",

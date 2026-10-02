@@ -11,6 +11,7 @@ import { QuoteCta } from "@/components/services/quote-cta";
 import { RelatedServices } from "@/components/services/related";
 import { Reveal } from "@/components/animations/reveal";
 import { HeroCarousel } from "@/components/hero-carousel";
+import { ServicePricing } from "@/components/services/pricing";
 
 export function generateStaticParams() {
   return serviceDetails.map(({ slug }) => ({ slug }));
@@ -54,6 +55,13 @@ export default async function ServicePage(
           )}
 
           {service.reasons && <ServiceReasons reasons={service.reasons} />}
+
+          {service.pricing && (
+            <ServicePricing
+              title={service.pricing.title}
+              plans={service.pricing.plans}
+            />
+          )}
 
           {service.faq && <ServiceFaq items={service.faq} />}
         </div>

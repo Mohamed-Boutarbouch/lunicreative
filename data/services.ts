@@ -68,6 +68,12 @@ export const services = [
 
 export type ServiceGroup = "digital" | "identite-impression" | "espace";
 
+export type ServicePricingPlan = {
+  name: string;
+  price: number;
+  features: string[];
+};
+
 export type ServiceDetail = {
   slug: string;
   group: ServiceGroup;
@@ -87,6 +93,10 @@ export type ServiceDetail = {
   faq?: { q: string; a: string[] }[];
   itemsTitle?: string;
   items?: string[];
+  pricing?: {
+    title: string;
+    plans: ServicePricingPlan[];
+  };
   meta: { title: string; description: string };
 };
 
@@ -187,6 +197,44 @@ export const serviceDetails: ServiceDetail[] = [
         ],
       },
     ],
+    pricing: {
+      title: "Nos offres",
+      plans: [
+        {
+          name: "Site vitrine",
+          price: 2999,
+          features: [
+            "Nom de domaine (.com, .net, .org) pendant 1 an",
+            "Optimisation SEO (On-Site)",
+            "5 à 10 pages",
+            "5 emails professionnels",
+            "Hébergement pendant 1 an",
+          ],
+        },
+        {
+          name: "Site dynamique",
+          price: 4999,
+          features: [
+            "Nom de domaine (.com, .net, .org) pendant 1 an",
+            "Optimisation SEO (On-Site)",
+            "10 à 20 pages",
+            "10 emails professionnels",
+            "Hébergement pendant 1 an",
+          ],
+        },
+        {
+          name: "Site e-commerce",
+          price: 5999,
+          features: [
+            "Nom de domaine (.com, .net, .org) pendant 1 an",
+            "Optimisation SEO (On-Site et Off-Site)",
+            "Nombre de pages illimité",
+            "100 emails professionnels",
+            "Hébergement pendant 1 an",
+          ],
+        },
+      ],
+    },
     meta: {
       title: "Création de sites web à Fès | L'unicreative",
       description:
