@@ -1,18 +1,33 @@
 import { CtaButton } from "@/components/cta-button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
 export function QuoteCta() {
   return (
-    <div className="rounded-md border border-border bg-muted/40 p-6">
-      <p className="font-heading text-xl font-semibold tracking-tight">
-        Un projet{" "}
-        <span className="font-serif italic text-primary">en tête</span> ?
-      </p>
-      <p className="mt-2 text-sm leading-6 text-muted-foreground">
-        Décrivez-nous votre besoin, nous vous répondons avec un devis.
-      </p>
-      <div className="mt-5">
-        <CtaButton href="/demande-devis">Demander un devis</CtaButton>
-      </div>
-    </div>
+    <Card>
+      <CardHeader>
+        <CardTitle className="font-heading text-2xl font-semibold tracking-tight">
+          Un projet{" "}
+          <span className="font-serif font-semibold italic tracking-wider text-primary">
+            en tête ?
+          </span>
+        </CardTitle>
+
+        <CardDescription>
+          Décrivez-nous votre besoin, nous vous répondons avec un devis.
+        </CardDescription>
+      </CardHeader>
+
+      <CardContent className="flex w-full justify-center">
+        <CtaButton href="/demande-devis" className="mx-auto">
+          Demander un devis
+        </CtaButton>
+      </CardContent>
+    </Card>
   );
 }
