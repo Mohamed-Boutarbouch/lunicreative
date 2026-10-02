@@ -108,3 +108,45 @@ export const careerDefaultValues = {
   cv: undefined,
   lettreMotivation: undefined,
 };
+
+export const quoteSchema = v.object({
+  nomPrenom: v.pipe(
+    v.string(),
+    v.nonEmpty("Veuillez renseigner votre nom et prénom."),
+    v.minLength(2, "Le nom doit contenir au moins 2 caractères."),
+  ),
+
+  email: v.pipe(
+    v.string(),
+    v.nonEmpty("Veuillez renseigner votre adresse e-mail."),
+    v.email("Veuillez renseigner une adresse e-mail valide."),
+  ),
+
+  telephone: v.pipe(
+    v.string(),
+    v.nonEmpty("Veuillez renseigner votre numéro de téléphone."),
+    v.regex(
+      /^[5-7]\d{8}$/,
+      "Veuillez renseigner un numéro de téléphone marocain valide.",
+    ),
+  ),
+
+  service: v.pipe(v.string(), v.nonEmpty("Veuillez sélectionner un service.")),
+
+  projet: v.pipe(
+    v.string(),
+    v.nonEmpty("Veuillez décrire votre projet."),
+    v.minLength(
+      20,
+      "Veuillez donner quelques détails supplémentaires sur votre projet.",
+    ),
+  ),
+});
+
+export const quoteDefaultValues = {
+  nomPrenom: "",
+  email: "",
+  telephone: "",
+  service: "",
+  projet: "",
+};

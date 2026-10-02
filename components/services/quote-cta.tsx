@@ -21,7 +21,7 @@ export function QuoteCta() {
         </CardHeader>
 
         <CardContent className="relative z-10 flex w-full justify-center">
-          <CtaButton href="/demande-devis" className="mx-auto">
+          <CtaButton href="/devis" className="mx-auto">
             Demander un devis
           </CtaButton>
         </CardContent>
