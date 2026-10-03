@@ -8,6 +8,7 @@ import { Separator } from "@/components/ui/separator";
 import { CtaButton } from "@/components/cta-button";
 import { navigation, services } from "@/data/footer";
 import { EASE } from "@/lib/animations";
+import { FooterContactLinks } from "../footer-contact-links";
 
 // Footer-level: children animate bottom → top
 const footerContainer: Variants = {
@@ -118,6 +119,19 @@ export function Footer() {
 
                 {/* Bottom */}
                 <div className="flex flex-col gap-5 sm:gap-6">
+                  <motion.div
+                    variants={item}
+                    className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between"
+                  >
+                    <FooterContactLinks />
+
+                    <address className="text-sm not-italic text-foreground/70 sm:text-right">
+                      Avenue Lalla Hasnae, près de l’Institut Français
+                      <br />
+                      Fès, Maroc
+                    </address>
+                  </motion.div>
+
                   <Separator />
 
                   <motion.div
@@ -138,12 +152,6 @@ export function Footer() {
                         Digital Printing Solutions
                       </p>
                     </div>
-
-                    <address className="text-sm not-italic text-foreground/70 md:text-right">
-                      Avenue Lalla Hasnae, près de l’Institut Français
-                      <br />
-                      Fès, Maroc
-                    </address>
                   </motion.div>
 
                   <motion.div
