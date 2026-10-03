@@ -11,9 +11,9 @@ export const services = [
   {
     value: "creation-site-web",
     title: "Création de sites web",
-    short: "Sites vitrines, e-commerce, CMS et sites web sur mesure.",
+    short: "Vitrine, e-commerce, dynamique ou CMS, du design à la maintenance.",
     description:
-      "Sites vitrines, e-commerce, CMS et sites web sur mesure, adaptés à tous les écrans et optimisés pour offrir une expérience moderne et performante.",
+      "Du site vitrine à la boutique en ligne, nous concevons, développons et hébergeons votre site. Son design moderne s'adapte à tous les écrans, et son référencement est travaillé dès le départ.",
     href: "/services/creation-site-web",
     image: "/services/web-placeholder.jpeg",
     className: "lg:col-span-2",
@@ -21,46 +21,47 @@ export const services = [
   {
     value: "conception-creation-graphique",
     title: "Conception graphique",
-    short:
-      "Logos, identités visuelles, flyers, brochures et supports de communication.",
+    short: "Logos, chartes graphiques, cartes de visite, flyers et brochures.",
     description:
-      "Logos, chartes graphiques, cartes de visite, flyers, brochures et bannières pour construire une identité visuelle cohérente et reconnaissable.",
+      "Nous créons votre logo et votre charte graphique, puis nous les déclinons sur vos cartes de visite, flyers, brochures, bannières et kakémonos.",
     image: "/services/graphic-design-placeholder.png",
     href: "/services/conception-creation-graphique",
   },
   {
     value: "impression-numerique-offset",
     title: "Impression numérique & offset",
-    short: "Affiches, bâches, packaging, signalétique et supports imprimés.",
+    short:
+      "Affiches, bâches, packaging, signalétique et habillage de véhicules.",
     description:
-      "Affiches, menus, étiquettes, bâches et packaging, en petit ou grand format. Nous réalisons également la signalétique, les panneaux publicitaires et l'habillage de véhicules.",
+      "Affiches, bâches, menus, étiquettes, packaging, sérigraphie : en petit ou grand format. Nous réalisons aussi les panneaux publicitaires, la signalétique et l'habillage de véhicules, complet ou partiel.",
     href: "/services/impression-numerique-offset",
     image: "/services/printing-placeholder.jpeg",
   },
   {
     value: "conception-evenementielle",
     title: "Événementiel",
-    short: "Stands, salons, séminaires, inaugurations et production technique.",
+    short: "Stands, salons, séminaires, cocktails et production technique.",
     description:
-      "Conception de stands design et modulaires pour foires et salons, organisation de séminaires, inaugurations et cocktails d'entreprise, avec production technique son, image et média.",
+      "Stands design ou modulaires pour foires et salons, séminaires, colloques, inaugurations et cocktails d'entreprise. Nous assurons aussi la production technique : son, image et média.",
     href: "/services/conception-evenementielle",
     image: "/services/events-placeholder.jpeg",
   },
   {
     value: "design-creation-3d",
     title: "Design & création 3D",
-    short: "Plans de masse, architecture, modélisation et visualisation 3D.",
+    short:
+      "Plans de masse, images d'architecture et illustrations 3D de produits.",
     description:
-      "Plans de masse, images d'architecture et illustrations 3D de vos produits pour vos catalogues, plaquettes, présentations et projets.",
+      "Des visuels 3D réalistes pour vos catalogues, plaquettes commerciales et présentations de projets : plans de masse, images d'architecture et illustrations de vos produits.",
     href: "/services/design-creation-3d",
     image: "/services/3d-placeholder.jpeg",
   },
   {
     value: "creation-application-logiciel",
     title: "Création d'applications",
-    short: "Applications web, desktop et solutions logicielles sur mesure.",
+    short: "Applications web et desktop conçues selon vos besoins.",
     description:
-      "Conception et développement d'applications web, desktop et solutions logicielles adaptées aux besoins spécifiques de votre activité.",
+      "Nous développons des applications web et desktop d'après vos attentes et les besoins de votre activité.",
     href: "/services/creation-application-logiciel",
     image: "/services/application-placeholder.jpeg",
   },
@@ -112,11 +113,11 @@ export const serviceGroups: Record<
   },
   "identite-impression": {
     label: "Identité et impression",
-    description: "De la création graphique au support imprimé.",
+    description: "De l'identité de marque au support imprimé.",
   },
   espace: {
     label: "Espace et événementiel",
-    description: "Modélisation 3D, stands et événements.",
+    description: "Visualisation 3D, stands et événements.",
   },
 };
 
@@ -126,80 +127,83 @@ export const serviceDetails: ServiceDetail[] = [
     quoteService: "site-web",
     group: "digital",
     title: "Création de sites web",
-    summary: "Vitrine, dynamique, CMS, eCommerce",
+    summary: "Vitrine, dynamique, CMS, e-commerce",
     hero: {
       title: "Création de sites web à Fès",
       accent: "sites web",
       subtitle:
-        "Sites vitrine, e-commerce, dynamiques ou CMS : une seule équipe, de l'étude à la maintenance.",
+        "Vitrine, dynamique, CMS ou e-commerce. Une seule équipe vous accompagne, de l'étude à la maintenance.",
     },
     gallery: [
       {
         src: "/services/creation-site-web-1.png",
-        alt: "Création de site web à Fès - L'unicreative",
+        alt: "Exemple de site web réalisé par L'unicreative",
       },
       {
         src: "/services/creation-site-web-2.png",
-        alt: "Site web dynamique, vitrine ou eCommerce - L'unicreative",
+        alt: "Site web dynamique, vitrine ou e-commerce conçu par L'unicreative",
       },
       {
         src: "/services/creation-site-web-3.png",
-        alt: "Site internet réalisé par L'unicreative",
+        alt: "Site internet conçu par L'unicreative à Fès",
       },
     ],
     intro: [
-      "Vous cherchez une agence capable de créer un site web professionnel ? L'unicreative est une agence web basée à Fès, spécialisée dans la création de sites internet et le référencement SEO.",
-      "Nous aidons les entreprises et les particuliers à tirer parti du numérique : site e-commerce, site vitrine, WordPress, blog. Chaque site adopte un design moderne, entièrement adapté aux téléphones, tablettes et ordinateurs.",
-      "L'unicreative existe depuis 12 ans et compte plus de 100 réalisations réparties entre le Maroc et la France. Nous vous accompagnons à chaque étape : étude, UX/UI, conception, design, développement, hébergement et maintenance.",
+      "Un site web ne sert que s'il est vu. L'unicreative, agence web basée à Fès, crée votre site professionnel (vitrine, e-commerce, WordPress, blog) et l'optimise pour Google, Bing et Yahoo.",
+      "Chaque site a un design moderne et s'affiche parfaitement sur téléphone, tablette et ordinateur. Nous travaillons avec les entreprises comme avec les particuliers.",
+      "Depuis 12 ans, nous accompagnons nos clients au Maroc et en France, avec plus de 100 réalisations. Étude, UX/UI, conception, design, développement, hébergement, maintenance : nous prenons en charge chaque étape.",
     ],
     reasons: [
       {
-        title: "Des sites web puissants",
-        text: "Nous vous aidons à créer un site de qualité et attrayant, pour être plus visible sur Internet et développer votre présence en ligne.",
+        title: "Un site conçu pour être trouvé",
+        text: "Un design soigné et une optimisation pour les moteurs de recherche, pour rendre votre entreprise plus visible en ligne.",
       },
       {
-        title: "Un site sécurisé et rapide",
-        text: "Les visiteurs sont pressés : la vitesse d'un site pèse directement sur l'expérience utilisateur. Grâce aux fonctionnalités intégrées de notre outil de développement, nous concevons des sites plus rapides.",
+        title: "Un site rapide",
+        text: "Vos visiteurs sont pressés, et la vitesse d'un site pèse sur leur expérience. Nous utilisons les fonctionnalités intégrées de notre outil de développement pour construire des sites plus rapides.",
       },
       {
-        title: "Vous restez décisionnaire",
-        text: "Nous vous donnons les options, les outils et les informations pour bien choisir. Nos recommandations ne remplacent pas votre décision : chaque choix concernant votre site reste le vôtre.",
+        title: "Vous gardez la main",
+        text: "Nous vous donnons les options, les outils et les informations pour choisir. Nous recommandons, vous décidez.",
       },
     ],
     faq: [
       {
         q: "Combien coûte un site web ?",
         a: [
-          "Le prix dépend du temps de travail nécessaire : fonctionnalités, nombre de pages, complexité du projet, création ou non des contenus, unicité du design, modules, outils utilisés, hébergement et nom de domaine.",
+          "Le prix dépend du temps de travail nécessaire : fonctionnalités, nombre de pages, complexité du projet, rédaction des contenus, originalité du design, modules, outils utilisés, hébergement et nom de domaine.",
+          "Décrivez-nous votre projet et nous vous répondons avec un devis.",
         ],
       },
       {
         q: "Comment créer un site web ?",
         a: [
-          "Créer et administrer un site demande du temps et des compétences techniques. Une agence spécialisée comme L'unicreative prend en charge les aspects techniques et vous accompagne tout au long du projet.",
+          "Créer et administrer un site demande du temps et des compétences techniques. Une agence comme L'unicreative s'occupe de la technique et vous accompagne tout au long du projet.",
         ],
       },
       {
         q: "Quel est le délai de création d'un site web ?",
         a: [
           "Cela dépend du type de site. En moyenne, un site vitrine est prêt à être publié après 3 semaines à 2 mois de développement.",
-          "Le délai varie selon vos besoins, les modifications à apporter et les objectifs à atteindre.",
+          "Ce délai varie selon vos besoins, les modifications demandées et les objectifs du projet.",
         ],
       },
       {
         q: "Quels langages sont utilisés pour développer un site internet ?",
         a: [
-          "Un site moderne combine plusieurs langages. Le front-end regroupe HTML (structure des pages), CSS (mise en forme) et JavaScript (éléments dynamiques).",
-          "Le contenu des pages est déterminé à la demande côté serveur, avec des langages comme PHP, Python, Ruby, Java ou JavaScript, souvent associés à une base de données (SQL, par exemple). L'ensemble constitue le back-end.",
+          "Un site moderne combine plusieurs langages. Côté front-end : HTML pour la structure des pages, CSS pour la mise en forme, JavaScript pour les éléments dynamiques.",
+          "Côté back-end, un langage serveur (PHP, Python, Ruby, Java ou JavaScript, par exemple) génère le contenu à la demande, souvent avec une base de données (SQL, par exemple).",
         ],
       },
       {
         q: "Pourquoi le référencement naturel (SEO) est-il important ?",
         a: [
-          "Un site très bien fait mais que personne ne voit ne sert à rien. Le SEO, ou référencement naturel, vise la visibilité d'un site dans les résultats des moteurs de recherche, pour obtenir du trafic et donc des ventes.",
+          "Un site très bien fait mais que personne ne voit ne sert à rien. Le SEO améliore la visibilité de votre site dans les résultats des moteurs de recherche, pour attirer du trafic et donc des ventes.",
         ],
       },
     ],
+    // TODO(à vérifier) : formules, prix et contenus ci-dessous absents des
+    // fichiers sources. À confirmer avec l'agence avant publication.
     pricing: {
       title: "Nos offres",
       plans: [
@@ -244,7 +248,7 @@ export const serviceDetails: ServiceDetail[] = [
     meta: {
       title: "Création de sites web à Fès | L'unicreative",
       description:
-        "Agence web à Fès : sites vitrine, e-commerce, dynamiques et CMS, de l'étude à la maintenance. Plus de 100 réalisations entre le Maroc et la France.",
+        "Agence web à Fès : sites vitrine, e-commerce, dynamiques et CMS, de l'étude à la maintenance. SEO, hébergement, design adapté à tous les écrans.",
     },
   },
   {
@@ -252,34 +256,35 @@ export const serviceDetails: ServiceDetail[] = [
     quoteService: "applications",
     group: "digital",
     title: "Création d'applications",
-    summary: "Applications web, desktop ou logiciel",
+    summary: "Applications web et desktop",
     hero: {
       title: "Création d'applications web et desktop",
       accent: "applications",
       subtitle:
-        "Applications web, desktop et logiciels développés pour vos besoins.",
+        "Des applications web et desktop conçues d'après vos attentes et les besoins de votre activité.",
     },
     gallery: [
       {
         src: "/services/creation-application-logiciel-1.png",
-        alt: "test",
+        alt: "Exemple d'application web développée par L'unicreative",
       },
       {
         src: "/services/creation-application-logiciel-2.png",
-        alt: "test",
+        alt: "Interface d'une application desktop développée par L'unicreative",
       },
       {
         src: "/services/creation-application-logiciel-3.png",
-        alt: "test",
+        alt: "Application sur mesure conçue par L'unicreative",
       },
     ],
+    // Peu de matière dans les sources : ajouter des exemples réels quand disponibles.
     intro: [
-      "L'unicreative développe des applications web et des applications desktop, ainsi que des logiciels adaptés à votre activité.",
+      "L'unicreative développe des applications web et des applications desktop, conçues d'après vos attentes et les besoins de votre activité.",
     ],
     meta: {
       title: "Création d'applications web et desktop à Fès | L'unicreative",
       description:
-        "Développement d'applications web, desktop et logiciels par L'unicreative, agence basée à Fès.",
+        "Applications web et desktop développées par L'unicreative, agence basée à Fès. Décrivez votre besoin et recevez un devis.",
     },
   },
   {
@@ -287,34 +292,45 @@ export const serviceDetails: ServiceDetail[] = [
     quoteService: "creation-graphique",
     group: "identite-impression",
     title: "Conception et création graphique",
-    summary: "Logos, cartes de visite, flyers",
+    summary: "Logos, chartes graphiques, cartes de visite, flyers",
     hero: {
       title: "Conception et création graphique",
       accent: "création graphique",
       subtitle:
-        "Identité de marque et supports de communication, pensés pour être reconnus.",
+        "Votre identité de marque et vos supports de communication, pensés pour être reconnus.",
     },
     gallery: [
       {
         src: "/services/conception-creation-graphique-1.png",
-        alt: "test",
+        alt: "Identité visuelle réalisée par L'unicreative",
       },
       {
         src: "/services/conception-creation-graphique-2.png",
-        alt: "test",
+        alt: "Supports de communication conçus par L'unicreative",
       },
       {
         src: "/services/conception-creation-graphique-3.png",
-        alt: "test",
+        alt: "Création graphique pour une marque, par L'unicreative",
       },
     ],
     intro: [
-      "Nous créons votre identité visuelle : logos, cartes de visite, flyers et documentation promotionnelle.",
+      "La création graphique est le pilier de votre communication visuelle. Nous créons votre logo et votre charte graphique, puis nous les déclinons sur tous vos supports.",
+      "Nous partons de vos attentes et de vos besoins pour adapter votre identité visuelle à votre marché, afin que votre marque se distingue et soit reconnue.",
+    ],
+    itemsTitle: "Ce que nous créons",
+    items: [
+      "Logos",
+      "Chartes graphiques",
+      "Cartes de visite et d'invitation",
+      "Flyers et brochures",
+      "Dépliants et pochettes",
+      "Bannières web et publicitaires",
+      "Kakémonos",
     ],
     meta: {
       title: "Conception et création graphique à Fès | L'unicreative",
       description:
-        "Création de logos, cartes de visite, flyers et identité visuelle à Fès par L'unicreative.",
+        "Logos, chartes graphiques, cartes de visite, flyers et brochures : construisez une identité visuelle cohérente avec L'unicreative, agence à Fès.",
     },
   },
   {
@@ -322,34 +338,44 @@ export const serviceDetails: ServiceDetail[] = [
     quoteService: "impression",
     group: "identite-impression",
     title: "Impression numérique et offset",
-    summary: "Affiches, flyers, habillage véhicule",
+    summary: "Affiches, bâches, packaging, habillage de véhicules",
     hero: {
       title: "Impression numérique et offset",
       accent: "impression",
       subtitle:
-        "Affiches, flyers, habillage de véhicules et enseignes publicitaires.",
+        "Du petit au grand format : affiches, bâches, packaging, signalétique et habillage de véhicules.",
     },
     gallery: [
       {
         src: "/services/impression-numerique-offset-1.jpeg",
-        alt: "test",
+        alt: "Support imprimé réalisé par L'unicreative",
       },
       {
         src: "/services/impression-numerique-offset-2.png",
-        alt: "test",
+        alt: "Impression grand format réalisée par L'unicreative",
       },
       {
         src: "/services/impression-numerique-offset-3.jpeg",
-        alt: "test",
+        alt: "Habillage ou signalétique réalisé par L'unicreative",
       },
     ],
     intro: [
-      "Nous réalisons vos impressions numériques et offset : affiches, flyers et supports marketing, ainsi que l'habillage de véhicules et les enseignes extérieures.",
+      "Nous réalisons tous vos supports de communication imprimés, en petit ou grand format, en impression numérique comme en offset.",
+      "Notre studio graphique conçoit et imprime vos supports, quel que soit votre secteur d'activité.",
+    ],
+    itemsTitle: "Ce que nous imprimons",
+    items: [
+      "Affiches et bâches",
+      "Flyers et supports marketing",
+      "Menus et étiquettes",
+      "Packaging et sérigraphie",
+      "Panneaux publicitaires et signalétique",
+      "Habillage de véhicules, complet ou partiel",
     ],
     meta: {
       title: "Impression numérique et offset à Fès | L'unicreative",
       description:
-        "Impression numérique et offset, affiches, flyers, habillage véhicule et enseignes à Fès.",
+        "Affiches, bâches, menus, packaging, signalétique et habillage de véhicules : impression numérique et offset, petit et grand format, à Fès.",
     },
   },
   {
@@ -357,33 +383,43 @@ export const serviceDetails: ServiceDetail[] = [
     quoteService: "design-3d",
     group: "espace",
     title: "Design et création 3D",
-    summary: "Modélisation 3D",
+    summary: "Plans de masse, architecture, produits en 3D",
     hero: {
       title: "Design et création 3D",
       accent: "création 3D",
-      subtitle: "Modélisation, rendu et design 3D pour visualiser vos projets.",
+      subtitle:
+        "Plans de masse, images d'architecture et illustrations de produits en 3D, pour présenter vos projets.",
     },
     gallery: [
       {
         src: "/services/design-creation-3d-1.jpeg",
-        alt: "test",
+        alt: "Image d'architecture en 3D réalisée par L'unicreative",
       },
       {
         src: "/services/design-creation-3d-2.png",
-        alt: "test",
+        alt: "Plan de masse en 3D réalisé par L'unicreative",
       },
       {
         src: "/services/design-creation-3d-3.png",
-        alt: "test",
+        alt: "Illustration 3D de produit réalisée par L'unicreative",
       },
     ],
     intro: [
-      "Nous proposons la modélisation, le rendu et le design 3D pour donner forme à vos projets avant leur réalisation.",
+      "Nous modélisons vos produits et vos projets d'architecture pour en faire des images 3D modernes et attractives.",
+      "Pour l'architecture et l'immobilier, nous réalisons des plans de masse et de situation hyper réalistes, en 3D extérieure comme intérieure. Ces images servent de base à tous vos outils de communication et de commercialisation.",
+      "Pour vos produits, nos illustrations 3D enrichissent vos catalogues, vos plaquettes commerciales et vos supports de présentation.",
+    ],
+    itemsTitle: "Ce que nous réalisons",
+    items: [
+      "Plans de masse et plans de situation",
+      "Images d'architecture, extérieur et intérieur",
+      "Illustrations 3D de produits",
+      "Visuels pour catalogues et plaquettes commerciales",
     ],
     meta: {
       title: "Design et création 3D à Fès | L'unicreative",
       description:
-        "Modélisation, rendu et design 3D par L'unicreative, agence basée à Fès.",
+        "Plans de masse, images d'architecture et illustrations 3D de produits : modélisation et rendu 3D par L'unicreative, agence à Fès.",
     },
   },
   {
@@ -391,7 +427,7 @@ export const serviceDetails: ServiceDetail[] = [
     quoteService: "communication-evenementielle",
     group: "espace",
     title: "Événementiel",
-    summary: "Stands, salons, séminaires",
+    summary: "Stands, salons, séminaires, cocktails",
     hero: {
       title: "Conception événementielle",
       accent: "événementielle",
@@ -401,35 +437,37 @@ export const serviceDetails: ServiceDetail[] = [
     gallery: [
       {
         src: "/services/conception-evenementielle-1.jpeg",
-        alt: "test",
+        alt: "Stand conçu par L'unicreative pour un salon",
       },
       {
         src: "/services/conception-evenementielle-2.png",
-        alt: "test",
+        alt: "Événement organisé par L'unicreative",
       },
       {
         src: "/services/conception-evenementielle-3.jpeg",
-        alt: "test",
+        alt: "Production technique d'un événement par L'unicreative",
       },
     ],
     intro: [
-      "Nous concevons et organisons vos événements : stands sur mesure et modulaires pour foires et salons, séminaires, colloques et réceptions, avec la production technique audio et visuelle.",
+      "Nous concevons et organisons des événements qui font passer votre message, renforcent votre image de marque et impressionnent vos invités : stands design et modulaires pour foires et salons, séminaires, colloques, inaugurations et réceptions.",
+      "Notre équipe assure aussi la production technique (son, image et média), pour vos concerts comme pour vos événements d'entreprise.",
     ],
     itemsTitle: "Nos domaines d'intervention",
     items: [
-      "Foires",
-      "Salons",
-      "Stands",
+      "Stands design et modulaires",
+      "Foires et salons",
       "Organisation de salons et séminaires",
       "Colloques",
       "Inaugurations",
       "Cocktails d'entreprise",
       "Fêtes et buffets",
+      "Concerts",
+      "Production technique : son, image et média",
     ],
     meta: {
       title: "Conception événementielle à Fès | L'unicreative",
       description:
-        "Stands, foires, salons, séminaires, colloques et cocktails d'entreprise : conception événementielle à Fès.",
+        "Stands design, foires, salons, séminaires, colloques et cocktails d'entreprise : conception événementielle et production technique à Fès.",
     },
   },
 ];
