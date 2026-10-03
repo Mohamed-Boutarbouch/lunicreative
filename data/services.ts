@@ -11,16 +11,17 @@ export const services = [
   {
     value: "creation-site-web",
     title: "Création de sites web",
-    short: "Vitrine, e-commerce, dynamique ou CMS, du design à la maintenance.",
+    short:
+      "Vitrine, dynamique, CMS ou e-commerce, de l'étude à la maintenance.",
     description:
-      "Du site vitrine à la boutique en ligne, nous concevons, développons et hébergeons votre site. Son design moderne s'adapte à tous les écrans, et son référencement est travaillé dès le départ.",
+      "Du site vitrine à la boutique en ligne, nous concevons, développons et hébergeons votre site. Design moderne adapté à tous les écrans, référencement travaillé dès le départ.",
     href: "/services/creation-site-web",
     image: "/services/web-placeholder.jpeg",
     className: "lg:col-span-2",
   },
   {
     value: "conception-creation-graphique",
-    title: "Conception graphique",
+    title: "Conception et création graphique",
     short: "Logos, chartes graphiques, cartes de visite, flyers et brochures.",
     description:
       "Nous créons votre logo et votre charte graphique, puis nous les déclinons sur vos cartes de visite, flyers, brochures, bannières et kakémonos.",
@@ -29,11 +30,11 @@ export const services = [
   },
   {
     value: "impression-numerique-offset",
-    title: "Impression numérique & offset",
+    title: "Impression numérique et offset",
     short:
       "Affiches, bâches, packaging, signalétique et habillage de véhicules.",
     description:
-      "Affiches, bâches, menus, étiquettes, packaging, sérigraphie : en petit ou grand format. Nous réalisons aussi les panneaux publicitaires, la signalétique et l'habillage de véhicules, complet ou partiel.",
+      "Affiches, bâches, menus, étiquettes, packaging, sérigraphie, en petit ou grand format. Nous réalisons aussi les panneaux publicitaires, la signalétique et l'habillage de véhicules, complet ou partiel.",
     href: "/services/impression-numerique-offset",
     image: "/services/printing-placeholder.jpeg",
   },
@@ -42,26 +43,26 @@ export const services = [
     title: "Événementiel",
     short: "Stands, salons, séminaires, cocktails et production technique.",
     description:
-      "Stands design ou modulaires pour foires et salons, séminaires, colloques, inaugurations et cocktails d'entreprise. Nous assurons aussi la production technique : son, image et média.",
+      "Stands design ou modulaires pour foires et salons, séminaires, colloques, inaugurations et cocktails d'entreprise, avec la production technique : son, image et média.",
     href: "/services/conception-evenementielle",
     image: "/services/events-placeholder.jpeg",
   },
   {
     value: "design-creation-3d",
-    title: "Design & création 3D",
+    title: "Design et création 3D",
     short:
       "Plans de masse, images d'architecture et illustrations 3D de produits.",
     description:
-      "Des visuels 3D réalistes pour vos catalogues, plaquettes commerciales et présentations de projets : plans de masse, images d'architecture et illustrations de vos produits.",
+      "Plans de masse, images d'architecture et illustrations de produits : des visuels 3D réalistes pour vos catalogues, plaquettes commerciales et présentations de projets.",
     href: "/services/design-creation-3d",
     image: "/services/3d-placeholder.jpeg",
   },
   {
     value: "creation-application-logiciel",
     title: "Création d'applications",
-    short: "Applications web et desktop conçues selon vos besoins.",
+    short: "Applications web et desktop rapides, fiables et sécurisées.",
     description:
-      "Nous développons des applications web et desktop d'après vos attentes et les besoins de votre activité.",
+      "Des applications web et desktop rapides, fiables et sécurisées, conçues d'après vos attentes et les besoins de votre activité.",
     href: "/services/creation-application-logiciel",
     image: "/services/application-placeholder.jpeg",
   },
@@ -109,15 +110,17 @@ export const serviceGroups: Record<
 > = {
   digital: {
     label: "Digital",
-    description: "Sites web et applications sur mesure.",
+    description: "Sites web et applications web ou desktop.",
   },
   "identite-impression": {
     label: "Identité et impression",
     description: "De l'identité de marque au support imprimé.",
   },
+  // Le groupe contient la 3D (architecture ET produits) et l'événementiel :
+  // « Espace » ne couvrait pas les illustrations de produits.
   espace: {
-    label: "Espace et événementiel",
-    description: "Visualisation 3D, stands et événements.",
+    label: "3D et événementiel",
+    description: "Visuels 3D, stands, salons et événements.",
   },
 };
 
@@ -132,7 +135,7 @@ export const serviceDetails: ServiceDetail[] = [
       title: "Création de sites web à Fès",
       accent: "sites web",
       subtitle:
-        "Vitrine, dynamique, CMS ou e-commerce. Une seule équipe vous accompagne, de l'étude à la maintenance.",
+        "Vitrine, dynamique, CMS ou e-commerce : un site moderne, rapide, qui s'affiche sur tous les écrans. Une seule équipe, de l'étude à la maintenance.",
     },
     gallery: [
       {
@@ -149,18 +152,20 @@ export const serviceDetails: ServiceDetail[] = [
       },
     ],
     intro: [
-      "Un site web ne sert que s'il est vu. L'unicreative, agence web basée à Fès, crée votre site professionnel (vitrine, e-commerce, WordPress, blog) et l'optimise pour Google, Bing et Yahoo.",
+      "Un site que personne ne trouve ne sert à rien. L'unicreative, agence web à Fès, crée votre site professionnel (vitrine, e-commerce, WordPress, blog) et l'optimise pour Google, Bing et Yahoo.",
       "Chaque site a un design moderne et s'affiche parfaitement sur téléphone, tablette et ordinateur. Nous travaillons avec les entreprises comme avec les particuliers.",
-      "Depuis 12 ans, nous accompagnons nos clients au Maroc et en France, avec plus de 100 réalisations. Étude, UX/UI, conception, design, développement, hébergement, maintenance : nous prenons en charge chaque étape.",
+      // À CONFIRMER avec l'agence : « 12 ans » est tiré du site actuel sans date.
+      // Idéalement, remplacer par l'année de création et calculer la durée.
+      "Depuis 12 ans, nous accompagnons nos clients au Maroc et en France, avec plus de 100 réalisations. Étude, UX/UI, conception, design, développement, hébergement, maintenance : une seule équipe prend chaque étape en charge.",
     ],
     reasons: [
       {
         title: "Un site conçu pour être trouvé",
-        text: "Un design soigné et une optimisation pour les moteurs de recherche, pour rendre votre entreprise plus visible en ligne.",
+        text: "Un design soigné et un référencement travaillé dès le départ rendent votre entreprise plus visible sur Internet.",
       },
       {
         title: "Un site rapide",
-        text: "Vos visiteurs sont pressés, et la vitesse d'un site pèse sur leur expérience. Nous utilisons les fonctionnalités intégrées de notre outil de développement pour construire des sites plus rapides.",
+        text: "Vos visiteurs sont pressés : la vitesse de votre site décide de leur expérience. Nous le concevons pour qu'il soit rapide.",
       },
       {
         title: "Vous gardez la main",
@@ -171,19 +176,22 @@ export const serviceDetails: ServiceDetail[] = [
       {
         q: "Combien coûte un site web ?",
         a: [
-          "Le prix dépend du temps de travail nécessaire : fonctionnalités, nombre de pages, complexité du projet, rédaction des contenus, originalité du design, modules, outils utilisés, hébergement et nom de domaine.",
-          "Décrivez-nous votre projet et nous vous répondons avec un devis.",
+          "Le prix dépend du temps de travail nécessaire : fonctionnalités, nombre de pages, complexité du projet, création (ou non) des contenus, originalité du design, modules, outils utilisés, hébergement et nom de domaine.",
+          "Nos offres démarrent à 2 999 DH pour un site vitrine, avec nom de domaine et hébergement pendant 1 an. Pour un chiffrage précis, décrivez-nous votre projet et demandez un devis.",
         ],
       },
       {
         q: "Comment créer un site web ?",
         a: [
-          "Créer et administrer un site demande du temps et des compétences techniques. Une agence comme L'unicreative s'occupe de la technique et vous accompagne tout au long du projet.",
+          "Créer et administrer un site demande du temps et des compétences techniques. Une agence comme L'unicreative prend la technique en charge et vous accompagne du début à la fin du projet.",
         ],
       },
       {
         q: "Quel est le délai de création d'un site web ?",
         a: [
+          // La source présente ce délai comme une moyenne des agences web,
+          // pas comme un engagement de L'unicreative. À confirmer avant de
+          // le formuler comme un délai propre à l'agence.
           "Cela dépend du type de site. En moyenne, un site vitrine est prêt à être publié après 3 semaines à 2 mois de développement.",
           "Ce délai varie selon vos besoins, les modifications demandées et les objectifs du projet.",
         ],
@@ -191,31 +199,34 @@ export const serviceDetails: ServiceDetail[] = [
       {
         q: "Quels langages sont utilisés pour développer un site internet ?",
         a: [
-          "Un site moderne combine plusieurs langages. Côté front-end : HTML pour la structure des pages, CSS pour la mise en forme, JavaScript pour les éléments dynamiques.",
-          "Côté back-end, un langage serveur (PHP, Python, Ruby, Java ou JavaScript, par exemple) génère le contenu à la demande, souvent avec une base de données (SQL, par exemple).",
+          // Réponse générique issue de la source : elle ne décrit pas la pile
+          // technique de l'agence.
+          "Un site moderne combine plusieurs langages. Le front-end, ce que voit le visiteur : HTML pour la structure des pages, CSS pour la mise en forme, JavaScript pour les éléments dynamiques.",
+          "Le back-end, côté serveur : un langage (PHP, Python, Ruby, Java ou JavaScript, par exemple) génère le contenu à la demande, souvent à partir d'une base de données (SQL, par exemple).",
         ],
       },
       {
         q: "Pourquoi le référencement naturel (SEO) est-il important ?",
         a: [
-          "Un site très bien fait mais que personne ne voit ne sert à rien. Le SEO améliore la visibilité de votre site dans les résultats des moteurs de recherche, pour attirer du trafic et donc des ventes.",
+          "Un site très bien fait, mais que personne ne voit, ne sert à rien. Le SEO améliore la visibilité de votre site dans les résultats des moteurs de recherche : plus de visiteurs, donc plus de ventes.",
         ],
       },
     ],
-    // TODO(à vérifier) : formules, prix et contenus ci-dessous absents des
-    // fichiers sources. À confirmer avec l'agence avant publication.
+    // Contenu vérifié : formules, prix et inclusions correspondent à la section
+    // « Nos offres » de creation-site-web.php. Non précisé dans la source :
+    // prix HT ou TTC. À confirmer avant publication.
     pricing: {
-      title: "Nos offres",
+      title: "Nos offres de sites web",
       plans: [
         {
           name: "Site vitrine",
           price: 2999,
           features: [
-            "Nom de domaine (.com, .net, .org) pendant 1 an",
-            "Optimisation SEO (On-Site)",
             "5 à 10 pages",
-            "5 emails professionnels",
+            "Optimisation SEO (On-Site)",
+            "Nom de domaine (.com, .net, .org) pendant 1 an",
             "Hébergement pendant 1 an",
+            "5 emails professionnels",
           ],
           quoteSubservice: "site-vitrine",
         },
@@ -223,11 +234,11 @@ export const serviceDetails: ServiceDetail[] = [
           name: "Site dynamique",
           price: 4999,
           features: [
-            "Nom de domaine (.com, .net, .org) pendant 1 an",
-            "Optimisation SEO (On-Site)",
             "10 à 20 pages",
-            "10 emails professionnels",
+            "Optimisation SEO (On-Site)",
+            "Nom de domaine (.com, .net, .org) pendant 1 an",
             "Hébergement pendant 1 an",
+            "10 emails professionnels",
           ],
           quoteSubservice: "site-dynamique",
         },
@@ -235,20 +246,20 @@ export const serviceDetails: ServiceDetail[] = [
           name: "Site e-commerce",
           price: 5999,
           features: [
-            "Nom de domaine (.com, .net, .org) pendant 1 an",
-            "Optimisation SEO (On-Site et Off-Site)",
             "Nombre de pages illimité",
-            "100 emails professionnels",
+            "Optimisation SEO (On-Site et Off-Site)",
+            "Nom de domaine (.com, .net, .org) pendant 1 an",
             "Hébergement pendant 1 an",
+            "100 emails professionnels",
           ],
           quoteSubservice: "site-e-commerce",
         },
       ],
     },
     meta: {
-      title: "Création de sites web à Fès | L'unicreative",
+      title: "Création de site web à Fès | L'unicreative",
       description:
-        "Agence web à Fès : sites vitrine, e-commerce, dynamiques et CMS, de l'étude à la maintenance. SEO, hébergement, design adapté à tous les écrans.",
+        "Agence web à Fès : sites vitrine, dynamiques, e-commerce et CMS, de l'étude à la maintenance. Dès 2 999 DH, domaine et hébergement 1 an inclus.",
     },
   },
   {
@@ -261,7 +272,7 @@ export const serviceDetails: ServiceDetail[] = [
       title: "Création d'applications web et desktop",
       accent: "applications",
       subtitle:
-        "Des applications web et desktop conçues d'après vos attentes et les besoins de votre activité.",
+        "Des logiciels et applications conçus pour votre activité : rapides, fiables et sécurisés.",
     },
     gallery: [
       {
@@ -277,14 +288,23 @@ export const serviceDetails: ServiceDetail[] = [
         alt: "Application sur mesure conçue par L'unicreative",
       },
     ],
-    // Peu de matière dans les sources : ajouter des exemples réels quand disponibles.
+    // Aucun exemple ni cas client dans les sources : ne rien affirmer de plus
+    // tant que des réalisations réelles ne sont pas fournies.
     intro: [
-      "L'unicreative développe des applications web et des applications desktop, conçues d'après vos attentes et les besoins de votre activité.",
+      "Votre équipe a besoin d'un outil adapté à sa façon de travailler ? L'unicreative développe des logiciels et des applications web ou desktop, d'après vos attentes et les besoins de votre activité.",
+      "Notre équipe de développement s'appuie sur les dernières normes techniques pour concevoir des applications rapides et fiables.",
+    ],
+    itemsTitle: "Ce que votre application vous apporte",
+    items: [
+      "Une base de données solide, pour que toutes vos données soient gérées avec soin",
+      "Une planification flexible des tâches, selon les besoins de votre équipe",
+      "Des modifications, personnalisations et ajouts faciles et rapides",
+      "La confidentialité des informations personnelles et la sécurité de l'application",
     ],
     meta: {
       title: "Création d'applications web et desktop à Fès | L'unicreative",
       description:
-        "Applications web et desktop développées par L'unicreative, agence basée à Fès. Décrivez votre besoin et recevez un devis.",
+        "Applications web et desktop rapides, fiables et sécurisées, développées par L'unicreative à Fès. Décrivez votre besoin et recevez un devis.",
     },
   },
   {
@@ -297,7 +317,7 @@ export const serviceDetails: ServiceDetail[] = [
       title: "Conception et création graphique",
       accent: "création graphique",
       subtitle:
-        "Votre identité de marque et vos supports de communication, pensés pour être reconnus.",
+        "Logo, charte graphique et supports de communication : une identité visuelle cohérente, pensée pour être reconnue.",
     },
     gallery: [
       {
@@ -315,7 +335,7 @@ export const serviceDetails: ServiceDetail[] = [
     ],
     intro: [
       "La création graphique est le pilier de votre communication visuelle. Nous créons votre logo et votre charte graphique, puis nous les déclinons sur tous vos supports.",
-      "Nous partons de vos attentes et de vos besoins pour adapter votre identité visuelle à votre marché, afin que votre marque se distingue et soit reconnue.",
+      "Nous partons de vos attentes et de vos besoins pour adapter votre identité visuelle à votre marché. Votre entreprise ou votre marque attire le regard et se fait reconnaître.",
     ],
     itemsTitle: "Ce que nous créons",
     items: [
@@ -360,10 +380,10 @@ export const serviceDetails: ServiceDetail[] = [
       },
     ],
     intro: [
-      "Nous réalisons tous vos supports de communication imprimés, en petit ou grand format, en impression numérique comme en offset.",
-      "Notre studio graphique conçoit et imprime vos supports, quel que soit votre secteur d'activité.",
+      "Petit ou grand format, impression numérique ou offset : nous réalisons tous vos supports de communication imprimés.",
+      "Notre studio graphique conçoit et réalise vos supports, quel que soit votre secteur d'activité.",
     ],
-    itemsTitle: "Ce que nous imprimons",
+    itemsTitle: "Ce que nous réalisons",
     items: [
       "Affiches et bâches",
       "Flyers et supports marketing",
@@ -388,7 +408,7 @@ export const serviceDetails: ServiceDetail[] = [
       title: "Design et création 3D",
       accent: "création 3D",
       subtitle:
-        "Plans de masse, images d'architecture et illustrations de produits en 3D, pour présenter vos projets.",
+        "Plans de masse, images d'architecture et illustrations de produits : des visuels 3D pour présenter vos projets.",
     },
     gallery: [
       {
@@ -405,9 +425,9 @@ export const serviceDetails: ServiceDetail[] = [
       },
     ],
     intro: [
-      "Nous modélisons vos produits et vos projets d'architecture pour en faire des images 3D modernes et attractives.",
-      "Pour l'architecture et l'immobilier, nous réalisons des plans de masse et de situation hyper réalistes, en 3D extérieure comme intérieure. Ces images servent de base à tous vos outils de communication et de commercialisation.",
-      "Pour vos produits, nos illustrations 3D enrichissent vos catalogues, vos plaquettes commerciales et vos supports de présentation.",
+      "Nous modélisons vos produits et vos projets d'architecture pour en faire des images 3D modernes et attractives, adaptées à vos attentes et à votre secteur.",
+      "Architecture et immobilier : plans de masse et plans de situation réalistes, en 3D extérieure comme intérieure. Ces images servent de base visuelle à tous vos outils de communication et de commercialisation.",
+      "Produits : des illustrations 3D pour vos catalogues, vos plaquettes commerciales et vos supports de présentation.",
     ],
     itemsTitle: "Ce que nous réalisons",
     items: [
@@ -449,16 +469,16 @@ export const serviceDetails: ServiceDetail[] = [
       },
     ],
     intro: [
-      "Nous concevons et organisons des événements qui font passer votre message, renforcent votre image de marque et impressionnent vos invités : stands design et modulaires pour foires et salons, séminaires, colloques, inaugurations et réceptions.",
-      "Notre équipe assure aussi la production technique (son, image et média), pour vos concerts comme pour vos événements d'entreprise.",
+      "Un bon événement fait passer votre message, renforce votre image de marque et impressionne vos invités. Nous le concevons et l'organisons : stands design et modulaires pour foires et salons, séminaires, colloques, inaugurations et cocktails d'entreprise.",
+      "Notre équipe assure aussi la production technique (son, image et média), pour vos concerts et vos événements.",
     ],
     itemsTitle: "Nos domaines d'intervention",
+    // « Foires et salons » (stands) et « Organisation de salons » restent
+    // distincts : ce sont deux métiers différents dans les sources.
     items: [
-      "Stands design et modulaires",
-      "Foires et salons",
-      "Organisation de salons et séminaires",
-      "Colloques",
-      "Inaugurations",
+      "Stands design et modulaires pour foires et salons",
+      "Organisation de salons et de séminaires",
+      "Colloques et inaugurations",
       "Cocktails d'entreprise",
       "Fêtes et buffets",
       "Concerts",
