@@ -1,9 +1,13 @@
 import { CtaButton } from "@/components/cta-button";
 import { Reveal } from "@/components/animations/reveal";
-import { CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { SpotlightCard } from "@/components/spotlight-card";
+import { CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-export function QuoteCta() {
+export function QuoteCta({ quoteService }: { quoteService?: string }) {
+  const quoteHref = quoteService
+    ? `/devis?service=${encodeURIComponent(quoteService)}`
+    : "/devis";
+
   return (
     <Reveal variant="fadeUp" delay={0.2}>
       <SpotlightCard className="group overflow-hidden border-border/60 bg-card shadow-none transition-all duration-300 ease-out hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10">
@@ -21,7 +25,7 @@ export function QuoteCta() {
         </CardHeader>
 
         <CardContent className="relative z-10 flex w-full justify-center">
-          <CtaButton href="/devis" className="mx-auto">
+          <CtaButton href={quoteHref} className="mx-auto">
             Demander un devis
           </CtaButton>
         </CardContent>

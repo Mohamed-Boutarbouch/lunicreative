@@ -1,23 +1,3 @@
-import type { ServiceGroup } from "@/data/services";
-
-export const serviceGroups: Record<
-  ServiceGroup,
-  { label: string; description: string }
-> = {
-  digital: {
-    label: "Digital",
-    description: "Sites web et applications sur mesure.",
-  },
-  "identite-impression": {
-    label: "Identité et impression",
-    description: "De la création graphique au support imprimé.",
-  },
-  espace: {
-    label: "Espace et événementiel",
-    description: "Modélisation 3D, stands et événements.",
-  },
-};
-
 export const quoteServices = [
   {
     value: "site-web",
@@ -65,3 +45,5 @@ export const quoteServices = [
     group: "espace",
   },
 ] as const;
+
+export type QuoteService = (typeof quoteServices)[number]["value"];

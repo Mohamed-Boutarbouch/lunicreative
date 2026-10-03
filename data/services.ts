@@ -72,10 +72,12 @@ export type ServicePricingPlan = {
   name: string;
   price: number;
   features: string[];
+  quoteSubservice: string;
 };
 
 export type ServiceDetail = {
   slug: string;
+  quoteService: string;
   group: ServiceGroup;
   title: string;
   /** Short line shown in lists (home, overview, related) */
@@ -121,6 +123,7 @@ export const serviceGroups: Record<
 export const serviceDetails: ServiceDetail[] = [
   {
     slug: "creation-site-web",
+    quoteService: "site-web",
     group: "digital",
     title: "Création de sites web",
     summary: "Vitrine, dynamique, CMS, eCommerce",
@@ -210,6 +213,7 @@ export const serviceDetails: ServiceDetail[] = [
             "5 emails professionnels",
             "Hébergement pendant 1 an",
           ],
+          quoteSubservice: "site-vitrine",
         },
         {
           name: "Site dynamique",
@@ -221,6 +225,7 @@ export const serviceDetails: ServiceDetail[] = [
             "10 emails professionnels",
             "Hébergement pendant 1 an",
           ],
+          quoteSubservice: "site-dynamique",
         },
         {
           name: "Site e-commerce",
@@ -232,6 +237,7 @@ export const serviceDetails: ServiceDetail[] = [
             "100 emails professionnels",
             "Hébergement pendant 1 an",
           ],
+          quoteSubservice: "site-e-commerce",
         },
       ],
     },
@@ -243,6 +249,7 @@ export const serviceDetails: ServiceDetail[] = [
   },
   {
     slug: "creation-application-logiciel",
+    quoteService: "applications",
     group: "digital",
     title: "Création d'applications",
     summary: "Applications web, desktop ou logiciel",
@@ -277,6 +284,7 @@ export const serviceDetails: ServiceDetail[] = [
   },
   {
     slug: "conception-creation-graphique",
+    quoteService: "creation-graphique",
     group: "identite-impression",
     title: "Conception et création graphique",
     summary: "Logos, cartes de visite, flyers",
@@ -311,6 +319,7 @@ export const serviceDetails: ServiceDetail[] = [
   },
   {
     slug: "impression-numerique-offset",
+    quoteService: "impression",
     group: "identite-impression",
     title: "Impression numérique et offset",
     summary: "Affiches, flyers, habillage véhicule",
@@ -345,6 +354,7 @@ export const serviceDetails: ServiceDetail[] = [
   },
   {
     slug: "design-creation-3d",
+    quoteService: "design-3d",
     group: "espace",
     title: "Design et création 3D",
     summary: "Modélisation 3D",
@@ -378,6 +388,7 @@ export const serviceDetails: ServiceDetail[] = [
   },
   {
     slug: "conception-evenementielle",
+    quoteService: "communication-evenementielle",
     group: "espace",
     title: "Événementiel",
     summary: "Stands, salons, séminaires",

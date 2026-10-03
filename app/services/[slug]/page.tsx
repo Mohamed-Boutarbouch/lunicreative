@@ -67,7 +67,7 @@ export default async function ServicePage(
         </div>
 
         <aside className="lg:sticky lg:top-28 lg:self-start">
-          <QuoteCta />
+          <QuoteCta quoteService={service.quoteService} />
         </aside>
       </div>
 

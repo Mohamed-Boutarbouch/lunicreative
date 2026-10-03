@@ -64,7 +64,10 @@ export function ServicePricing({ title, plans }: ServicePricingProps) {
                   ))}
                 </ul>
 
-                <CtaButton href="/devis" className="mx-auto mt-auto">
+                <CtaButton
+                  href={`/devis?service=${encodeURIComponent(plan.quoteSubservice)}`}
+                  className="mx-auto mt-auto"
+                >
                   Demander un devis
                 </CtaButton>
               </CardContent>

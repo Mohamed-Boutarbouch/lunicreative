@@ -220,8 +220,8 @@ export function Navbar() {
             <SheetFooter className="flex-col items-start gap-3 px-2 sm:flex-col">
               <CtaButton
                 href="/#contact"
+                className="mx-auto"
                 onClick={closeMobileMenu}
-                className="w-fit shrink-0"
               >
                 Nous contacter
               </CtaButton>

@@ -30,14 +30,21 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/components/ui/toast";
-import { quoteServices, serviceGroups } from "@/data/quote";
+import { quoteServices } from "@/data/quote";
 import { quoteDefaultValues, quoteSchema } from "@/lib/schemas";
-import { ServiceGroup } from "@/data/services";
+import { ServiceGroup, serviceGroups } from "@/data/services";
+import { useSearchParams } from "next/navigation";
 
 export function QuoteForm() {
+  const searchParams = useSearchParams();
+  const service = searchParams.get("service");
+
   const form = useForm({
     schema: quoteSchema,
-    initialInput: quoteDefaultValues,
+    initialInput: {
+      ...quoteDefaultValues,
+      service: service ?? quoteDefaultValues.service,
+    },
   });
 
   const handleSubmit: SubmitHandler<typeof quoteSchema> = (output) => {
@@ -170,7 +177,6 @@ export function QuoteForm() {
                           Service souhaité{" "}
                           <span className="text-destructive">*</span>
                         </FieldLabel>
-
                         <Select
                           value={field.input ?? ""}
                           onValueChange={(value) =>
