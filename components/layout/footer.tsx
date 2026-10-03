@@ -8,7 +8,7 @@ import { Separator } from "@/components/ui/separator";
 import { CtaButton } from "@/components/cta-button";
 import { navigation, services } from "@/data/footer";
 import { EASE } from "@/lib/animations";
-import { FooterContactLinks } from "../footer-contact-links";
+import { FooterContactLinks } from "@/components/footer-contact-links";
 
 // Footer-level: children animate bottom → top
 const footerContainer: Variants = {

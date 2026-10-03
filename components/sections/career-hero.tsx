@@ -3,7 +3,7 @@ import Image from "next/image";
 import { CtaButton } from "@/components/cta-button";
 import { FuseReveal } from "@/components/animations/fuse-reveal";
 import { Reveal } from "@/components/animations/reveal";
-import { Badge } from "../ui/badge";
+import { Badge } from "@/components/ui/badge";
 import { IconBriefcase } from "@tabler/icons-react";
 
 export function CareerHero() {

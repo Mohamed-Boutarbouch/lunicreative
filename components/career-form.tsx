@@ -35,11 +35,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { educationLevels, genders, objectives } from "@/data/career";
 import { careerDefaultValues, careerSchema } from "@/lib/schemas";
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { FuseReveal } from "@/components/animations/fuse-reveal";
 import { Reveal } from "@/components/animations/reveal";
 import { toast } from "@/components/ui/toast";
-import { Button } from "./ui/button";
 
 export function CareerForm() {
   const form = useForm({

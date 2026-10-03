@@ -1,4 +1,5 @@
 import { Space_Grotesk, Instrument_Serif, Inter } from "next/font/google";
+import { RscBoundaryProvider } from "@rsc-boundary/next";
 import { cn } from "cn";
 import type { Metadata } from "next";
 
@@ -69,7 +70,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             <Navbar />
 
             <div className="relative mx-auto w-full max-w-[1600px] px-4 sm:px-6 lg:px-10 xl:px-16">
-              {children}
+              <RscBoundaryProvider>{children}</RscBoundaryProvider>
             </div>
 
             <Footer />
