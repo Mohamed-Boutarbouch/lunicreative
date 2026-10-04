@@ -62,7 +62,7 @@ export function CareerHero() {
             >
               <div className="relative aspect-4/3 w-full">
                 <Image
-                  src="/career.webp"
+                  src="/career/career.webp"
                   alt="L'équipe L'unicreative au travail"
                   sizes="(max-width: 1024px) 100vw, 55vw"
                   className="object-cover"

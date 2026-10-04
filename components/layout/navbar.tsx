@@ -97,8 +97,8 @@ export function Navbar() {
         className="flex shrink-0 items-center gap-1.5 sm:gap-2"
       >
         <Image
-          src="/logo.webp"
-          alt=""
+          src="/logo/logo.webp"
+          alt="L’unicreative Logo"
           width={500}
           height={500}
           priority
@@ -143,7 +143,7 @@ export function Navbar() {
                     className="flex items-center gap-2"
                   >
                     <Image
-                      src="/logo.webp"
+                      src="/logo/logo.webp"
                       alt=""
                       width={500}
                       height={500}
