@@ -25,7 +25,6 @@ export function ServiceReasons({
       <RevealGroup
         as="ul"
         stagger={0.08}
-        amount={0.15}
         className="mt-6 divide-y divide-border border-y border-border"
       >
         {reasons.map(({ title, text }) => (

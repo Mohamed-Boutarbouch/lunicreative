@@ -12,12 +12,12 @@ export function ClientsSection() {
         <FuseReveal
           as="h2"
           className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl"
+          delay={0.15}
           parts={[
             "Ils nous font ",
             {
               text: "confiance",
-              className:
-                "font-serif font-semibold italic tracking-wider text-primary",
+              className: "font-serif font-semibold tracking-wider text-primary",
             },
           ]}
         />
@@ -25,7 +25,7 @@ export function ClientsSection() {
         <Reveal
           as="p"
           variant="blurIn"
-          delay={0.3}
+          delay={1.2}
           className="mt-3 text-base leading-relaxed text-muted-foreground sm:text-lg"
         >
           Une sélection des entreprises, institutions et marques que nous
@@ -34,7 +34,7 @@ export function ClientsSection() {
       </div>
 
       <div className="relative">
-        <Reveal variant="fadeIn" duration={8}>
+        <Reveal variant="fadeIn" duration={1.2}>
           <Marquee className="w-full p-0 [--duration:90s]" pauseOnHover>
             {clients.map((client) => (
               <div

@@ -7,17 +7,20 @@ import { Reveal } from "@/components/animations/reveal";
 
 export function ContactUsSection() {
   return (
-    <section id="contact" className="mb-20 md:mb-28 lg:mb-36">
+    <section
+      id="contact"
+      className="[content-visibility:auto] [contain-intrinsic-size:auto_900px] mb-20 md:mb-28 lg:mb-36"
+    >
       <div className="mx-auto mb-10 w-full max-w-3xl text-left sm:mb-14 sm:text-center">
         <FuseReveal
           as="h2"
           className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl"
+          delay={0.15}
           parts={[
             "Un projet en ",
             {
               text: "tête ?",
-              className:
-                "font-serif font-semibold italic tracking-wider text-primary",
+              className: "font-serif font-semibold tracking-wider text-primary",
             },
           ]}
         />

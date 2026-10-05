@@ -24,7 +24,6 @@ export function ServiceItems({
       <RevealGroup
         as="ul"
         stagger={0.06}
-        amount={0.15}
         className="mt-6 grid border-t border-border sm:grid-cols-2 sm:gap-x-10"
       >
         {items.map((item) => (

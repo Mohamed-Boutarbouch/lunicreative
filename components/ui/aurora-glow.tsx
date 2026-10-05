@@ -34,9 +34,10 @@ export function AuroraGlow({
       <div className={cn("absolute inset-0", intensityClass[intensity])}>
         <div className="absolute top-1/2 left-1/2 size-[max(75vw,75svh)] -translate-x-1/2 -translate-y-1/2">
           <div className="animate-aurora-spin size-full will-change-transform motion-reduce:animate-none">
-            <div className="animate-aurora-1 absolute top-[8%] left-[8%] size-104 rounded-full bg-(--aurora-from) blur-[90px] will-change-transform motion-reduce:animate-none md:size-160 md:blur-[120px]" />
-            <div className="animate-aurora-2 absolute top-[12%] right-[6%] size-96 rounded-full bg-(--aurora-via) blur-[100px] will-change-transform motion-reduce:animate-none md:size-144 md:blur-[130px]" />
-            <div className="animate-aurora-3 absolute bottom-[6%] left-[30%] size-104 rounded-full bg-(--aurora-to) blur-[110px] will-change-transform motion-reduce:animate-none md:size-152 md:blur-[140px]" />
+            {/* Radial gradients instead of blur filters: no per-frame filter cost */}
+            <div className="animate-aurora-1 absolute top-[8%] left-[8%] size-136 rounded-full bg-[radial-gradient(closest-side,var(--aurora-from),transparent)] will-change-transform motion-reduce:animate-none md:size-208" />
+            <div className="animate-aurora-2 absolute top-[12%] right-[6%] size-128 rounded-full bg-[radial-gradient(closest-side,var(--aurora-via),transparent)] will-change-transform motion-reduce:animate-none md:size-192" />
+            <div className="animate-aurora-3 absolute bottom-[6%] left-[30%] size-136 rounded-full bg-[radial-gradient(closest-side,var(--aurora-to),transparent)] will-change-transform motion-reduce:animate-none md:size-200" />
           </div>
         </div>
       </div>

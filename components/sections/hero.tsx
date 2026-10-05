@@ -22,7 +22,7 @@ export function HeroSection() {
             {/* Text column */}
             <div className="flex flex-col gap-10">
               <div className="flex flex-col items-start gap-4 text-left sm:items-center sm:gap-6 sm:text-center lg:items-start lg:text-left">
-                <Reveal variant="fadeUp">
+                <Reveal variant="fadeUp" eager>
                   <Badge
                     variant="ghost"
                     className="h-auto gap-2 px-3 py-1.5 text-xs font-semibold uppercase tracking-wider whitespace-normal text-primary sm:text-sm"
@@ -41,10 +41,11 @@ export function HeroSection() {
                     {
                       text: "création",
                       className:
-                        "font-serif font-semibold italic tracking-wider text-primary",
+                        "font-serif font-semibold tracking-wider text-primary",
                     },
                     " qui a du sens",
                   ]}
+                  eager
                 />
 
                 <Reveal
@@ -52,6 +53,7 @@ export function HeroSection() {
                   variant="blurIn"
                   delay={1.2}
                   className="max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg"
+                  eager
                 >
                   Identité visuelle, impression, sites web, stands et événements
                   : un seul interlocuteur, du concept à la réalisation.
@@ -63,6 +65,7 @@ export function HeroSection() {
                   delay={1.6}
                   stagger={0.12}
                   className="flex flex-col items-start justify-center gap-4 sm:flex-row sm:items-center lg:justify-start"
+                  eager
                 >
                   <RevealItem variant="pop">
                     <CtaButton href="/#contact">Démarrer un projet</CtaButton>
@@ -87,7 +90,7 @@ export function HeroSection() {
             </div>
 
             {/* Carousel column */}
-            <Reveal variant="fadeUp" delay={0.8} className="w-full">
+            <Reveal variant="fadeUp" delay={0.8} className="w-full" eager>
               <HeroCarousel
                 items={[
                   {

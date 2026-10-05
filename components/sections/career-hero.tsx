@@ -27,14 +27,14 @@ export function CareerHero() {
 
               <FuseReveal
                 as="h1"
-                delay={0.15}
                 className="max-w-2xl font-heading text-5xl font-semibold tracking-tight sm:text-6xl lg:text-5xl xl:text-6xl"
+                delay={0.15}
                 parts={[
                   "Rejoignez une équipe qui donne ",
                   {
                     text: "forme",
                     className:
-                      "font-serif font-semibold italic tracking-wider text-primary",
+                      "font-serif font-semibold tracking-wider text-primary",
                   },
                   " aux idées",
                 ]}
@@ -44,7 +44,7 @@ export function CareerHero() {
                 as="p"
                 variant="blurIn"
                 className="max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg"
-                delay={0.8}
+                delay={1.2}
               >
                 Emploi ou stage : envoyez-nous votre candidature. Nous étudions
                 chaque profil.

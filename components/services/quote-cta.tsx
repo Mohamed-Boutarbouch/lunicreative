@@ -14,7 +14,7 @@ export function QuoteCta({ quoteService }: { quoteService?: string }) {
         <CardHeader className="relative z-10">
           <CardTitle className="font-heading text-2xl font-semibold tracking-tight">
             Un projet{" "}
-            <span className="font-serif font-semibold italic tracking-wider text-primary">
+            <span className="font-serif font-semibold tracking-wider text-primary">
               en tête ?
             </span>
           </CardTitle>

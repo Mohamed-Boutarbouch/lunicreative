@@ -1,9 +1,13 @@
-"use client";
+import {
+  Children,
+  cloneElement,
+  isValidElement,
+  type CSSProperties,
+  type ElementType,
+  type ReactNode,
+} from "react";
 
-import type { ReactNode } from "react";
-import { motion } from "motion/react";
-
-import { EASE, variants, type AnimationVariant } from "@/lib/animations";
+import type { AnimationVariant } from "@/lib/animations";
 
 type Tag = "div" | "span" | "h2" | "p" | "li" | "ul" | "dl" | "section";
 
@@ -11,6 +15,8 @@ type BaseProps = {
   children: ReactNode;
   as?: Tag;
   className?: string;
+  /** Above the fold: animate on first paint instead of waiting for the observer. */
+  eager?: boolean;
 };
 
 /** One element, animates on its own when scrolled into view. */
@@ -21,28 +27,24 @@ export function Reveal({
   variant = "fadeUp",
   delay = 0,
   duration = 0.7,
-  once = true,
-  amount = 0.3,
+  eager = false,
 }: BaseProps & {
   variant?: AnimationVariant;
   delay?: number;
   duration?: number;
-  once?: boolean;
-  amount?: number;
 }) {
-  const MotionTag = motion[as] as typeof motion.div;
+  const Component: ElementType = as;
 
   return (
-    <MotionTag
+    <Component
+      data-reveal=""
+      data-variant={variant}
+      data-in-view={eager ? "true" : undefined}
       className={className}
-      variants={variants[variant]}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once, amount }}
-      transition={{ duration, delay, ease: EASE }}
+      style={{ "--d": `${delay}s`, "--dur": `${duration}s` } as CSSProperties}
     >
       {children}
-    </MotionTag>
+    </Component>
   );
 }
 
@@ -53,31 +55,24 @@ export function RevealGroup({
   className,
   delay = 0,
   stagger = 0.1,
-  once = true,
-  amount = 0.15,
-}: BaseProps & {
-  delay?: number;
-  stagger?: number;
-  once?: boolean;
-  amount?: number;
-}) {
-  const MotionTag = motion[as] as typeof motion.div;
+  eager = false,
+}: BaseProps & { delay?: number; stagger?: number }) {
+  const Component: ElementType = as;
+  let index = 0;
 
   return (
-    <MotionTag
+    <Component
+      data-reveal-group=""
+      data-in-view={eager ? "true" : undefined}
       className={className}
-      variants={{
-        hidden: {},
-        visible: {
-          transition: { delayChildren: delay, staggerChildren: stagger },
-        },
-      }}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once, amount }}
+      style={{ "--gd": `${delay}s`, "--gs": `${stagger}s` } as CSSProperties}
     >
-      {children}
-    </MotionTag>
+      {Children.map(children, (child) =>
+        isValidElement<{ index?: number }>(child) && child.type === RevealItem
+          ? cloneElement(child, { index: index++ })
+          : child,
+      )}
+    </Component>
   );
 }
 
@@ -88,16 +83,23 @@ export function RevealItem({
   className,
   variant = "fadeUp",
   duration = 0.6,
-}: BaseProps & { variant?: AnimationVariant; duration?: number }) {
-  const MotionTag = motion[as] as typeof motion.div;
+  index = 0,
+}: Omit<BaseProps, "eager"> & {
+  variant?: AnimationVariant;
+  duration?: number;
+  /** Injected by RevealGroup. */
+  index?: number;
+}) {
+  const Component: ElementType = as;
 
   return (
-    <MotionTag
+    <Component
+      data-reveal-item=""
+      data-variant={variant}
       className={className}
-      variants={variants[variant]}
-      transition={{ duration, ease: EASE }}
+      style={{ "--i": index, "--dur": `${duration}s` } as CSSProperties}
     >
       {children}
-    </MotionTag>
+    </Component>
   );
 }

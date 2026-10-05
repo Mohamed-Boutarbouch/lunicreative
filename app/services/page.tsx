@@ -34,8 +34,7 @@ export default function ServicesPage() {
             "Nos ",
             {
               text: "services",
-              className:
-                "font-serif font-semibold italic tracking-wider text-primary",
+              className: "font-serif font-semibold tracking-wider text-primary",
             },
           ]}
         />

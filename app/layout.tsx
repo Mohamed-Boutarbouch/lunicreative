@@ -8,6 +8,7 @@ import { Navbar } from "@/components/layout/navbar";
 import { Toaster } from "@/components/ui/toast";
 import { Footer } from "@/components/layout/footer";
 import { AuroraGlow } from "@/components/ui/aurora-glow";
+import { RevealObserver } from "@/components/animations/reveal-observer";
 
 import "./globals.css";
 
@@ -18,6 +19,7 @@ const spaceGroteskHeading = Space_Grotesk({
 
 const instrumentSerif = Instrument_Serif({
   weight: "400",
+  style: "italic",
   subsets: ["latin"],
   variable: "--font-serif",
 });
@@ -52,6 +54,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         suppressHydrationWarning
         className="relative min-h-screen bg-background selection:bg-primary selection:text-primary-foreground"
       >
+        <RevealObserver />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -69,7 +72,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
 
             <Navbar />
 
-            <div className="relative mx-auto w-full max-w-[1600px] px-4 sm:px-6 lg:px-10 xl:px-16">
+            <div className="relative mx-auto w-full max-w-400 px-4 sm:px-6 lg:px-10 xl:px-16">
               <RscBoundaryProvider>{children}</RscBoundaryProvider>
             </div>
 

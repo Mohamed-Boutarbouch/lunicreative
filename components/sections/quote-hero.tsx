@@ -21,14 +21,14 @@ export function QuoteHero() {
 
           <FuseReveal
             as="h1"
-            delay={0.15}
             className="mt-6 font-heading text-5xl font-semibold tracking-tight sm:text-6xl lg:text-7xl"
+            delay={0.15}
             parts={[
               "Parlons de votre ",
               {
                 text: "projet",
                 className:
-                  "font-serif font-semibold italic tracking-wider text-primary",
+                  "font-serif font-semibold tracking-wider text-primary",
               },
             ]}
           />
@@ -36,7 +36,7 @@ export function QuoteHero() {
           <Reveal
             as="p"
             variant="blurIn"
-            delay={0.8}
+            delay={1.2}
             className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg"
           >
             Afin de répondre au mieux à votre demande de devis, merci de remplir

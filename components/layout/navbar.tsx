@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { IconChevronDown, IconMenu2 } from "@tabler/icons-react";
-import { motion } from "motion/react";
 import { cn } from "cn";
 
 import { CtaButton } from "@/components/cta-button";
@@ -29,7 +28,6 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { primaryRoutes, secondaryRoutes, services } from "@/data/navbar";
-import { EASE } from "@/lib/animations";
 import { assetPath } from "@/lib/asset";
 
 const navLinkClass = navigationMenuTriggerStyle({
@@ -73,16 +71,9 @@ export function Navbar() {
   };
 
   return (
-    <motion.header
-      initial={{ y: -120, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{
-        duration: 0.8,
-        delay: 0.1,
-        ease: EASE,
-      }}
+    <header
       className={cn(
-        "sticky top-5 z-40 mx-auto grid w-[90%] grid-cols-[auto_1fr_auto] items-center rounded-2xl border p-2 transition-all duration-300 ease-out md:w-[70%] lg:w-[75%] lg:max-w-7xl",
+        "navbar-enter sticky top-5 z-40 mx-auto grid w-[90%] grid-cols-[auto_1fr_auto] items-center rounded-2xl border p-2 transition-all duration-300 ease-out md:w-[70%] lg:w-[75%] lg:max-w-7xl",
         isScrolled
           ? [
               "border-border/70 bg-card/90 shadow-xl shadow-black/8 backdrop-blur-xl",
@@ -305,6 +296,6 @@ export function Navbar() {
           Nous contacter
         </CtaButton>
       </div>
-    </motion.header>
+    </header>
   );
 }

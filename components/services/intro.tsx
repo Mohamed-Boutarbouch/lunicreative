@@ -18,7 +18,7 @@ export function ServiceIntro({ paragraphs }: { paragraphs: string[] }) {
         {lead}
       </Reveal>
 
-      <RevealGroup as="div" stagger={0.08} amount={0.2}>
+      <RevealGroup as="div" stagger={0.08}>
         {rest.map((paragraph) => (
           <RevealItem
             key={paragraph}

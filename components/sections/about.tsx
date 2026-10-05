@@ -16,19 +16,20 @@ export function AboutSection() {
     <section
       id="a-propos"
       aria-labelledby="about-heading"
-      className="py-14 sm:py-22"
+      className="[content-visibility:auto] [contain-intrinsic-size:auto_900px] py-14 sm:py-22"
     >
       <div className="flex flex-col items-center gap-10 sm:gap-14">
         <div className="w-full max-w-4xl text-left sm:text-center">
           <FuseReveal
             as="h2"
             className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl"
+            delay={0.15}
             parts={[
               "Une agence qui donne ",
               {
                 text: "forme aux idées",
                 className:
-                  "font-serif font-semibold italic tracking-wider text-primary",
+                  "font-serif font-semibold tracking-wider text-primary",
               },
             ]}
           />

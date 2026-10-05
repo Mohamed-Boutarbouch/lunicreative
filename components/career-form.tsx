@@ -78,7 +78,7 @@ export function CareerForm() {
               {
                 text: "candidature",
                 className:
-                  "font-serif font-semibold italic tracking-wider text-primary",
+                  "font-serif font-semibold tracking-wider text-primary",
               },
             ]}
           />

@@ -38,18 +38,22 @@ export function WorkSection() {
   };
 
   return (
-    <section id="realisations" className="py-14 sm:py-22">
+    <section
+      id="realisations"
+      className="[content-visibility:auto] [contain-intrinsic-size:auto_900px] py-14 sm:py-22"
+    >
       <div className="flex flex-col items-center gap-10 md:gap-16">
         <div className="w-full max-w-3xl text-left sm:text-center">
           <FuseReveal
             as="h2"
             className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl"
+            delay={0.15}
             parts={[
               "Des projets ",
               {
                 text: "qui prennent vie",
                 className:
-                  "font-serif font-semibold italic tracking-wider text-primary",
+                  "font-serif font-semibold tracking-wider text-primary",
               },
             ]}
           />

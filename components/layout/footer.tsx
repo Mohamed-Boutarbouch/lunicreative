@@ -1,37 +1,11 @@
-"use client";
-
 import Link from "next/link";
-import { motion, useInView, type Variants } from "motion/react";
-import { useRef } from "react";
+import type { CSSProperties, HTMLAttributes } from "react";
 
 import { Separator } from "@/components/ui/separator";
 import { CtaButton } from "@/components/cta-button";
 import { navigation, services } from "@/data/footer";
-import { EASE } from "@/lib/animations";
 import { FooterContactLinks } from "@/components/footer-contact-links";
 
-// Footer-level: children animate bottom → top
-const footerContainer: Variants = {
-  hidden: {},
-  show: {
-    transition: {
-      staggerChildren: 0.14,
-      delayChildren: 0.1,
-      staggerDirection: -1,
-    },
-  },
-};
-
-// The top grid keeps a normal left-to-right stagger
-const container: Variants = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.08 } },
-};
-
-const item: Variants = {
-  hidden: { opacity: 0, y: 40 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: EASE } },
-};
 function FooterLinkGroup({
   title,
   links,
@@ -61,34 +35,43 @@ function FooterLinkGroup({
   );
 }
 
-export function Footer() {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, amount: 0.2 });
+/** Bottom → top reveal: bottom rows get the smallest delay. */
+function FooterItem({
+  delay,
+  as: Tag = "div",
+  style,
+  ...props
+}: HTMLAttributes<HTMLElement> & { delay: number; as?: "div" | "nav" }) {
+  return (
+    <Tag
+      data-reveal-item=""
+      data-variant="fadeUp"
+      style={
+        {
+          "--dur": "0.7s",
+          animationDelay: `${delay}s`,
+          ...style,
+        } as CSSProperties
+      }
+      {...props}
+    />
+  );
+}
 
+export function Footer() {
   return (
     <div
-      ref={ref}
+      data-reveal-group=""
       className="relative h-(--footer-h) [--footer-h:max(85dvh,44rem)] lg:[--footer-h:max(70dvh,36rem)]"
       style={{ clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}
     >
       <div className="relative top-[-100dvh] h-[calc(var(--footer-h)+100dvh)]">
         <div className="sticky top-[calc(100dvh-var(--footer-h))] h-(--footer-h)">
-          <motion.footer
-            variants={footerContainer}
-            initial="hidden"
-            animate={inView ? "show" : "hidden"}
-            className="dark relative h-full w-full overflow-hidden bg-background text-foreground"
-          >
+          <footer className="dark relative h-full w-full overflow-hidden bg-background text-foreground">
             <div className="mx-auto h-full w-full max-w-[1600px] px-4 sm:px-6 lg:px-10 xl:px-16">
               <div className="flex h-full flex-col justify-between gap-6 p-6 sm:gap-8 sm:p-10 lg:p-14">
-                <motion.div
-                  variants={container}
-                  className="grid grid-cols-2 gap-x-6 gap-y-10 lg:grid-cols-12 lg:gap-10"
-                >
-                  <motion.div
-                    variants={item}
-                    className="col-span-2 lg:col-span-6"
-                  >
+                <div className="grid grid-cols-2 gap-x-6 gap-y-10 lg:grid-cols-12 lg:gap-10">
+                  <FooterItem delay={0.52} className="col-span-2 lg:col-span-6">
                     <p className="text-xs font-semibold uppercase tracking-widest text-primary">
                       Un projet en tête ?
                     </p>
@@ -102,25 +85,25 @@ export function Footer() {
                     <CtaButton href="/devis" className="mt-6">
                       Demander un devis
                     </CtaButton>
-                  </motion.div>
+                  </FooterItem>
 
-                  <motion.nav
-                    variants={item}
+                  <FooterItem
+                    as="nav"
+                    delay={0.6}
                     aria-label="Navigation du pied de page"
                     className="lg:col-span-2"
                   >
                     <FooterLinkGroup title="Navigation" links={navigation} />
-                  </motion.nav>
+                  </FooterItem>
 
-                  <motion.div variants={item} className="lg:col-span-4">
+                  <FooterItem delay={0.68} className="lg:col-span-4">
                     <FooterLinkGroup title="Nos services" links={services} />
-                  </motion.div>
-                </motion.div>
+                  </FooterItem>
+                </div>
 
-                {/* Bottom */}
                 <div className="flex flex-col gap-5 sm:gap-6">
-                  <motion.div
-                    variants={item}
+                  <FooterItem
+                    delay={0.38}
                     className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between"
                   >
                     <FooterContactLinks />
@@ -130,12 +113,12 @@ export function Footer() {
                       <br />
                       Fès, Maroc
                     </address>
-                  </motion.div>
+                  </FooterItem>
 
                   <Separator />
 
-                  <motion.div
-                    variants={item}
+                  <FooterItem
+                    delay={0.24}
                     className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between"
                   >
                     <div>
@@ -152,10 +135,10 @@ export function Footer() {
                         Digital Printing Solutions
                       </p>
                     </div>
-                  </motion.div>
+                  </FooterItem>
 
-                  <motion.div
-                    variants={item}
+                  <FooterItem
+                    delay={0.1}
                     className="flex flex-col gap-1 text-xs text-muted-foreground sm:flex-row sm:justify-between sm:text-sm"
                   >
                     <p>
@@ -163,11 +146,11 @@ export function Footer() {
                       droits réservés.
                     </p>
                     <p>Anciennement Imagin Creative</p>
-                  </motion.div>
+                  </FooterItem>
                 </div>
               </div>
             </div>
-          </motion.footer>
+          </footer>
         </div>
       </div>
     </div>

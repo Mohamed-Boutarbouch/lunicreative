@@ -120,6 +120,8 @@
     --aurora-from: var(--primary);
     --aurora-via: oklch(from var(--primary) l c calc(h + 40));
     --aurora-to: oklch(from var(--primary) l c calc(h - 40));
+
+    --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .dark {
@@ -173,5 +175,222 @@
     }
     [id] {
         scroll-margin-top: 7rem;
+    }
+}
+
+/* --- Scroll reveal: generic fade/slide/scale ------------------------------ */
+@keyframes reveal {
+    from {
+        opacity: 0;
+        transform: translate(var(--rx, 0px), var(--ry, 0px)) scale(var(--rs, 1));
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* --- Fuse heading: one character + its spark ------------------------------ */
+@keyframes fuse-char {
+    0% {
+        opacity: 0;
+        transform: translateX(-6px);
+        text-shadow:
+            0 0 14px rgba(251, 146, 60, 1),
+            0 0 28px rgba(239, 68, 68, 0.8);
+    }
+    15% {
+        opacity: 1;
+    }
+    31% {
+        transform: none;
+    }
+    100% {
+        opacity: 1;
+        transform: none;
+        text-shadow:
+            0 0 0 rgba(251, 146, 60, 0),
+            0 0 0 rgba(239, 68, 68, 0);
+    }
+}
+@keyframes fuse-spark {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0);
+    }
+}
+
+/* --- Navbar entrance ------------------------------------------------------ */
+@keyframes navbar-in {
+    from {
+        opacity: 0;
+        transform: translateY(-120px);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* --- Marquee -------------------------------------------------------------- */
+@keyframes marquee {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(calc(-100% - var(--gap)));
+    }
+}
+@keyframes marquee-vertical {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(calc(-100% - var(--gap)));
+    }
+}
+
+@layer components {
+    /* Variants. Each sets all three vars because custom properties inherit. */
+    [data-variant="fadeIn"] {
+        --rx: 0px;
+        --ry: 0px;
+        --rs: 1;
+    }
+    [data-variant="fadeUp"] {
+        --rx: 0px;
+        --ry: 28px;
+        --rs: 1;
+    }
+    [data-variant="fadeDown"] {
+        --rx: 0px;
+        --ry: -20px;
+        --rs: 1;
+    }
+    [data-variant="fadeLeft"] {
+        --rx: -36px;
+        --ry: 0px;
+        --rs: 1;
+    }
+    [data-variant="fadeRight"] {
+        --rx: 36px;
+        --ry: 0px;
+        --rs: 1;
+    }
+    [data-variant="scaleIn"] {
+        --rx: 0px;
+        --ry: 0px;
+        --rs: 0.92;
+    }
+    [data-variant="blurIn"] {
+        --rx: 0px;
+        --ry: 12px;
+        --rs: 1;
+    }
+    [data-variant="pop"] {
+        --rx: 0px;
+        --ry: 12px;
+        --rs: 0.85;
+    }
+
+    /* Hidden until the observer (or `eager`) sets data-in-view */
+    [data-reveal],
+    [data-reveal-item] {
+        opacity: 0;
+        transform: translate(var(--rx, 0px), var(--ry, 0px)) scale(var(--rs, 1));
+    }
+
+    /* Standalone <Reveal> */
+    [data-reveal][data-in-view] {
+        animation: reveal var(--dur, 0.7s) var(--ease-out-expo) var(--d, 0s)
+            both;
+    }
+
+    /* <RevealGroup> + <RevealItem>: delay = group delay + index * stagger */
+    [data-reveal-group][data-in-view] [data-reveal-item] {
+        animation: reveal var(--dur, 0.6s) var(--ease-out-expo)
+            calc(var(--gd, 0s) + var(--i, 0) * var(--gs, 0.1s)) both;
+    }
+
+    /* Fuse heading */
+    .fuse-char {
+        position: relative;
+        display: inline-block;
+        opacity: 0;
+    }
+    .fuse-char::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: -2px;
+        width: 6px;
+        height: 6px;
+        margin-top: -3px;
+        border-radius: 9999px;
+        background: #fdba74;
+        box-shadow: 0 0 8px 3px rgba(251, 146, 60, 0.9);
+        opacity: 0;
+        pointer-events: none;
+    }
+    [data-fuse][data-in-view] .fuse-char {
+        animation: fuse-char 0.8s ease-out both;
+        animation-delay: calc(
+            var(--fuse-delay, 0s) + var(--i, 0) * var(--fuse-stagger, 0.04s)
+        );
+    }
+    [data-fuse][data-in-view] .fuse-char::after {
+        animation: fuse-spark 0.4s ease-out both;
+        animation-delay: calc(
+            var(--fuse-delay, 0s) + var(--i, 0) * var(--fuse-stagger, 0.04s)
+        );
+    }
+
+    /* Navbar */
+    .navbar-enter {
+        animation: navbar-in 0.8s var(--ease-out-expo) 0.1s both;
+    }
+
+    /* Marquee */
+    .animate-marquee {
+        animation: marquee var(--duration) linear infinite;
+    }
+    .animate-marquee-vertical {
+        animation: marquee-vertical var(--duration) linear infinite;
+    }
+    .animate-reverse {
+        animation-direction: reverse !important;
+    }
+    .pause-on-hover:hover .animate-marquee,
+    .pause-on-hover:hover .animate-marquee-vertical {
+        animation-play-state: paused !important;
+    }
+
+    /* Reduced motion: show everything immediately */
+    @media (prefers-reduced-motion: reduce) {
+        [data-reveal],
+        [data-reveal-item],
+        .fuse-char {
+            opacity: 1;
+            transform: none;
+            animation: none !important;
+        }
+        .fuse-char::after {
+            display: none;
+        }
+        .navbar-enter {
+            animation: none;
+        }
+        .animate-marquee,
+        .animate-marquee-vertical {
+            animation: none;
+        }
     }
 }

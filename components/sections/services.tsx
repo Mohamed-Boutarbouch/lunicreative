@@ -16,17 +16,20 @@ export function ServicesSection() {
   const hasOddServices = services.length % 2 !== 0;
 
   return (
-    <section id="services" className="py-14 sm:py-22">
+    <section
+      id="services"
+      className="[content-visibility:auto] [contain-intrinsic-size:auto_900px] py-14 sm:py-22"
+    >
       <div className="mx-auto mb-10 w-full max-w-3xl text-left sm:mb-14 sm:text-center">
         <FuseReveal
           as="h2"
           className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl"
+          delay={0.15}
           parts={[
             "Tout ce qu'il faut pour ",
             {
               text: "donner vie",
-              className:
-                "font-serif font-semibold italic tracking-wider text-primary",
+              className: "font-serif font-semibold tracking-wider text-primary",
             },
             " à vos projets",
           ]}
