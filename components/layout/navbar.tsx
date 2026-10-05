@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { IconChevronDown, IconMenu2 } from "@tabler/icons-react";
+import { IconMenu2 } from "@tabler/icons-react";
 import { cn } from "cn";
 
 import { CtaButton } from "@/components/cta-button";
@@ -12,11 +12,9 @@ import { ToggleTheme } from "@/components/layout/toogle-theme";
 import { Separator } from "@/components/ui/separator";
 import {
   NavigationMenu,
-  NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import {
@@ -27,7 +25,6 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { primaryRoutes, secondaryRoutes, services } from "@/data/navbar";
 import { assetPath } from "@/lib/asset";
 
 const navLinkClass = navigationMenuTriggerStyle({
@@ -39,6 +36,14 @@ const mobileLinkClass = buttonVariants({
   className:
     "justify-start text-base text-muted-foreground hover:text-foreground",
 });
+
+const navLinks = [
+  { href: "/", label: "Accueil" },
+  { href: "/services", label: "Services" },
+  { href: "/#realisations", label: "Réalisations" },
+  { href: "/#a-propos", label: "À propos" },
+  { href: "/carriere", label: "Carrière" },
+];
 
 function useScrolled() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -62,18 +67,16 @@ function useScrolled() {
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isServicesOpen, setIsServicesOpen] = useState(false);
   const isScrolled = useScrolled();
 
   const closeMobileMenu = () => {
     setIsOpen(false);
-    setIsServicesOpen(false);
   };
 
   return (
     <header
       className={cn(
-        "navbar-enter sticky top-5 z-40 mx-auto grid w-[90%] grid-cols-[auto_1fr_auto] items-center rounded-2xl border p-2 transition-all duration-300 ease-out md:w-[70%] lg:w-[75%] lg:max-w-7xl",
+        "navbar-enter sticky top-5 z-40 mx-auto grid w-[92%] grid-cols-[auto_1fr_auto] items-center rounded-2xl border p-2 transition-all duration-300 ease-out sm:w-[90%] xl:max-w-7xl",
         isScrolled
           ? [
               "border-border/70 bg-card/90 shadow-xl shadow-black/8 backdrop-blur-xl",
@@ -103,8 +106,8 @@ export function Navbar() {
         </span>
       </Link>
 
-      {/* Mobile navigation */}
-      <div className="col-start-3 flex items-center lg:hidden">
+      {/* Mobile / tablet navigation */}
+      <div className="col-start-3 flex items-center xl:hidden">
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger
             render={
@@ -152,50 +155,7 @@ export function Navbar() {
               </SheetHeader>
 
               <nav className="flex flex-col gap-1 px-2">
-                {primaryRoutes.map(({ href, label }) => (
-                  <Link
-                    key={href}
-                    href={href}
-                    onClick={closeMobileMenu}
-                    className={mobileLinkClass}
-                  >
-                    {label}
-                  </Link>
-                ))}
-
-                {/* Services */}
-                <button
-                  type="button"
-                  onClick={() => setIsServicesOpen((open) => !open)}
-                  aria-expanded={isServicesOpen}
-                  className="flex h-9 w-full items-center justify-between rounded-md px-3 text-base font-normal text-muted-foreground outline-none transition-colors hover:bg-muted hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring"
-                >
-                  <span>Nos Services</span>
-
-                  <IconChevronDown
-                    className={cn(
-                      "size-4 shrink-0 transition-transform duration-200",
-                      isServicesOpen && "rotate-180",
-                    )}
-                  />
-                </button>
-
-                {isServicesOpen && (
-                  <div className="ml-3 flex flex-col border-l pl-3">
-                    {services.map(({ href, title }) => (
-                      <Link
-                        key={href}
-                        href={href}
-                        onClick={closeMobileMenu}
-                        className="rounded-md px-3 py-2 text-left text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-                      >
-                        {title}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-
-                {secondaryRoutes.map(({ href, label }) => (
+                {navLinks.map(({ href, label }) => (
                   <Link
                     key={href}
                     href={href}
@@ -229,51 +189,9 @@ export function Navbar() {
       </div>
 
       {/* Desktop navigation */}
-      <NavigationMenu className="hidden justify-self-center lg:block">
+      <NavigationMenu className="hidden justify-self-center xl:block">
         <NavigationMenuList>
-          {primaryRoutes.map(({ href, label }) => (
-            <NavigationMenuItem key={href}>
-              <NavigationMenuLink
-                render={<Link href={href} />}
-                className={navLinkClass}
-              >
-                {label}
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-          ))}
-
-          <NavigationMenuItem>
-            <NavigationMenuTrigger className="bg-transparent px-2 text-base text-muted-foreground hover:bg-transparent hover:text-foreground">
-              Nos Services
-            </NavigationMenuTrigger>
-
-            <NavigationMenuContent>
-              <ul className="grid w-150 grid-cols-2 gap-1 p-2">
-                {services.map(({ href, title, description }, index) => {
-                  const isFeatured = services.length % 2 !== 0 && index === 0;
-
-                  return (
-                    <li key={href} className={cn(isFeatured && "col-span-2")}>
-                      <NavigationMenuLink
-                        render={<Link href={href} />}
-                        className="block rounded-md p-3 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-                      >
-                        <p className="mb-1 font-semibold leading-none text-foreground">
-                          {title}
-                        </p>
-
-                        <p className="line-clamp-2 text-sm text-muted-foreground">
-                          {description}
-                        </p>
-                      </NavigationMenuLink>
-                    </li>
-                  );
-                })}
-              </ul>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
-
-          {secondaryRoutes.map(({ href, label }) => (
+          {navLinks.map(({ href, label }) => (
             <NavigationMenuItem key={href}>
               <NavigationMenuLink
                 render={<Link href={href} />}
@@ -287,7 +205,7 @@ export function Navbar() {
       </NavigationMenu>
 
       {/* Desktop actions */}
-      <div className="hidden shrink-0 items-center justify-self-end gap-2 lg:flex">
+      <div className="hidden shrink-0 items-center justify-self-end gap-2 xl:flex">
         <div className="shrink-0">
           <ToggleTheme />
         </div>

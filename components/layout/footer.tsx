@@ -97,7 +97,7 @@ export function Footer() {
                   </FooterItem>
 
                   <FooterItem delay={0.68} className="lg:col-span-4">
-                    <FooterLinkGroup title="Nos services" links={services} />
+                    <FooterLinkGroup title="Services" links={services} />
                   </FooterItem>
                 </div>
 
