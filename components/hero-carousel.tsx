@@ -95,7 +95,7 @@ export function HeroCarousel({
                   sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 691px"
                   className="object-cover"
                   priority={index === 0}
-                  loading={index === 0 ? "eager" : "lazy"}
+                  fetchPriority={index === 0 ? "high" : "auto"}
                 />
               </div>
             </CarouselItem>
