@@ -22,7 +22,6 @@ export function RelatedServices({ exclude }: { exclude: string }) {
       <RevealGroup
         as="div"
         stagger={0.08}
-        amount={0.1}
         className="mt-4 border-t border-border"
       >
         {others.map((service) => (
