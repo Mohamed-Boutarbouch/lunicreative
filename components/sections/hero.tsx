@@ -11,6 +11,7 @@ import { Badge } from "@/components/ui/badge";
 import { CtaButton } from "@/components/cta-button";
 import { FuseReveal } from "@/components/animations/fuse-reveal";
 import { HeroCarousel } from "@/components/hero-carousel";
+import { assetPath } from "@/lib/asset";
 
 export function HeroSection() {
   return (
@@ -90,19 +91,19 @@ export function HeroSection() {
               <HeroCarousel
                 items={[
                   {
-                    src: "/slides/home-1.webp",
+                    src: assetPath("/slides/home-1.webp"),
                     alt: "L'unicreative — création et communication",
                   },
                   {
-                    src: "/slides/home-2.webp",
+                    src: assetPath("/slides/home-2.webp"),
                     alt: "L'unicreative — événementiel",
                   },
                   {
-                    src: "/slides/home-3.webp",
+                    src: assetPath("/slides/home-3.webp"),
                     alt: "L'unicreative — impression",
                   },
                   {
-                    src: "/slides/home-4.webp",
+                    src: assetPath("/slides/home-4.webp"),
                     alt: "L'unicreative — identité visuelle",
                   },
                 ]}

@@ -30,6 +30,7 @@ import {
 } from "@/components/ui/sheet";
 import { primaryRoutes, secondaryRoutes, services } from "@/data/navbar";
 import { EASE } from "@/lib/animations";
+import { assetPath } from "@/lib/asset";
 
 const navLinkClass = navigationMenuTriggerStyle({
   className: "px-2 text-base text-muted-foreground hover:text-foreground",
@@ -97,7 +98,7 @@ export function Navbar() {
         className="flex shrink-0 items-center gap-1.5 sm:gap-2"
       >
         <Image
-          src="/logo/logo.webp"
+          src={assetPath("/logo/logo.webp")}
           alt="L’unicreative Logo"
           width={500}
           height={500}
@@ -143,7 +144,7 @@ export function Navbar() {
                     className="flex items-center gap-2"
                   >
                     <Image
-                      src="/logo/logo.webp"
+                      src={assetPath("/logo/logo.webp")}
                       alt=""
                       width={500}
                       height={500}

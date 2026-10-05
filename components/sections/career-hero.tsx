@@ -5,6 +5,7 @@ import { FuseReveal } from "@/components/animations/fuse-reveal";
 import { Reveal } from "@/components/animations/reveal";
 import { Badge } from "@/components/ui/badge";
 import { IconBriefcase } from "@tabler/icons-react";
+import { assetPath } from "@/lib/asset";
 
 export function CareerHero() {
   return (
@@ -62,7 +63,7 @@ export function CareerHero() {
             >
               <div className="relative aspect-4/3 w-full">
                 <Image
-                  src="/career/career.webp"
+                  src={assetPath("/career/career.webp")}
                   alt="L'équipe L'unicreative au travail"
                   sizes="(max-width: 1024px) 100vw, 55vw"
                   className="object-cover"

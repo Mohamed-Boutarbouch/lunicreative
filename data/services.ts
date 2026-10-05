@@ -1,3 +1,5 @@
+import { assetPath } from "@/lib/asset";
+
 export enum ServiceSlug {
   CreationSiteWeb = "creation-site-web",
   CreationApplicationLogiciel = "creation-application-logiciel",
@@ -16,7 +18,7 @@ export const services = [
     description:
       "Du site vitrine à la boutique en ligne, nous concevons, développons et hébergeons votre site. Design moderne adapté à tous les écrans, référencement travaillé dès le départ.",
     href: "/services/creation-site-web",
-    image: "/services/web-placeholder.webp",
+    image: assetPath("/services/web-placeholder.webp"),
     className: "lg:col-span-2",
   },
   {
@@ -25,7 +27,7 @@ export const services = [
     short: "Logos, chartes graphiques, cartes de visite, flyers et brochures.",
     description:
       "Nous créons votre logo et votre charte graphique, puis nous les déclinons sur vos cartes de visite, flyers, brochures, bannières et kakémonos.",
-    image: "/services/graphic-design-placeholder.webp",
+    image: assetPath("/services/graphic-design-placeholder.webp"),
     href: "/services/conception-creation-graphique",
   },
   {
@@ -36,7 +38,7 @@ export const services = [
     description:
       "Affiches, bâches, menus, étiquettes, packaging, sérigraphie, en petit ou grand format. Nous réalisons aussi les panneaux publicitaires, la signalétique et l'habillage de véhicules, complet ou partiel.",
     href: "/services/impression-numerique-offset",
-    image: "/services/printing-placeholder.webp",
+    image: assetPath("/services/printing-placeholder.webp"),
   },
   {
     value: "conception-evenementielle",
@@ -45,7 +47,7 @@ export const services = [
     description:
       "Stands design ou modulaires pour foires et salons, séminaires, colloques, inaugurations et cocktails d'entreprise, avec la production technique : son, image et média.",
     href: "/services/conception-evenementielle",
-    image: "/services/events-placeholder.webp",
+    image: assetPath("/services/events-placeholder.webp"),
   },
   {
     value: "design-creation-3d",
@@ -55,7 +57,7 @@ export const services = [
     description:
       "Plans de masse, images d'architecture et illustrations de produits : des visuels 3D réalistes pour vos catalogues, plaquettes commerciales et présentations de projets.",
     href: "/services/design-creation-3d",
-    image: "/services/3d-placeholder.webp",
+    image: assetPath("/services/3d-placeholder.webp"),
   },
   {
     value: "creation-application-logiciel",
@@ -64,7 +66,7 @@ export const services = [
     description:
       "Des applications web et desktop rapides, fiables et sécurisées, conçues d'après vos attentes et les besoins de votre activité.",
     href: "/services/creation-application-logiciel",
-    image: "/services/application-placeholder.webp",
+    image: assetPath("/services/application-placeholder.webp"),
   },
 ];
 
@@ -139,15 +141,15 @@ export const serviceDetails: ServiceDetail[] = [
     },
     gallery: [
       {
-        src: "/services/creation-site-web-1.webp",
+        src: assetPath("/services/creation-site-web-1.webp"),
         alt: "Exemple de site web réalisé par L'unicreative",
       },
       {
-        src: "/services/creation-site-web-2.webp",
+        src: assetPath("/services/creation-site-web-2.webp"),
         alt: "Site web dynamique, vitrine ou e-commerce conçu par L'unicreative",
       },
       {
-        src: "/services/creation-site-web-3.webp",
+        src: assetPath("/services/creation-site-web-3.webp"),
         alt: "Site internet conçu par L'unicreative à Fès",
       },
     ],
@@ -276,15 +278,15 @@ export const serviceDetails: ServiceDetail[] = [
     },
     gallery: [
       {
-        src: "/services/creation-application-logiciel-1.webp",
+        src: assetPath("/services/creation-application-logiciel-1.webp"),
         alt: "Exemple d'application web développée par L'unicreative",
       },
       {
-        src: "/services/creation-application-logiciel-2.webp",
+        src: assetPath("/services/creation-application-logiciel-2.webp"),
         alt: "Interface d'une application desktop développée par L'unicreative",
       },
       {
-        src: "/services/creation-application-logiciel-3.webp",
+        src: assetPath("/services/creation-application-logiciel-3.webp"),
         alt: "Application sur mesure conçue par L'unicreative",
       },
     ],
@@ -321,15 +323,15 @@ export const serviceDetails: ServiceDetail[] = [
     },
     gallery: [
       {
-        src: "/services/conception-creation-graphique-1.webp",
+        src: assetPath("/services/conception-creation-graphique-1.webp"),
         alt: "Identité visuelle réalisée par L'unicreative",
       },
       {
-        src: "/services/conception-creation-graphique-2.webp",
+        src: assetPath("/services/conception-creation-graphique-2.webp"),
         alt: "Supports de communication conçus par L'unicreative",
       },
       {
-        src: "/services/conception-creation-graphique-3.webp",
+        src: assetPath("/services/conception-creation-graphique-3.webp"),
         alt: "Création graphique pour une marque, par L'unicreative",
       },
     ],
@@ -367,15 +369,15 @@ export const serviceDetails: ServiceDetail[] = [
     },
     gallery: [
       {
-        src: "/services/impression-numerique-offset-1.webp",
+        src: assetPath("/services/impression-numerique-offset-1.webp"),
         alt: "Support imprimé réalisé par L'unicreative",
       },
       {
-        src: "/services/impression-numerique-offset-2.webp",
+        src: assetPath("/services/impression-numerique-offset-2.webp"),
         alt: "Impression grand format réalisée par L'unicreative",
       },
       {
-        src: "/services/impression-numerique-offset-3.webp",
+        src: assetPath("/services/impression-numerique-offset-3.webp"),
         alt: "Habillage ou signalétique réalisé par L'unicreative",
       },
     ],
@@ -412,15 +414,15 @@ export const serviceDetails: ServiceDetail[] = [
     },
     gallery: [
       {
-        src: "/services/design-creation-3d-1.webp",
+        src: assetPath("/services/design-creation-3d-1.webp"),
         alt: "Image d'architecture en 3D réalisée par L'unicreative",
       },
       {
-        src: "/services/design-creation-3d-2.webp",
+        src: assetPath("/services/design-creation-3d-2.webp"),
         alt: "Plan de masse en 3D réalisé par L'unicreative",
       },
       {
-        src: "/services/design-creation-3d-3.webp",
+        src: assetPath("/services/design-creation-3d-3.webp"),
         alt: "Illustration 3D de produit réalisée par L'unicreative",
       },
     ],
@@ -456,15 +458,15 @@ export const serviceDetails: ServiceDetail[] = [
     },
     gallery: [
       {
-        src: "/services/conception-evenementielle-1.webp",
+        src: assetPath("/services/conception-evenementielle-1.webp"),
         alt: "Stand conçu par L'unicreative pour un salon",
       },
       {
-        src: "/services/conception-evenementielle-2.webp",
+        src: assetPath("/services/conception-evenementielle-2.webp"),
         alt: "Événement organisé par L'unicreative",
       },
       {
-        src: "/services/conception-evenementielle-3.webp",
+        src: assetPath("/services/conception-evenementielle-3.webp"),
         alt: "Production technique d'un événement par L'unicreative",
       },
     ],
