@@ -28,8 +28,7 @@ export function HeroSection() {
                     className="h-auto gap-2 px-3 py-1.5 text-xs font-semibold uppercase tracking-wider whitespace-normal text-primary sm:text-sm"
                   >
                     <IconMapPin aria-hidden="true" />
-                    Agence de communication et de publicité · Fès, Maroc //
-                    hello
+                    Agence de communication et de publicité · Fès, Maroc
                   </Badge>
                 </Reveal>
 
