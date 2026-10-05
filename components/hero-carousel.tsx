@@ -92,9 +92,10 @@ export function HeroCarousel({
                   src={item.src}
                   alt={item.alt}
                   fill
-                  sizes="(max-width: 640px) 100vw, 576px"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 691px"
                   className="object-cover"
                   priority={index === 0}
+                  loading={index === 0 ? "eager" : "lazy"}
                 />
               </div>
             </CarouselItem>
@@ -129,9 +130,9 @@ export function HeroCarousel({
                 <Image
                   src={item.src}
                   alt={item.alt}
-                  fill
-                  sizes="96px"
                   className="object-cover"
+                  sizes="96px"
+                  fill
                 />
               </div>
             </CarouselItem>
