@@ -1,6 +1,6 @@
 import * as v from "valibot";
 
-export const contactUsSchema = v.object({
+export const contactSchema = v.object({
   prenom: v.pipe(
     v.string(),
     v.minLength(2, "Le prénom doit contenir au moins 2 caractères."),
@@ -28,7 +28,7 @@ export const contactUsSchema = v.object({
   ),
 });
 
-export const contactUsDefaultValues = {
+export const contactDefaultValues = {
   prenom: "",
   nom: "",
   email: "",

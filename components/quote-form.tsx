@@ -29,7 +29,7 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { toast } from "@/components/ui/toast";
+import { toast, Toaster } from "@/components/ui/toast";
 import { quoteServices } from "@/data/quote";
 import { quoteDefaultValues, quoteSchema } from "@/lib/schemas";
 import { ServiceGroup, serviceGroups } from "@/data/services";
@@ -277,6 +277,7 @@ export function QuoteForm() {
           </Card>
         </Reveal>
       </section>
+      <Toaster />
     </Reveal>
   );
 }

@@ -86,7 +86,7 @@ export function Navbar() {
       <Link
         href="/"
         aria-label="Lunicreative - Accueil"
-        className="flex shrink-0 items-center gap-1.5 sm:gap-2"
+        className="flex shrink-0 items-center justify-center gap-1.5 sm:gap-2"
       >
         <Image
           src={assetPath("/logo/logo.webp")}

@@ -1,14 +1,13 @@
 import { Space_Grotesk, Instrument_Serif, Inter } from "next/font/google";
-import { RscBoundaryProvider } from "@rsc-boundary/next";
 import { cn } from "cn";
 import type { Metadata } from "next";
 
 import { ThemeProvider } from "@/components/layout/theme-provider";
 import { Navbar } from "@/components/layout/navbar";
-import { Toaster } from "@/components/ui/toast";
 import { Footer } from "@/components/layout/footer";
 import { AuroraGlow } from "@/components/ui/aurora-glow";
 import { RevealObserver } from "@/components/animations/reveal-observer";
+import { SpotlightTracker } from "@/components/spotlight-tracker";
 
 import "./globals.css";
 
@@ -55,6 +54,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         className="relative min-h-screen bg-background selection:bg-primary selection:text-primary-foreground"
       >
         <RevealObserver />
+        <SpotlightTracker />
+
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -73,13 +74,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             <Navbar />
 
             <div className="relative mx-auto w-full max-w-400 px-4 sm:px-6 lg:px-10 xl:px-16">
-              <RscBoundaryProvider>{children}</RscBoundaryProvider>
+              {children}
             </div>
 
             <Footer />
           </div>
-
-          <Toaster />
         </ThemeProvider>
       </body>
     </html>

@@ -3,7 +3,7 @@ import { IconClock } from "@tabler/icons-react";
 
 import { contactItems } from "@/data/contact";
 
-export function ContactUsInfo() {
+export function ContactInfo() {
   return (
     <div className="flex h-full flex-col">
       <div className="space-y-5">

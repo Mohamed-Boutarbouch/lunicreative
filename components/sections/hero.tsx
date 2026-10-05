@@ -34,8 +34,9 @@ export function HeroSection() {
 
                 <FuseReveal
                   as="h1"
-                  delay={0.2}
                   className="font-heading text-5xl font-semibold tracking-tight sm:text-6xl lg:text-5xl xl:text-6xl"
+                  delay={0}
+                  stagger={0.02}
                   parts={[
                     "Chaque projet, une ",
                     {
@@ -51,7 +52,7 @@ export function HeroSection() {
                 <Reveal
                   as="p"
                   variant="blurIn"
-                  delay={1.2}
+                  delay={0.5}
                   className="max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg"
                   eager
                 >
@@ -62,9 +63,9 @@ export function HeroSection() {
 
               <div className="flex flex-col items-start justify-center gap-4 sm:flex-row sm:items-center lg:justify-start">
                 <RevealGroup
-                  delay={1.6}
-                  stagger={0.12}
                   className="flex flex-col items-start justify-center gap-4 sm:flex-row sm:items-center lg:justify-start"
+                  delay={0.7}
+                  stagger={0.1}
                   eager
                 >
                   <RevealItem variant="pop">
@@ -90,7 +91,7 @@ export function HeroSection() {
             </div>
 
             {/* Carousel column */}
-            <Reveal variant="fadeUp" delay={0.8} className="w-full" eager>
+            <Reveal className="w-full" variant="fadeUp" delay={0.2} eager>
               <HeroCarousel
                 items={[
                   {

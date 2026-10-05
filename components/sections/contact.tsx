@@ -1,11 +1,11 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { GoogleMapsIframe } from "@/components/google-maps-iframe";
-import { ContactUsForm } from "@/components/contact-us-form";
-import { ContactUsInfo } from "@/components/contact-us-info";
+import { ContactForm } from "@/components/contact-form";
+import { ContactInfo } from "@/components/contact-info";
 import { FuseReveal } from "@/components/animations/fuse-reveal";
 import { Reveal } from "@/components/animations/reveal";
 
-export function ContactUsSection() {
+export function ContactSection() {
   return (
     <section
       id="contact"
@@ -40,11 +40,11 @@ export function ContactUsSection() {
           <CardContent className="p-0">
             <div className="grid lg:grid-cols-[0.8fr_1.2fr]">
               <div className="border-b p-6 lg:border-b-0 lg:border-r lg:p-8">
-                <ContactUsInfo />
+                <ContactInfo />
               </div>
 
               <div className="p-6 lg:p-8">
-                <ContactUsForm />
+                <ContactForm />
               </div>
             </div>
 
