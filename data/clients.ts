@@ -1,3 +1,5 @@
+import { assetPath } from "@/lib/asset";
+
 type Client = {
   image: string;
   name: string;
@@ -5,91 +7,91 @@ type Client = {
 
 export const clients: Client[] = [
   {
-    image: "/clients/01_giantlink.webp",
+    image: assetPath("/clients/01_giantlink.webp"),
     name: "GiantLink",
   },
   {
-    image: "/clients/02_palais-medina-riad.webp",
+    image: assetPath("/clients/02_palais-medina-riad.webp"),
     name: "Palais Medina Riad",
   },
   {
-    image: "/clients/03_la-relance.webp",
+    image: assetPath("/clients/03_la-relance.webp"),
     name: "La Relance",
   },
   {
-    image: "/clients/04_sarlat.webp",
+    image: assetPath("/clients/04_sarlat.webp"),
     name: "Sarlat",
   },
   {
-    image: "/clients/05_reves-dorient.webp",
+    image: assetPath("/clients/05_reves-dorient.webp"),
     name: "Rêves d'Orient",
   },
   {
-    image: "/clients/06_olive.webp",
+    image: assetPath("/clients/06_olive.webp"),
     name: "O'live",
   },
   {
-    image: "/clients/07_saraproc.webp",
+    image: assetPath("/clients/07_saraproc.webp"),
     name: "Saraproc",
   },
   {
-    image: "/clients/08_sicopa.webp",
+    image: assetPath("/clients/08_sicopa.webp"),
     name: "Sicopa",
   },
   {
-    image: "/clients/09_swissport.webp",
+    image: assetPath("/clients/09_swissport.webp"),
     name: "Swissport",
   },
   {
-    image: "/clients/10_teka.webp",
+    image: assetPath("/clients/10_teka.webp"),
     name: "Teka",
   },
   {
-    image: "/clients/11_across.webp",
+    image: assetPath("/clients/11_across.webp"),
     name: "Across",
   },
   {
-    image: "/clients/12_armonia.webp",
+    image: assetPath("/clients/12_armonia.webp"),
     name: "Armonia",
   },
   {
-    image: "/clients/13_bonbino-confort.webp",
+    image: assetPath("/clients/13_bonbino-confort.webp"),
     name: "Bonbino Confort",
   },
   {
-    image: "/clients/14_ebentra.webp",
+    image: assetPath("/clients/14_ebentra.webp"),
     name: "Ebentra",
   },
   {
-    image: "/clients/15_mda.webp",
+    image: assetPath("/clients/15_mda.webp"),
     name: "MDA",
   },
   {
-    image: "/clients/16_ader.webp",
+    image: assetPath("/clients/16_ader.webp"),
     name: "ADER",
   },
   {
-    image: "/clients/17_axa.webp",
+    image: assetPath("/clients/17_axa.webp"),
     name: "AXA",
   },
   {
-    image: "/clients/18_renault.webp",
+    image: assetPath("/clients/18_renault.webp"),
     name: "Renault",
   },
   {
-    image: "/clients/19_ford.webp",
+    image: assetPath("/clients/19_ford.webp"),
     name: "Ford",
   },
   {
-    image: "/clients/20_cjd.webp",
+    image: assetPath("/clients/20_cjd.webp"),
     name: "CJD",
   },
   {
-    image: "/clients/21_indh.webp",
+    image: assetPath("/clients/21_indh.webp"),
     name: "INDH",
   },
   {
-    image: "/clients/22_anpma.webp",
+    image: assetPath("/clients/22_anpma.webp"),
     name: "ANPMA",
   },
 ];
