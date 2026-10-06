@@ -12,6 +12,9 @@ import { RelatedServices } from "@/components/services/related";
 import { Reveal } from "@/components/animations/reveal";
 import { HeroCarousel } from "@/components/hero-carousel";
 import { ServicePricing } from "@/components/services/pricing";
+import { createMetadata } from "@/lib/seo";
+import { siteConfig } from "@/lib/site";
+import { JsonLd } from "@/components/json-ld";
 
 export function generateStaticParams() {
   return serviceDetails.map(({ slug }) => ({ slug }));
@@ -21,7 +24,17 @@ export async function generateMetadata(
   props: PageProps<"/services/[slug]">,
 ): Promise<Metadata> {
   const { slug } = await props.params;
-  return getService(slug)?.meta ?? {};
+  const service = getService(slug);
+
+  if (!service) {
+    return { title: "Service introuvable", robots: { index: false } };
+  }
+
+  return createMetadata({
+    title: service.meta.title,
+    description: service.meta.description,
+    path: `/services/${service.slug}`,
+  });
 }
 
 export default async function ServicePage(
@@ -31,8 +44,51 @@ export default async function ServicePage(
   const service = getService(slug);
   if (!service) notFound();
 
+  // Built inside the component: it depends on `service`, which only exists
+  // after the params are resolved and the notFound() guard has passed.
+  const url = `${siteConfig.url}/services/${service.slug}`;
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Service",
+        name: service.title,
+        description: service.meta.description,
+        url,
+        // Same @id as the LocalBusiness JSON-LD on the home page
+        provider: { "@id": `${siteConfig.url}/#organization` },
+        areaServed: { "@type": "Country", name: "Maroc" },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Accueil",
+            item: siteConfig.url,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Services",
+            item: `${siteConfig.url}/services`,
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: service.title,
+            item: url,
+          },
+        ],
+      },
+    ],
+  };
+
   return (
     <main className="space-y-16 pb-8 md:space-y-24">
+      <JsonLd data={jsonLd} />
+
       <section className="relative z-10">
         <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,520px)] lg:gap-16">
           <ServiceHero {...service.hero} />

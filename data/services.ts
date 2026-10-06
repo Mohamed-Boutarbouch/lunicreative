@@ -9,63 +9,65 @@ export enum ServiceSlug {
   ConceptionEvenementielle = "conception-evenementielle",
 }
 
+const serviceHref = (slug: ServiceSlug) => `/services/${slug}`;
+
 export const services = [
   {
-    value: "creation-site-web",
+    value: ServiceSlug.CreationSiteWeb,
     title: "Création de sites web",
     short:
       "Vitrine, dynamique, CMS ou e-commerce, de l'étude à la maintenance.",
     description:
       "Du site vitrine à la boutique en ligne, nous concevons, développons et hébergeons votre site. Design moderne adapté à tous les écrans, référencement travaillé dès le départ.",
-    href: "/services/creation-site-web",
+    href: serviceHref(ServiceSlug.CreationSiteWeb),
     image: assetPath("/services/web-placeholder.webp"),
     className: "lg:col-span-2",
   },
   {
-    value: "conception-creation-graphique",
+    value: ServiceSlug.ConceptionCreationGraphique,
     title: "Conception et création graphique",
     short: "Logos, chartes graphiques, cartes de visite, flyers et brochures.",
     description:
       "Nous créons votre logo et votre charte graphique, puis nous les déclinons sur vos cartes de visite, flyers, brochures, bannières et kakémonos.",
     image: assetPath("/services/graphic-design-placeholder.webp"),
-    href: "/services/conception-creation-graphique",
+    href: serviceHref(ServiceSlug.ConceptionCreationGraphique),
   },
   {
-    value: "impression-numerique-offset",
+    value: ServiceSlug.ImpressionNumeriqueOffset,
     title: "Impression numérique et offset",
     short:
       "Affiches, bâches, packaging, signalétique et habillage de véhicules.",
     description:
       "Affiches, bâches, menus, étiquettes, packaging, sérigraphie, en petit ou grand format. Nous réalisons aussi les panneaux publicitaires, la signalétique et l'habillage de véhicules, complet ou partiel.",
-    href: "/services/impression-numerique-offset",
+    href: serviceHref(ServiceSlug.ImpressionNumeriqueOffset),
     image: assetPath("/services/printing-placeholder.webp"),
   },
   {
-    value: "conception-evenementielle",
+    value: ServiceSlug.ConceptionEvenementielle,
     title: "Événementiel",
     short: "Stands, salons, séminaires, cocktails et production technique.",
     description:
       "Stands design ou modulaires pour foires et salons, séminaires, colloques, inaugurations et cocktails d'entreprise, avec la production technique : son, image et média.",
-    href: "/services/conception-evenementielle",
+    href: serviceHref(ServiceSlug.ConceptionEvenementielle),
     image: assetPath("/services/events-placeholder.webp"),
   },
   {
-    value: "design-creation-3d",
+    value: ServiceSlug.DesignCreation3d,
     title: "Design et création 3D",
     short:
       "Plans de masse, images d'architecture et illustrations 3D de produits.",
     description:
       "Plans de masse, images d'architecture et illustrations de produits : des visuels 3D réalistes pour vos catalogues, plaquettes commerciales et présentations de projets.",
-    href: "/services/design-creation-3d",
+    href: serviceHref(ServiceSlug.DesignCreation3d),
     image: assetPath("/services/3d-placeholder.webp"),
   },
   {
-    value: "creation-application-logiciel",
+    value: ServiceSlug.CreationApplicationLogiciel,
     title: "Création d'applications",
     short: "Applications web et desktop rapides, fiables et sécurisées.",
     description:
       "Des applications web et desktop rapides, fiables et sécurisées, conçues d'après vos attentes et les besoins de votre activité.",
-    href: "/services/creation-application-logiciel",
+    href: serviceHref(ServiceSlug.CreationApplicationLogiciel),
     image: assetPath("/services/application-placeholder.webp"),
   },
 ];
@@ -80,7 +82,8 @@ export type ServicePricingPlan = {
 };
 
 export type ServiceDetail = {
-  slug: string;
+  slug: ServiceSlug;
+  /** Must match an option value in the quote form */
   quoteService: string;
   group: ServiceGroup;
   title: string;
@@ -89,7 +92,7 @@ export type ServiceDetail = {
   hero: {
     eyebrow?: string;
     title: string;
-    /** Substring of `title` rendered in serif italic + primary color */
+    /** Substring of `title` (case-sensitive) rendered in serif italic + primary color */
     accent: string;
     subtitle: string;
   };
@@ -103,6 +106,10 @@ export type ServiceDetail = {
     title: string;
     plans: ServicePricingPlan[];
   };
+  /**
+   * SEO meta. Do NOT add the brand suffix to `title`:
+   * the root layout title template ("%s | L'unicreative") appends it.
+   */
   meta: { title: string; description: string };
 };
 
@@ -128,7 +135,7 @@ export const serviceGroups: Record<
 
 export const serviceDetails: ServiceDetail[] = [
   {
-    slug: "creation-site-web",
+    slug: ServiceSlug.CreationSiteWeb,
     quoteService: "site-web",
     group: "digital",
     title: "Création de sites web",
@@ -158,6 +165,8 @@ export const serviceDetails: ServiceDetail[] = [
       "Chaque site a un design moderne et s'affiche parfaitement sur téléphone, tablette et ordinateur. Nous travaillons avec les entreprises comme avec les particuliers.",
       // À CONFIRMER avec l'agence : « 12 ans » est tiré du site actuel sans date.
       // Idéalement, remplacer par l'année de création et calculer la durée.
+      // Ce chiffre (plus de 100 réalisations) est propre à cette page : ne pas
+      // le mélanger avec les chiffres globaux de l'accueil (projets / clients).
       "Depuis 12 ans, nous accompagnons nos clients au Maroc et en France, avec plus de 100 réalisations. Étude, UX/UI, conception, design, développement, hébergement, maintenance : une seule équipe prend chaque étape en charge.",
     ],
     reasons: [
@@ -179,6 +188,7 @@ export const serviceDetails: ServiceDetail[] = [
         q: "Combien coûte un site web ?",
         a: [
           "Le prix dépend du temps de travail nécessaire : fonctionnalités, nombre de pages, complexité du projet, création (ou non) des contenus, originalité du design, modules, outils utilisés, hébergement et nom de domaine.",
+          // TODO : confirmer le tarif (et HT/TTC) avant publication.
           "Nos offres démarrent à 2 999 DH pour un site vitrine, avec nom de domaine et hébergement pendant 1 an. Pour un chiffrage précis, décrivez-nous votre projet et demandez un devis.",
         ],
       },
@@ -191,10 +201,9 @@ export const serviceDetails: ServiceDetail[] = [
       {
         q: "Quel est le délai de création d'un site web ?",
         a: [
-          // La source présente ce délai comme une moyenne des agences web,
-          // pas comme un engagement de L'unicreative. À confirmer avant de
-          // le formuler comme un délai propre à l'agence.
-          "Cela dépend du type de site. En moyenne, un site vitrine est prêt à être publié après 3 semaines à 2 mois de développement.",
+          // Moyenne du secteur (source : « en moyenne par une agence web »),
+          // pas un engagement de L'unicreative.
+          "Cela dépend du type de site. En moyenne, une agence web livre un site vitrine après 3 semaines à 2 mois de développement.",
           "Ce délai varie selon vos besoins, les modifications demandées et les objectifs du projet.",
         ],
       },
@@ -214,9 +223,9 @@ export const serviceDetails: ServiceDetail[] = [
         ],
       },
     ],
-    // Contenu vérifié : formules, prix et inclusions correspondent à la section
-    // « Nos offres » de creation-site-web.php. Non précisé dans la source :
-    // prix HT ou TTC. À confirmer avant publication.
+    // TODO : ces formules, prix et inclusions ne figurent pas dans
+    // website-content.csv. À re-vérifier avec la section « Nos offres » de
+    // creation-site-web.php. Non précisé : prix HT ou TTC.
     pricing: {
       title: "Nos offres de sites web",
       plans: [
@@ -259,13 +268,13 @@ export const serviceDetails: ServiceDetail[] = [
       ],
     },
     meta: {
-      title: "Création de site web à Fès | L'unicreative",
+      title: "Création de site web à Fès",
       description:
         "Agence web à Fès : sites vitrine, dynamiques, e-commerce et CMS, de l'étude à la maintenance. Dès 2 999 DH, domaine et hébergement 1 an inclus.",
     },
   },
   {
-    slug: "creation-application-logiciel",
+    slug: ServiceSlug.CreationApplicationLogiciel,
     quoteService: "applications",
     group: "digital",
     title: "Création d'applications",
@@ -294,8 +303,11 @@ export const serviceDetails: ServiceDetail[] = [
     // tant que des réalisations réelles ne sont pas fournies.
     intro: [
       "Votre équipe a besoin d'un outil adapté à sa façon de travailler ? L'unicreative développe des logiciels et des applications web ou desktop, d'après vos attentes et les besoins de votre activité.",
+      // TODO : phrase absente de website-content.csv, à confirmer.
       "Notre équipe de développement s'appuie sur les dernières normes techniques pour concevoir des applications rapides et fiables.",
     ],
+    // TODO : liste absente de website-content.csv, à confirmer avec l'ancienne
+    // page avant publication.
     itemsTitle: "Ce que votre application vous apporte",
     items: [
       "Une base de données solide, pour que toutes vos données soient gérées avec soin",
@@ -304,13 +316,13 @@ export const serviceDetails: ServiceDetail[] = [
       "La confidentialité des informations personnelles et la sécurité de l'application",
     ],
     meta: {
-      title: "Création d'applications web et desktop à Fès | L'unicreative",
+      title: "Création d'applications web et desktop à Fès",
       description:
         "Applications web et desktop rapides, fiables et sécurisées, développées par L'unicreative à Fès. Décrivez votre besoin et recevez un devis.",
     },
   },
   {
-    slug: "conception-creation-graphique",
+    slug: ServiceSlug.ConceptionCreationGraphique,
     quoteService: "creation-graphique",
     group: "identite-impression",
     title: "Conception et création graphique",
@@ -350,20 +362,20 @@ export const serviceDetails: ServiceDetail[] = [
       "Kakémonos",
     ],
     meta: {
-      title: "Conception et création graphique à Fès | L'unicreative",
+      title: "Conception et création graphique à Fès",
       description:
         "Logos, chartes graphiques, cartes de visite, flyers et brochures : construisez une identité visuelle cohérente avec L'unicreative, agence à Fès.",
     },
   },
   {
-    slug: "impression-numerique-offset",
+    slug: ServiceSlug.ImpressionNumeriqueOffset,
     quoteService: "impression",
     group: "identite-impression",
     title: "Impression numérique et offset",
     summary: "Affiches, bâches, packaging, habillage de véhicules",
     hero: {
       title: "Impression numérique et offset",
-      accent: "impression",
+      accent: "Impression",
       subtitle:
         "Du petit au grand format : affiches, bâches, packaging, signalétique et habillage de véhicules.",
     },
@@ -395,13 +407,13 @@ export const serviceDetails: ServiceDetail[] = [
       "Habillage de véhicules, complet ou partiel",
     ],
     meta: {
-      title: "Impression numérique et offset à Fès | L'unicreative",
+      title: "Impression numérique et offset à Fès",
       description:
         "Affiches, bâches, menus, packaging, signalétique et habillage de véhicules : impression numérique et offset, petit et grand format, à Fès.",
     },
   },
   {
-    slug: "design-creation-3d",
+    slug: ServiceSlug.DesignCreation3d,
     quoteService: "design-3d",
     group: "espace",
     title: "Design et création 3D",
@@ -439,13 +451,13 @@ export const serviceDetails: ServiceDetail[] = [
       "Visuels pour catalogues et plaquettes commerciales",
     ],
     meta: {
-      title: "Design et création 3D à Fès | L'unicreative",
+      title: "Design et création 3D à Fès",
       description:
         "Plans de masse, images d'architecture et illustrations 3D de produits : modélisation et rendu 3D par L'unicreative, agence à Fès.",
     },
   },
   {
-    slug: "conception-evenementielle",
+    slug: ServiceSlug.ConceptionEvenementielle,
     quoteService: "communication-evenementielle",
     group: "espace",
     title: "Événementiel",
@@ -487,7 +499,7 @@ export const serviceDetails: ServiceDetail[] = [
       "Production technique : son, image et média",
     ],
     meta: {
-      title: "Conception événementielle à Fès | L'unicreative",
+      title: "Conception événementielle à Fès",
       description:
         "Stands design, foires, salons, séminaires, colloques et cocktails d'entreprise : conception événementielle et production technique à Fès.",
     },

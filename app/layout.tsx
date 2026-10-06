@@ -8,6 +8,7 @@ import { Footer } from "@/components/layout/footer";
 import { AuroraGlow } from "@/components/ui/aurora-glow";
 import { RevealObserver } from "@/components/animations/reveal-observer";
 import { SpotlightTracker } from "@/components/spotlight-tracker";
+import { siteConfig } from "@/lib/site";
 
 import "./globals.css";
 
@@ -28,16 +29,34 @@ const inter = Inter({
   variable: "--font-sans",
 });
 
+const defaultTitle =
+  "L'unicreative | Agence web, communication et publicité à Fès";
+
+// No `alternates.canonical` here: it would be inherited by every page
+// that doesn't define its own.
 export const metadata: Metadata = {
-  title: "L'unicreative",
-  description: "L'unicreative à Fès - Agence web, communication et publicité",
+  metadataBase: new URL(siteConfig.url),
+  title: {
+    default: defaultTitle,
+    template: "%s | L'unicreative",
+  },
+  description: siteConfig.description,
+  applicationName: siteConfig.name,
+  openGraph: {
+    type: "website",
+    siteName: siteConfig.name,
+    locale: siteConfig.locale,
+    title: defaultTitle,
+    description: siteConfig.description,
+  },
+  twitter: { card: "summary_large_image" },
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="fr-MA"
-      translate="no"
       data-scroll-behavior="smooth"
       className={cn(
         "h-full",

@@ -13,18 +13,21 @@ import {
 import { ServiceRow } from "@/components/services/row";
 import { QuoteCta } from "@/components/services/quote-cta";
 import { FuseReveal } from "@/components/animations/fuse-reveal";
+import { createMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Nos services | L'unicreative",
+export const metadata: Metadata = createMetadata({
+  title: "Nos services",
   description:
     "Identité visuelle, impression, sites web, applications, 3D et événementiel : tous les services de L'unicreative à Fès.",
-};
+  path: "/services",
+});
 
 export default function ServicesPage() {
   const groups = Object.keys(serviceGroups) as ServiceGroup[];
 
   return (
-    <main className="space-y-16 pb-8 pt-26 md:space-y-24">
+    // Top spacing comes from app/services/layout.tsx (no extra pt here).
+    <main className="space-y-16 pb-8 md:space-y-24">
       <header className="max-w-3xl">
         <FuseReveal
           as="h1"
@@ -33,8 +36,10 @@ export default function ServicesPage() {
           parts={[
             "Nos ",
             {
+              // Instrument Serif only ships weight 400: no font-semibold,
+              // otherwise the browser synthesizes a fake bold.
               text: "services",
-              className: "font-serif font-semibold tracking-wider text-primary",
+              className: "font-serif tracking-wider text-primary",
             },
           ]}
         />
