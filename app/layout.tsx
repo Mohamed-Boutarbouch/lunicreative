@@ -29,8 +29,7 @@ const inter = Inter({
   variable: "--font-sans",
 });
 
-const defaultTitle =
-  "L'unicreative | Agence web, communication et publicité à Fès";
+const defaultTitle = "L'unicreative | Agence de communication à Fès";
 
 // No `alternates.canonical` here: it would be inherited by every page
 // that doesn't define its own.

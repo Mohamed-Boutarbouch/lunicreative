@@ -12,7 +12,7 @@ import { JsonLd } from "@/components/json-ld";
 import { assetPath } from "@/lib/asset";
 
 export const metadata: Metadata = createMetadata({
-  title: "L'unicreative | Agence web, communication et publicité à Fès",
+  title: "L'unicreative | Agence de communication à Fès",
   description: siteConfig.description,
   path: "/",
   absoluteTitle: true,
@@ -28,7 +28,7 @@ const localBusiness = {
   description: siteConfig.description,
   telephone: siteConfig.phone,
   email: siteConfig.email,
-  logo: assetPath(`${siteConfig.url}/logo/logo.webp`),
+  logo: `${siteConfig.url}/logo/logo.webp`,
   address: {
     "@type": "PostalAddress",
     streetAddress: siteConfig.address.street,

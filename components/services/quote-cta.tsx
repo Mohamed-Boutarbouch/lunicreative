@@ -2,10 +2,13 @@ import { CtaButton } from "@/components/cta-button";
 import { Reveal } from "@/components/animations/reveal";
 import { SpotlightCard } from "@/components/spotlight-card";
 import { CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { quoteServices } from "@/data/quote";
 
 export function QuoteCta({ quoteService }: { quoteService?: string }) {
-  const quoteHref = quoteService
-    ? `/devis?service=${encodeURIComponent(quoteService)}`
+  const match = quoteServices.find((s) => s.value === quoteService);
+
+  const quoteHref = match
+    ? `/devis?service=${encodeURIComponent(match.value)}`
     : "/devis";
 
   return (
@@ -27,6 +30,7 @@ export function QuoteCta({ quoteService }: { quoteService?: string }) {
         <CardContent className="relative z-10 flex w-full justify-center">
           <CtaButton href={quoteHref} className="mx-auto">
             Demander un devis
+            {match && <span className="sr-only"> – {match.label}</span>}
           </CtaButton>
         </CardContent>
       </SpotlightCard>

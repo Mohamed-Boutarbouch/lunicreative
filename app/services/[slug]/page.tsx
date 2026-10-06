@@ -15,6 +15,7 @@ import { ServicePricing } from "@/components/services/pricing";
 import { createMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
 import { JsonLd } from "@/components/json-ld";
+import { ShareButton } from "@/components/services/share-button";
 
 export function generateStaticParams() {
   return serviceDetails.map(({ slug }) => ({ slug }));
@@ -135,8 +136,12 @@ export default async function ServicePage(
           {service.faq && <ServiceFaq items={service.faq} />}
         </div>
 
-        <aside className="lg:sticky lg:top-28 lg:self-start">
+        <aside className="space-y-4 lg:sticky lg:top-28 lg:self-start">
           <QuoteCta quoteService={service.quoteService} />
+
+          <Reveal variant="fadeUp" delay={0.4}>
+            <ShareButton url={url} title={service.title} />
+          </Reveal>
         </aside>
       </div>
 
