@@ -72,8 +72,8 @@ export function HeroSection() {
                     <CtaButton href="/#contact">Démarrer un projet</CtaButton>
                   </RevealItem>
                   <RevealItem variant="pop">
-                    <Link
-                      href="/#realisations"
+                    <a
+                      href="#realisations"
                       className={buttonVariants({
                         variant: "ghost",
                         size: "lg",
@@ -84,7 +84,7 @@ export function HeroSection() {
                         className="ml-2 size-4"
                         aria-hidden="true"
                       />
-                    </Link>
+                    </a>
                   </RevealItem>
                 </RevealGroup>
               </div>
