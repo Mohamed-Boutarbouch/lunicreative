@@ -1,7 +1,5 @@
 import { IconMail, IconMapPin, IconPhone } from "@tabler/icons-react";
 
-import { services as allServices } from "@/data/services";
-
 export const contactItems = [
   {
     icon: IconMapPin,
@@ -23,8 +21,3 @@ export const contactItems = [
     href: "mailto:contact@lunicreative.ma",
   },
 ];
-
-export const services = [
-  ...allServices.map(({ value, title }) => ({ value, label: title })),
-  { value: "autre", label: "Autre" },
-] as const;

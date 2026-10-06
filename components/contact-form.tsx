@@ -26,8 +26,8 @@ import {
 import { contactDefaultValues, contactSchema } from "@/lib/schemas";
 import { Input } from "@/components/ui/input";
 import { toast, Toaster } from "@/components/ui/toast";
-import { services } from "@/data/contact";
 import { CtaButton } from "@/components/cta-button";
+import { services } from "@/data/services";
 
 export function ContactForm() {
   const form = useForm({
@@ -168,7 +168,7 @@ export function ContactForm() {
                       {
                         services.find(
                           (service) => service.value === field.input,
-                        )?.label
+                        )?.title
                       }
                     </SelectValue>
                   </SelectTrigger>
@@ -176,7 +176,7 @@ export function ContactForm() {
                   <SelectContent>
                     {services.map((service) => (
                       <SelectItem key={service.value} value={service.value}>
-                        {service.label}
+                        {service.title}
                       </SelectItem>
                     ))}
                   </SelectContent>
