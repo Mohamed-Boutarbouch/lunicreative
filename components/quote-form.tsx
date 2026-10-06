@@ -72,7 +72,12 @@ export function QuoteForm() {
         <Reveal variant="fadeUp" delay={0.4}>
           <Card className="w-full">
             <CardContent>
-              <Form of={form} id="quote-form" onSubmit={handleSubmit}>
+              <Form
+                of={form}
+                id="quote-form"
+                aria-labelledby="quote-form-title"
+                onSubmit={handleSubmit}
+              >
                 <FieldGroup>
                   {/* Nom et prénom */}
                   <FormischField of={form} path={["nomPrenom"]}>
@@ -146,12 +151,13 @@ export function QuoteForm() {
                             <InputGroupInput
                               {...field.props}
                               id="quote-telephone"
+                              name="telephone"
                               type="tel"
-                              inputMode="numeric"
+                              inputMode="tel"
+                              autoComplete="tel"
                               value={field.input ?? ""}
                               aria-invalid={field.errors !== null}
                               placeholder="6 XX XX XX XX"
-                              autoComplete="tel-national"
                               maxLength={9}
                             />
                             <InputGroupAddon>+212</InputGroupAddon>

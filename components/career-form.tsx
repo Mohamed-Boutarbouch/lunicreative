@@ -378,11 +378,11 @@ export function CareerForm() {
                               {...field.props}
                               id="career-telephone"
                               type="tel"
-                              inputMode="numeric"
+                              inputMode="tel"
+                              autoComplete="tel"
                               value={field.input ?? ""}
                               aria-invalid={field.errors !== null}
                               placeholder="6 XX XX XX XX"
-                              autoComplete="tel-national"
                               maxLength={9}
                             />
                             <InputGroupAddon>+212</InputGroupAddon>

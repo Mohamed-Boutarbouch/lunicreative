@@ -57,7 +57,20 @@ export default async function ServicePage(
         url,
         // Same @id as the LocalBusiness JSON-LD on the home page
         provider: { "@id": `${siteConfig.url}/#organization` },
-        areaServed: { "@type": "Country", name: "Maroc" },
+        areaServed: [
+          {
+            "@type": "City",
+            name: "Fès",
+          },
+          {
+            "@type": "Country",
+            name: "Maroc",
+          },
+          {
+            "@type": "Country",
+            name: "France",
+          },
+        ],
       },
       {
         "@type": "BreadcrumbList",

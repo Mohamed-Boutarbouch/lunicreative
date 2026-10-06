@@ -34,7 +34,20 @@ const localBusiness = {
     addressLocality: siteConfig.address.city,
     addressCountry: siteConfig.address.country,
   },
-  areaServed: { "@type": "Country", name: "Maroc" },
+  areaServed: [
+    {
+      "@type": "City",
+      name: "Fès",
+    },
+    {
+      "@type": "Country",
+      name: "Maroc",
+    },
+    {
+      "@type": "Country",
+      name: "France",
+    },
+  ],
 };
 
 export default function Home() {
