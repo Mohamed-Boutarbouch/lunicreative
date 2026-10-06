@@ -10,7 +10,7 @@ export const siteConfig = {
   url: siteUrl,
   locale: "fr_FR",
   description:
-    "Agence à Fès : création de sites web, identité visuelle, impression numérique et offset, 3D et événementiel. Une seule équipe pour tous vos supports.",
+    "Agence de communication à Fès : web, identité visuelle, impression, 3D et événementiel.",
   phone: "+212535653985",
   phoneDisplay: "05 35 65 39 85",
   email: "lunicreative.maroc@gmail.com",
