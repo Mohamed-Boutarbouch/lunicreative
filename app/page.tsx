@@ -9,6 +9,7 @@ import { ContactSection } from "@/components/sections/contact";
 import { createMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
 import { JsonLd } from "@/components/json-ld";
+import { assetPath } from "@/lib/asset";
 
 export const metadata: Metadata = createMetadata({
   title: "L'unicreative | Agence web, communication et publicité à Fès",
@@ -27,7 +28,7 @@ const localBusiness = {
   description: siteConfig.description,
   telephone: siteConfig.phone,
   email: siteConfig.email,
-  logo: `${siteConfig.url}/logo-symbol.png`,
+  logo: assetPath(`${siteConfig.url}/logo/logo.webp`),
   address: {
     "@type": "PostalAddress",
     streetAddress: siteConfig.address.street,
