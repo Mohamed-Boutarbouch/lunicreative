@@ -1,5 +1,7 @@
 "use client";
 
+import { useRef, useState } from "react";
+import type HCaptcha from "@hcaptcha/react-hcaptcha";
 import { IconSend } from "@tabler/icons-react";
 import { Form, Field as FormischField, useForm } from "@formisch/react";
 import type { SubmitHandler } from "@formisch/react";
@@ -30,6 +32,7 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { toast, Toaster } from "@/components/ui/toast";
+import { Honeypot, Web3FormsCaptcha } from "@/components/web3forms-protection";
 import { quoteServices } from "@/data/quote";
 import { quoteDefaultValues, quoteSchema } from "@/lib/schemas";
 import { ServiceGroup, serviceGroups } from "@/data/services";
@@ -48,7 +51,22 @@ export function QuoteForm() {
     },
   });
 
+  const captchaRef = useRef<HCaptcha>(null);
+  const botcheckRef = useRef<HTMLInputElement>(null);
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const [captchaError, setCaptchaError] = useState<string | null>(null);
+
+  const resetCaptcha = () => {
+    captchaRef.current?.resetCaptcha();
+    setCaptchaToken(null);
+  };
+
   const handleSubmit: SubmitHandler<typeof quoteSchema> = async (output) => {
+    if (!captchaToken) {
+      setCaptchaError("Veuillez valider le captcha avant d'envoyer.");
+      return;
+    }
+
     const serviceLabel =
       quoteServices.find((service) => service.value === output.service)
         ?.label ?? output.service;
@@ -64,6 +82,10 @@ export function QuoteForm() {
       projet: output.projet,
 
       replyto: output.email,
+
+      // Spam protection
+      botcheck: botcheckRef.current?.checked ?? false,
+      "h-captcha-response": captchaToken,
     });
 
     toast.promise(submission, {
@@ -72,7 +94,14 @@ export function QuoteForm() {
       error: "Impossible d'envoyer votre demande de devis.",
     });
 
-    await submission;
+    try {
+      await submission;
+    } catch {
+      // The error toast is already shown by toast.promise.
+    } finally {
+      // hCaptcha tokens are single-use.
+      resetCaptcha();
+    }
   };
 
   return (
@@ -283,6 +312,35 @@ export function QuoteForm() {
                       </Field>
                     )}
                   </FormischField>
+
+                  {/* Spam protection */}
+                  <Honeypot ref={botcheckRef} />
+
+                  <Field data-invalid={captchaError !== null}>
+                    <div className="flex justify-center sm:justify-end">
+                      <Web3FormsCaptcha
+                        ref={captchaRef}
+                        onVerify={(token) => {
+                          setCaptchaToken(token);
+                          setCaptchaError(null);
+                        }}
+                        onExpire={() => setCaptchaToken(null)}
+                        onError={() => {
+                          setCaptchaToken(null);
+                          setCaptchaError(
+                            "Le captcha n'a pas pu se charger. Réessayez.",
+                          );
+                        }}
+                      />
+                    </div>
+
+                    {captchaError && (
+                      <FieldError
+                        className="text-center sm:text-right"
+                        errors={[{ message: captchaError }]}
+                      />
+                    )}
+                  </Field>
 
                   <div className="flex justify-center pt-2 sm:justify-end">
                     <Button type="submit" form="quote-form">

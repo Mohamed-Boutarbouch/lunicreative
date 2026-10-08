@@ -1,5 +1,7 @@
 "use client";
 
+import { useRef, useState } from "react";
+import type HCaptcha from "@hcaptcha/react-hcaptcha";
 import { Form, Field as FormischField, useForm } from "@formisch/react";
 import type { SubmitHandler } from "@formisch/react";
 
@@ -27,6 +29,7 @@ import { contactDefaultValues, contactSchema } from "@/lib/schemas";
 import { Input } from "@/components/ui/input";
 import { toast, Toaster } from "@/components/ui/toast";
 import { CtaButton } from "@/components/cta-button";
+import { Honeypot, Web3FormsCaptcha } from "@/components/web3forms-protection";
 import { services } from "@/data/services";
 import { submitToWeb3Forms } from "@/lib/web3forms";
 
@@ -36,7 +39,22 @@ export function ContactForm() {
     initialInput: contactDefaultValues,
   });
 
+  const captchaRef = useRef<HCaptcha>(null);
+  const botcheckRef = useRef<HTMLInputElement>(null);
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const [captchaError, setCaptchaError] = useState<string | null>(null);
+
+  const resetCaptcha = () => {
+    captchaRef.current?.resetCaptcha();
+    setCaptchaToken(null);
+  };
+
   const handleSubmit: SubmitHandler<typeof contactSchema> = async (output) => {
+    if (!captchaToken) {
+      setCaptchaError("Veuillez valider le captcha avant d'envoyer.");
+      return;
+    }
+
     const serviceLabel =
       services.find((service) => service.value === output.service)?.title ??
       output.service;
@@ -53,6 +71,10 @@ export function ContactForm() {
       message: output.message,
 
       replyto: output.email,
+
+      // Spam protection
+      botcheck: botcheckRef.current?.checked ?? false,
+      "h-captcha-response": captchaToken,
     });
 
     toast.promise(submission, {
@@ -61,7 +83,14 @@ export function ContactForm() {
       error: "Impossible d'envoyer le message.",
     });
 
-    await submission;
+    try {
+      await submission;
+    } catch {
+      // The error toast is already shown by toast.promise.
+    } finally {
+      // hCaptcha tokens are single-use.
+      resetCaptcha();
+    }
   };
 
   return (
@@ -236,6 +265,35 @@ export function ContactForm() {
               </Field>
             )}
           </FormischField>
+
+          {/* Spam protection */}
+          <Honeypot ref={botcheckRef} />
+
+          <Field data-invalid={captchaError !== null}>
+            <div className="flex justify-center sm:justify-end">
+              <Web3FormsCaptcha
+                ref={captchaRef}
+                onVerify={(token) => {
+                  setCaptchaToken(token);
+                  setCaptchaError(null);
+                }}
+                onExpire={() => setCaptchaToken(null)}
+                onError={() => {
+                  setCaptchaToken(null);
+                  setCaptchaError(
+                    "Le captcha n'a pas pu se charger. Réessayez.",
+                  );
+                }}
+              />
+            </div>
+
+            {captchaError && (
+              <FieldError
+                className="text-center sm:text-right"
+                errors={[{ message: captchaError }]}
+              />
+            )}
+          </Field>
 
           <div className="flex w-full justify-center sm:justify-end">
             <CtaButton type="submit" form="contact-form">
