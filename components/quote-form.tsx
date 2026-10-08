@@ -1,9 +1,9 @@
 "use client";
 
+import { Form, Field as FormischField, reset, useForm } from "@formisch/react";
 import { useRef, useState } from "react";
 import type HCaptcha from "@hcaptcha/react-hcaptcha";
 import { IconSend } from "@tabler/icons-react";
-import { Form, Field as FormischField, useForm } from "@formisch/react";
 import type { SubmitHandler } from "@formisch/react";
 
 import { Reveal } from "@/components/animations/reveal";
@@ -96,11 +96,11 @@ export function QuoteForm() {
 
     try {
       await submission;
+
+      reset(form);
+      resetCaptcha();
     } catch {
       // The error toast is already shown by toast.promise.
-    } finally {
-      // hCaptcha tokens are single-use.
-      resetCaptcha();
     }
   };
 
