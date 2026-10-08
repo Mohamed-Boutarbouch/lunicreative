@@ -34,6 +34,7 @@ import { quoteServices } from "@/data/quote";
 import { quoteDefaultValues, quoteSchema } from "@/lib/schemas";
 import { ServiceGroup, serviceGroups } from "@/data/services";
 import { useSearchParams } from "next/navigation";
+import { submitToWeb3Forms } from "@/lib/web3forms";
 
 export function QuoteForm() {
   const searchParams = useSearchParams();
@@ -47,19 +48,31 @@ export function QuoteForm() {
     },
   });
 
-  const handleSubmit: SubmitHandler<typeof quoteSchema> = (output) => {
-    console.log(output);
+  const handleSubmit: SubmitHandler<typeof quoteSchema> = async (output) => {
+    const serviceLabel =
+      quoteServices.find((service) => service.value === output.service)
+        ?.label ?? output.service;
 
-    toast.promise(
-      new Promise<typeof output>((resolve) => {
-        window.setTimeout(() => resolve(output), 2000);
-      }),
-      {
-        loading: "Envoi de votre demande…",
-        success: "Votre demande de devis a bien été envoyée.",
-        error: "Impossible d'envoyer votre demande de devis.",
-      },
-    );
+    const submission = submitToWeb3Forms({
+      subject: "Nouvelle demande de devis — L’unicreative",
+      from_name: "L’unicreative — Demande de devis",
+
+      nomPrenom: output.nomPrenom,
+      email: output.email,
+      telephone: `+212 ${output.telephone}`,
+      service: serviceLabel,
+      projet: output.projet,
+
+      replyto: output.email,
+    });
+
+    toast.promise(submission, {
+      loading: "Envoi de votre demande…",
+      success: "Votre demande de devis a bien été envoyée.",
+      error: "Impossible d'envoyer votre demande de devis.",
+    });
+
+    await submission;
   };
 
   return (
