@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { IconArrowDown, IconMapPin } from "@tabler/icons-react";
 
 import {
