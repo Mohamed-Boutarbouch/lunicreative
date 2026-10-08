@@ -28,6 +28,7 @@ import { Input } from "@/components/ui/input";
 import { toast, Toaster } from "@/components/ui/toast";
 import { CtaButton } from "@/components/cta-button";
 import { services } from "@/data/services";
+import { submitToWeb3Forms } from "@/lib/web3forms";
 
 export function ContactForm() {
   const form = useForm({
@@ -35,19 +36,32 @@ export function ContactForm() {
     initialInput: contactDefaultValues,
   });
 
-  const handleSubmit: SubmitHandler<typeof contactSchema> = (output) => {
-    console.log(JSON.stringify(output, null, 2));
+  const handleSubmit: SubmitHandler<typeof contactSchema> = async (output) => {
+    const serviceLabel =
+      services.find((service) => service.value === output.service)?.title ??
+      output.service;
 
-    toast.promise(
-      new Promise<typeof output>((resolve) => {
-        window.setTimeout(() => resolve(output), 2000);
-      }),
-      {
-        loading: "Envoi du message…",
-        success: "Votre message a bien été envoyé.",
-        error: "Impossible d'envoyer le message.",
-      },
-    );
+    const submission = submitToWeb3Forms({
+      subject: "Nouveau message — L’unicreative",
+      from_name: "L’unicreative — Formulaire de contact",
+
+      prenom: output.prenom,
+      nom: output.nom,
+      email: output.email,
+      telephone: `+212 ${output.telephone}`,
+      service: serviceLabel,
+      message: output.message,
+
+      replyto: output.email,
+    });
+
+    toast.promise(submission, {
+      loading: "Envoi du message…",
+      success: "Votre message a bien été envoyé.",
+      error: "Impossible d'envoyer le message.",
+    });
+
+    await submission;
   };
 
   return (
