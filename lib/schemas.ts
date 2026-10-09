@@ -24,7 +24,7 @@ export const contactSchema = v.object({
   message: v.pipe(
     v.string(),
     v.minLength(10, "Le message doit contenir au moins 10 caractères."),
-    v.maxLength(1000, "Le message doit contenir au maximum 1000 caractères."),
+    v.maxLength(2500, "Le message doit contenir au maximum 2500 caractères."),
   ),
 });
 
@@ -140,6 +140,7 @@ export const quoteSchema = v.object({
       20,
       "Veuillez donner quelques détails supplémentaires sur votre projet.",
     ),
+    v.maxLength(2500, "Le projet doit contenir au maximum 2500 caractères."),
   ),
 });
 

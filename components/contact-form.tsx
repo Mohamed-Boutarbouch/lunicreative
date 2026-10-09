@@ -13,8 +13,6 @@ import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
-  InputGroupText,
-  InputGroupTextarea,
 } from "@/components/ui/input-group";
 import {
   Select,
@@ -26,6 +24,7 @@ import {
 import { contactDefaultValues, contactSchema } from "@/lib/schemas";
 import { Input } from "@/components/ui/input";
 import { toast, Toaster } from "@/components/ui/toast";
+import { Textarea } from "@/components/ui/textarea";
 import { CtaButton } from "@/components/cta-button";
 import { ProtectionFields } from "@/components/web3forms-protection";
 import { services } from "@/data/services";
@@ -225,23 +224,15 @@ export function ContactForm() {
               <Field data-invalid={field.errors !== null}>
                 <FieldLabel htmlFor="contact-message">Message</FieldLabel>
 
-                <InputGroup>
-                  <InputGroupTextarea
-                    {...field.props}
-                    id="contact-message"
-                    value={field.input ?? ""}
-                    aria-invalid={field.errors !== null}
-                    placeholder="Parlez-nous de votre projet..."
-                    rows={7}
-                    className="min-h-40 resize-none"
-                  />
-
-                  <InputGroupAddon align="block-end">
-                    <InputGroupText className="tabular-nums">
-                      {(field.input ?? "").length}/1000
-                    </InputGroupText>
-                  </InputGroupAddon>
-                </InputGroup>
+                <Textarea
+                  {...field.props}
+                  id="contact-message"
+                  value={field.input ?? ""}
+                  aria-invalid={field.errors !== null}
+                  placeholder="Parlez-nous de votre projet..."
+                  rows={7}
+                  className="min-h-40 resize-none"
+                />
 
                 {field.errors && (
                   <FieldError
