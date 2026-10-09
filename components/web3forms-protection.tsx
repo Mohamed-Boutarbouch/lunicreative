@@ -1,6 +1,7 @@
 "use client";
 
 import { forwardRef } from "react";
+import { useTheme } from "next-themes";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
 
 import { Field, FieldError } from "@/components/ui/field";
@@ -32,6 +33,7 @@ type Web3FormsCaptchaProps = {
 export const Web3FormsCaptcha = forwardRef<HCaptcha, Web3FormsCaptchaProps>(
   function Web3FormsCaptcha({ onVerify, onExpire, onError }, ref) {
     const sitekey = process.env.NEXT_PUBLIC_WEB3FORMS_HCAPTCHA_SITEKEY;
+    const { resolvedTheme } = useTheme();
 
     if (!sitekey) {
       throw new Error(
@@ -44,6 +46,7 @@ export const Web3FormsCaptcha = forwardRef<HCaptcha, Web3FormsCaptchaProps>(
         ref={ref}
         sitekey={sitekey}
         languageOverride="fr"
+        theme={resolvedTheme === "dark" ? "dark" : "light"}
         reCaptchaCompat={false}
         onVerify={onVerify}
         onExpire={onExpire}
