@@ -1,8 +1,6 @@
 "use client";
 
 import { Form, Field as FormischField, reset, useForm } from "@formisch/react";
-import { useRef, useState } from "react";
-import type HCaptcha from "@hcaptcha/react-hcaptcha";
 import { IconSend } from "@tabler/icons-react";
 import type { SubmitHandler } from "@formisch/react";
 
@@ -32,12 +30,13 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { toast, Toaster } from "@/components/ui/toast";
-import { Honeypot, Web3FormsCaptcha } from "@/components/web3forms-protection";
+import { ProtectionFields } from "@/components/web3forms-protection";
 import { quoteServices } from "@/data/quote";
 import { quoteDefaultValues, quoteSchema } from "@/lib/schemas";
 import { ServiceGroup, serviceGroups } from "@/data/services";
 import { useSearchParams } from "next/navigation";
 import { submitToWeb3Forms } from "@/lib/web3forms";
+import { useWeb3FormsProtection } from "@/hooks/use-web3forms-protection";
 
 export function QuoteForm() {
   const searchParams = useSearchParams();
@@ -51,21 +50,12 @@ export function QuoteForm() {
     },
   });
 
-  const captchaRef = useRef<HCaptcha>(null);
-  const botcheckRef = useRef<HTMLInputElement>(null);
-  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
-  const [captchaError, setCaptchaError] = useState<string | null>(null);
-
-  const resetCaptcha = () => {
-    captchaRef.current?.resetCaptcha();
-    setCaptchaToken(null);
-  };
+  const protection = useWeb3FormsProtection();
 
   const handleSubmit: SubmitHandler<typeof quoteSchema> = async (output) => {
-    if (!captchaToken) {
-      setCaptchaError("Veuillez valider le captcha avant d'envoyer.");
-      return;
-    }
+    const protectionFields = protection.getProtectionFields();
+
+    if (!protectionFields) return;
 
     const serviceLabel =
       quoteServices.find((service) => service.value === output.service)
@@ -74,18 +64,13 @@ export function QuoteForm() {
     const submission = submitToWeb3Forms({
       subject: "Nouvelle demande de devis — L’unicreative",
       from_name: "L’unicreative — Demande de devis",
-
       nomPrenom: output.nomPrenom,
       email: output.email,
       telephone: `+212 ${output.telephone}`,
       service: serviceLabel,
       projet: output.projet,
-
       replyto: output.email,
-
-      // Spam protection
-      botcheck: botcheckRef.current?.checked ?? false,
-      "h-captcha-response": captchaToken,
+      ...protectionFields,
     });
 
     toast.promise(submission, {
@@ -96,11 +81,11 @@ export function QuoteForm() {
 
     try {
       await submission;
-
       reset(form);
-      resetCaptcha();
     } catch {
-      // The error toast is already shown by toast.promise.
+      // toast.promise already shows the error
+    } finally {
+      protection.resetCaptcha();
     }
   };
 
@@ -313,34 +298,7 @@ export function QuoteForm() {
                     )}
                   </FormischField>
 
-                  {/* Spam protection */}
-                  <Honeypot ref={botcheckRef} />
-
-                  <Field data-invalid={captchaError !== null}>
-                    <div className="flex justify-center sm:justify-end">
-                      <Web3FormsCaptcha
-                        ref={captchaRef}
-                        onVerify={(token) => {
-                          setCaptchaToken(token);
-                          setCaptchaError(null);
-                        }}
-                        onExpire={() => setCaptchaToken(null)}
-                        onError={() => {
-                          setCaptchaToken(null);
-                          setCaptchaError(
-                            "Le captcha n'a pas pu se charger. Réessayez.",
-                          );
-                        }}
-                      />
-                    </div>
-
-                    {captchaError && (
-                      <FieldError
-                        className="text-center sm:text-right"
-                        errors={[{ message: captchaError }]}
-                      />
-                    )}
-                  </Field>
+                  <ProtectionFields protection={protection} />
 
                   <div className="flex justify-center pt-2 sm:justify-end">
                     <Button type="submit" form="quote-form">

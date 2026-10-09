@@ -35,21 +35,11 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Check Web3Forms key
-        env:
-          WEB3FORMS_KEY: ${{ secrets.NEXT_PUBLIC_WEB3FORMS_KEY }}
-        run: |
-          if [ -z "$WEB3FORMS_KEY" ]; then
-            echo "ERROR: Web3Forms secret is missing"
-            exit 1
-          fi
-
-          echo "Web3Forms secret is available"
-
       - name: Build
         env:
           NEXT_PUBLIC_SITE_URL: ${{ vars.NEXT_PUBLIC_SITE_URL }}
-          NEXT_PUBLIC_WEB3FORMS_KEY: ${{ secrets.NEXT_PUBLIC_WEB3FORMS_KEY }}
+          NEXT_PUBLIC_WEB3FORMS_KEY: ${{ vars.NEXT_PUBLIC_WEB3FORMS_KEY }}
+          NEXT_PUBLIC_WEB3FORMS_HCAPTCHA_SITEKEY: ${{ vars.NEXT_PUBLIC_WEB3FORMS_HCAPTCHA_SITEKEY }}
         run: npm run build
 
       - name: Upload Pages artifact
