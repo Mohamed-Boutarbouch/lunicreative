@@ -54,9 +54,9 @@ export default function Home() {
     <main>
       <JsonLd data={localBusiness} />
       <HeroSection />
+      <AboutSection />
       <ServicesSection />
       <WorkSection />
-      <AboutSection />
       <ClientsSection />
     </main>
   );
