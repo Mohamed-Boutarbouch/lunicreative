@@ -226,7 +226,7 @@ export function HeroSection() {
             eager
           >
             <RevealItem variant="pop">
-              <CtaButton href="/#contact">Démarrer un projet</CtaButton>
+              <CtaButton href="/contact">Démarrer un projet</CtaButton>
             </RevealItem>
             <RevealItem variant="pop">
               <a

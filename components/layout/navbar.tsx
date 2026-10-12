@@ -174,7 +174,7 @@ export function Navbar() {
             {/* Mobile actions */}
             <SheetFooter className="flex-col items-start gap-3 px-2 sm:flex-col">
               <CtaButton
-                href="/#contact"
+                href="/contact"
                 className="mx-auto"
                 onClick={closeMobileMenu}
               >
@@ -213,7 +213,7 @@ export function Navbar() {
           <ToggleTheme />
         </div>
 
-        <CtaButton href="/#contact" className="shrink-0">
+        <CtaButton href="/contact" className="shrink-0">
           Nous contacter
         </CtaButton>
       </div>

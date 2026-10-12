@@ -5,7 +5,6 @@ import { ServicesSection } from "@/components/sections/services";
 import { WorkSection } from "@/components/sections/work";
 import { AboutSection } from "@/components/sections/about";
 import { ClientsSection } from "@/components/sections/clients";
-import { ContactSection } from "@/components/sections/contact";
 import { createMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
 import { JsonLd } from "@/components/json-ld";
@@ -52,14 +51,13 @@ const localBusiness = {
 
 export default function Home() {
   return (
-    <main className="space-y-24 md:space-y-32 lg:space-y-40">
+    <main>
       <JsonLd data={localBusiness} />
       <HeroSection />
       <ServicesSection />
       <WorkSection />
       <AboutSection />
       <ClientsSection />
-      <ContactSection />
     </main>
   );
 }

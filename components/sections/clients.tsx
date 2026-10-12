@@ -7,7 +7,7 @@ import { Reveal } from "@/components/animations/reveal";
 
 export function ClientsSection() {
   return (
-    <section className="relative w-full overflow-hidden">
+    <section className="relative w-full overflow-hidden py-14 sm:py-22 mb-14 sm:mb-22">
       <div className="mx-auto mb-12 w-full max-w-3xl px-4 text-left sm:mb-16 sm:text-center md:mb-20">
         <FuseReveal
           as="h2"
