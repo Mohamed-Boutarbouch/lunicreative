@@ -9,7 +9,6 @@ import { ContactSection } from "@/components/sections/contact";
 import { createMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
 import { JsonLd } from "@/components/json-ld";
-import { assetPath } from "@/lib/asset";
 
 export const metadata: Metadata = createMetadata({
   title: "L'unicreative | Agence de communication à Fès",

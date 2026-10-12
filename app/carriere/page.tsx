@@ -1,5 +1,5 @@
 import { CareerHero } from "@/components/sections/career-hero";
-import { CareerForm } from "@/components/career-form";
+import { CareerForm } from "@/components/forms/career-form";
 import { createMetadata } from "@/lib/seo";
 import { Metadata } from "next";
 
