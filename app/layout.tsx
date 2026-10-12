@@ -7,7 +7,7 @@ import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { AuroraGlow } from "@/components/ui/aurora-glow";
 import { RevealObserver } from "@/components/animations/reveal-observer";
-import { SpotlightTracker } from "@/components/spotlight-tracker";
+import { SpotlightTracker } from "@/components/ui/spotlight-tracker";
 import { siteConfig } from "@/lib/site";
 
 import "./globals.css";

@@ -9,7 +9,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { CtaButton } from "@/components/cta-button";
 import { FuseReveal } from "@/components/animations/fuse-reveal";
-import { HeroCarousel } from "@/components/hero-carousel";
+import { HeroCarousel } from "@/components/layout/hero-carousel";
 import { assetPath } from "@/lib/asset";
 
 export function HeroSection() {

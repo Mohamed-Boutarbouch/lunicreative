@@ -3,7 +3,7 @@ import Link from "next/link";
 import { IconArrowUpRight } from "@tabler/icons-react";
 
 import { CardContent } from "@/components/ui/card";
-import { SpotlightCard } from "@/components/spotlight-card";
+import { SpotlightCard } from "@/components/ui/spotlight-card";
 import { services } from "@/data/services";
 import { FuseReveal } from "@/components/animations/fuse-reveal";
 import {

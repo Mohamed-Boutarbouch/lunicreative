@@ -30,7 +30,7 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { toast, Toaster } from "@/components/ui/toast";
-import { ProtectionFields } from "@/components/web3forms-protection";
+import { ProtectionFields } from "@/components/forms/web3forms-protection";
 import { quoteServices } from "@/data/quote";
 import { quoteDefaultValues, quoteSchema } from "@/lib/schemas";
 import { ServiceGroup, serviceGroups } from "@/data/services";

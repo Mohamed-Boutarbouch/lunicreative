@@ -11,7 +11,7 @@ import {
 import { useState } from "react";
 
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { SpotlightCard } from "@/components/spotlight-card";
+import { SpotlightCard } from "@/components/ui/spotlight-card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { categories, projects, PROJECTS_LIMIT } from "@/data/work";

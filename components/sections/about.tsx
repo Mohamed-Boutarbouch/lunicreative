@@ -1,7 +1,7 @@
 import { IconPlus } from "@tabler/icons-react";
 
 import { CardContent } from "@/components/ui/card";
-import { SpotlightCard } from "@/components/spotlight-card";
+import { SpotlightCard } from "@/components/ui/spotlight-card";
 import { stats, values } from "@/data/about";
 import { FuseReveal } from "@/components/animations/fuse-reveal";
 import {

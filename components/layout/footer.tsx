@@ -4,7 +4,7 @@ import type { CSSProperties, HTMLAttributes } from "react";
 import { Separator } from "@/components/ui/separator";
 import { CtaButton } from "@/components/cta-button";
 import { navigation, services } from "@/data/footer";
-import { FooterContactLinks } from "@/components/footer-contact-links";
+import { FooterContactLinks } from "@/components/layout/footer-contact-links";
 
 function FooterLinkGroup({
   title,

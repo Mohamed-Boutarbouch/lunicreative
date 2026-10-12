@@ -1,7 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { GoogleMapsIframe } from "@/components/google-maps-iframe";
-import { ContactForm } from "@/components/contact-form";
-import { ContactInfo } from "@/components/contact-info";
+import { ContactForm } from "@/components/forms/contact-form";
+import { ContactInfo } from "@/components/sections/contact-info";
 import { FuseReveal } from "@/components/animations/fuse-reveal";
 import { Reveal } from "@/components/animations/reveal";
 

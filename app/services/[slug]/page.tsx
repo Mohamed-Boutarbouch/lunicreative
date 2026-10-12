@@ -10,7 +10,7 @@ import { ServiceFaq } from "@/components/services/faq";
 import { QuoteCta } from "@/components/services/quote-cta";
 import { RelatedServices } from "@/components/services/related";
 import { Reveal } from "@/components/animations/reveal";
-import { HeroCarousel } from "@/components/hero-carousel";
+import { HeroCarousel } from "@/components/layout/hero-carousel";
 import { ServicePricing } from "@/components/services/pricing";
 import { createMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";

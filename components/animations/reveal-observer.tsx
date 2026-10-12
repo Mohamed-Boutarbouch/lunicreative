@@ -7,10 +7,14 @@ const PENDING =
 
 export function RevealObserver() {
   useEffect(() => {
+    let raf = 0;
+    let started = false;
+
     const io = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
           if (!entry.isIntersecting) continue;
+
           entry.target.setAttribute("data-in-view", "true");
           io.unobserve(entry.target);
         }
@@ -18,16 +22,28 @@ export function RevealObserver() {
       { rootMargin: "0px 0px -15% 0px", threshold: 0 },
     );
 
-    const scan = () =>
-      document.querySelectorAll(PENDING).forEach((el) => io.observe(el));
+    const scan = () => {
+      if (!started) return;
 
-    scan();
+      document.querySelectorAll(PENDING).forEach((el) => {
+        io.observe(el);
+      });
+    };
 
-    let raf = 0;
+    raf = requestAnimationFrame(() => {
+      raf = requestAnimationFrame(() => {
+        started = true;
+        scan();
+      });
+    });
+
     const mo = new MutationObserver(() => {
+      if (!started) return;
+
       cancelAnimationFrame(raf);
       raf = requestAnimationFrame(scan);
     });
+
     mo.observe(document.body, { childList: true, subtree: true });
 
     return () => {

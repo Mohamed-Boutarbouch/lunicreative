@@ -1,6 +1,6 @@
 import { CtaButton } from "@/components/cta-button";
 import { Reveal } from "@/components/animations/reveal";
-import { SpotlightCard } from "@/components/spotlight-card";
+import { SpotlightCard } from "@/components/ui/spotlight-card";
 import { CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { quoteServices } from "@/data/quote";
 

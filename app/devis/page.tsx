@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import { Metadata } from "next";
 
 import { QuoteHero } from "@/components/sections/quote-hero";
-import { QuoteForm } from "@/components/quote-form";
+import { QuoteForm } from "@/components/forms/quote-form";
 import { createMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createMetadata({

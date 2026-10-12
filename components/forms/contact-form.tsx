@@ -26,7 +26,7 @@ import { Input } from "@/components/ui/input";
 import { toast, Toaster } from "@/components/ui/toast";
 import { Textarea } from "@/components/ui/textarea";
 import { CtaButton } from "@/components/cta-button";
-import { ProtectionFields } from "@/components/web3forms-protection";
+import { ProtectionFields } from "@/components/forms/web3forms-protection";
 import { services } from "@/data/services";
 import { submitToWeb3Forms } from "@/lib/web3forms";
 import { useWeb3FormsProtection } from "@/hooks/use-web3forms-protection";
