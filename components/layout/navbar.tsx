@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { IconMenu2 } from "@tabler/icons-react";
+import { usePathname } from "next/navigation";
 import { cn } from "cn";
 
 import { CtaButton } from "@/components/cta-button";
@@ -68,6 +69,8 @@ function useScrolled() {
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const isScrolled = useScrolled();
+  const pathname = usePathname();
+  const overHero = pathname === "/" && !isScrolled;
 
   const closeMobileMenu = () => {
     setIsOpen(false);
@@ -83,13 +86,14 @@ export function Navbar() {
               "ring-1 ring-black/5 dark:ring-white/5",
             ]
           : "border-transparent bg-transparent shadow-none backdrop-blur-none",
+        overHero && "text-white [&_a]:text-white [&_button]:text-white",
       )}
     >
       {/* Logo */}
       <Link
         href="/"
         aria-label="Lunicreative - Accueil"
-        className="flex shrink-0 items-center justify-center gap-1.5 sm:gap-2"
+        className="flex shrink-0 items-center justify-center gap-2 sm:gap-2.5"
       >
         <Image
           src={assetPath("/logo/logo.webp")}
@@ -97,10 +101,10 @@ export function Navbar() {
           width={500}
           height={500}
           priority
-          className="size-7 object-contain sm:size-8"
+          className="size-10 object-contain sm:size-11"
         />
 
-        <span className="font-heading text-lg font-bold tracking-tight sm:text-2xl">
+        <span className="font-heading text-[25px] font-bold tracking-tight sm:text-[34px]">
           L<span className="text-primary">’</span>uni
           <span className="text-primary">creative</span>
         </span>
@@ -133,20 +137,19 @@ export function Navbar() {
                 <SheetTitle>
                   <Link
                     href="/"
-                    onClick={closeMobileMenu}
                     aria-label="Lunicreative - Accueil"
-                    className="flex items-center gap-2"
+                    className="flex shrink-0 items-center justify-center gap-2 sm:gap-2.5"
                   >
                     <Image
                       src={assetPath("/logo/logo.webp")}
-                      alt=""
+                      alt="L’unicreative Logo"
                       width={500}
                       height={500}
                       priority
-                      className="size-8 object-contain"
+                      className="size-10 object-contain sm:size-11"
                     />
 
-                    <span className="font-heading text-xl font-bold tracking-tight">
+                    <span className="font-heading text-[25px] font-bold tracking-tight sm:text-[34px]">
                       L<span className="text-primary">’</span>uni
                       <span className="text-primary">creative</span>
                     </span>
