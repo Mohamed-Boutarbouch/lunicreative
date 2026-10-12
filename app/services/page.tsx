@@ -12,8 +12,8 @@ import {
 } from "@/components/animations/reveal";
 import { ServiceRow } from "@/components/services/row";
 import { QuoteCta } from "@/components/services/quote-cta";
-import { FuseReveal } from "@/components/animations/fuse-reveal";
 import { createMetadata } from "@/lib/seo";
+import { ServicesHero } from "@/components/sections/services-hero";
 
 export const metadata: Metadata = createMetadata({
   title: "Nos services",
@@ -26,33 +26,8 @@ export default function ServicesPage() {
   const groups = Object.keys(serviceGroups) as ServiceGroup[];
 
   return (
-    // Top spacing comes from app/services/layout.tsx (no extra pt here).
     <main className="space-y-16 pb-8 md:space-y-24">
-      <header className="max-w-3xl">
-        <FuseReveal
-          as="h1"
-          delay={0.2}
-          className="font-heading text-5xl font-semibold tracking-tight sm:text-6xl lg:text-5xl xl:text-6xl"
-          parts={[
-            "Nos ",
-            {
-              // Instrument Serif only ships weight 400: no font-semibold,
-              // otherwise the browser synthesizes a fake bold.
-              text: "services",
-              className: "font-serif tracking-wider text-primary",
-            },
-          ]}
-        />
-        <Reveal
-          as="p"
-          variant="blurIn"
-          delay={1.2}
-          className="mt-6 text-base leading-relaxed text-muted-foreground sm:text-lg"
-        >
-          Identité visuelle, impression, web, 3D et événementiel. Une seule
-          équipe pour une image cohérente sur tous vos supports.
-        </Reveal>
-      </header>
+      <ServicesHero />
 
       <div className="space-y-14">
         {groups.map((group) => (
