@@ -7,6 +7,8 @@ const nextConfig: NextConfig = {
 
   basePath: isProduction ? "/lunicreative" : "",
 
+  trailingSlash: true,
+
   images: {
     unoptimized: true,
   },
