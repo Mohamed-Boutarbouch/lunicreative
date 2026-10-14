@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { IconPlus } from "@tabler/icons-react";
 
 import { CardContent } from "@/components/ui/card";
@@ -16,8 +17,20 @@ export function AboutSection() {
     <section
       id="a-propos"
       aria-labelledby="about-heading"
-      className="[content-visibility:auto] [contain-intrinsic-size:auto_900px] py-14 sm:py-22"
+      className="relative isolate [content-visibility:auto] [contain-intrinsic-size:auto_900px] py-14 sm:py-22"
     >
+      {/* Background image */}
+      <div aria-hidden="true" className="absolute inset-0 -z-10">
+        <Image
+          src="/about/about-bg.webp"
+          alt="About us background"
+          fill
+          sizes="100vw"
+          className="object-cover opacity-[0.25] dark:opacity-[0.12] grayscale"
+        />
+        {/* Fade edges into the page background */}
+        <div className="absolute inset-0 bg-linear-to-b from-background via-transparent to-background" />
+      </div>
       <div className="flex flex-col items-center gap-10 sm:gap-14">
         <div className="w-full max-w-4xl text-left sm:text-center">
           <FuseReveal
