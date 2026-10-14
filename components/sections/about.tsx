@@ -11,6 +11,7 @@ import {
   RevealItem,
 } from "@/components/animations/reveal";
 import { CountUp } from "@/components/animations/count-up";
+import { assetPath } from "@/lib/asset";
 
 export function AboutSection() {
   return (
@@ -22,7 +23,7 @@ export function AboutSection() {
       {/* Background image */}
       <div aria-hidden="true" className="absolute inset-0 -z-10">
         <Image
-          src="/about/about-bg.webp"
+          src={assetPath("/about/about-bg.webp")}
           alt="About us background"
           fill
           sizes="100vw"
