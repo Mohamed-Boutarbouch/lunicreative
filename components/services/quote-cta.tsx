@@ -28,7 +28,7 @@ export function QuoteCta({ quoteService }: { quoteService?: string }) {
         </CardHeader>
 
         <CardContent className="relative z-10 flex w-full justify-center">
-          <CtaButton href={quoteHref} className="mx-auto">
+          <CtaButton href={quoteHref} className="mx-auto mt-8">
             Demander un devis
             {match && <span className="sr-only"> – {match.label}</span>}
           </CtaButton>

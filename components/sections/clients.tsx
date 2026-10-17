@@ -4,10 +4,16 @@ import { Marquee } from "@/components/animations/marquee";
 import { clients } from "@/data/clients";
 import { FuseReveal } from "@/components/animations/fuse-reveal";
 import { Reveal } from "@/components/animations/reveal";
+import { EdgeArt } from "../ui/edge-art";
+import { assetPath } from "@/lib/asset";
 
 export function ClientsSection() {
   return (
-    <section className="relative w-full overflow-hidden py-14 sm:py-22 mb-14 sm:mb-22">
+    <section
+      // className="relative w-full overflow-hidden py-14 sm:py-22 mb-14 sm:mb-22">
+      className="relative isolate py-14 sm:py-22 [content-visibility:visible] contain:none"
+    >
+      <EdgeArt side="right" src={assetPath("/images/4.webp")} top="-10rem" />
       <div className="mx-auto mb-12 w-full max-w-3xl px-4 text-left sm:mb-16 sm:text-center md:mb-20">
         <FuseReveal
           as="h2"

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { IconPlus } from "@tabler/icons-react";
 
 import { CardContent } from "@/components/ui/card";
@@ -12,16 +11,17 @@ import {
 } from "@/components/animations/reveal";
 import { CountUp } from "@/components/animations/count-up";
 import { assetPath } from "@/lib/asset";
+import { EdgeArt } from "@/components/ui/edge-art";
 
 export function AboutSection() {
   return (
     <section
       id="a-propos"
       aria-labelledby="about-heading"
-      className="relative isolate [content-visibility:auto] [contain-intrinsic-size:auto_900px] py-14 sm:py-22"
+      className="relative isolate py-14 sm:py-22 [content-visibility:visible] contain:none"
     >
-      {/* Background image */}
-      <div aria-hidden="true" className="absolute inset-0 -z-10">
+      <EdgeArt side="left" src={assetPath("/images/1.webp")} top="2rem" />
+      {/*<div aria-hidden="true" className="absolute inset-0 -z-10">
         <Image
           src={assetPath("/about/about-bg.webp")}
           alt="About us background"
@@ -29,9 +29,8 @@ export function AboutSection() {
           sizes="100vw"
           className="object-cover opacity-[0.25] dark:opacity-[0.12] grayscale"
         />
-        {/* Fade edges into the page background */}
         <div className="absolute inset-0 bg-linear-to-b from-background via-transparent to-background" />
-      </div>
+      </div>*/}
       <div className="flex flex-col items-center gap-10 sm:gap-14">
         <div className="w-full max-w-4xl text-left sm:text-center">
           <FuseReveal
