@@ -21,16 +21,6 @@ export function AboutSection() {
       className="relative isolate py-14 sm:py-22 [content-visibility:visible] contain:none"
     >
       <EdgeArt side="left" src={assetPath("/images/1.webp")} top="2rem" />
-      {/*<div aria-hidden="true" className="absolute inset-0 -z-10">
-        <Image
-          src={assetPath("/about/about-bg.webp")}
-          alt="About us background"
-          fill
-          sizes="100vw"
-          className="object-cover opacity-[0.25] dark:opacity-[0.12] grayscale"
-        />
-        <div className="absolute inset-0 bg-linear-to-b from-background via-transparent to-background" />
-      </div>*/}
       <div className="flex flex-col items-center gap-10 sm:gap-14">
         <div className="w-full max-w-4xl text-left sm:text-center">
           <FuseReveal
@@ -88,21 +78,22 @@ export function AboutSection() {
           stagger={0.3}
         >
           {values.map(({ title, description, icon: Icon }) => (
-            <RevealItem key={title} variant="fadeUp" className="group">
-              <SpotlightCard className="h-full overflow-hidden border border-border/60 bg-muted/40 p-0 shadow-none transition-all duration-300 ease-out hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10">
+            <RevealItem key={title} variant="fadeUp" className="group h-full">
+              <SpotlightCard className="h-full overflow-hidden border border-border bg-card p-0 shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10">
                 <CardContent className="relative z-10 flex h-full flex-col gap-4 p-5 sm:p-6">
                   <span
                     aria-hidden="true"
-                    className="flex size-11 items-center justify-center rounded-full border border-border/60 bg-background text-primary transition-colors duration-300 group-hover:border-primary group-hover:bg-primary group-hover:text-primary-foreground"
+                    className="flex size-11 items-center justify-center rounded-full border border-border bg-background text-primary transition-colors duration-300 group-hover:border-primary group-hover:bg-primary group-hover:text-primary-foreground"
                   >
                     <Icon className="size-5" stroke={1.8} />
                   </span>
 
                   <div>
-                    <h3 className="font-heading text-xl font-semibold tracking-tight transition-colors duration-300 group-hover:text-primary">
+                    <h3 className="font-heading text-xl font-semibold tracking-tight text-foreground transition-colors duration-300 group-hover:text-primary">
                       {title}
                     </h3>
-                    <p className="mt-2 text-sm leading-6 text-muted-foreground">
+
+                    <p className="mt-2 text-sm leading-6 text-foreground/80">
                       {description}
                     </p>
                   </div>

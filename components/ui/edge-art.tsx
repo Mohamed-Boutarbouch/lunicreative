@@ -1,4 +1,4 @@
-import { useId } from "react";
+import { useId, type CSSProperties } from "react";
 import Image, { type StaticImageData } from "next/image";
 import { cn } from "cn";
 
@@ -21,7 +21,7 @@ type EdgeArtProps = {
   bottom?: string | number;
   /** Optional inner-edge fade (0–100). Off by default: the shape already has a clean edge */
   fade?: number | false;
-  /** Turn the subtle motion off */
+  /** Turn the scroll-reveal animation off */
   animate?: boolean;
   /** Extra classes on the positioned wrapper (opacity, hiding on mobile, etc.) */
   className?: string;
@@ -42,11 +42,11 @@ const BLOB =
 
 /** Translucent red bands: they tint the photo where they overlap it and read as pale pink outside it */
 const PILLS = [
-  // cx, cy, length, thickness, drift duration (s), delay (s), opacity
-  { cx: 380, cy: 640, len: 720, th: 140, dur: 11, delay: 0, o: 0.3 },
-  { cx: 790, cy: 190, len: 800, th: 150, dur: 13, delay: -4, o: 0.34 },
-  { cx: 930, cy: 610, len: 480, th: 170, dur: 12, delay: -7, o: 0.28 },
-  { cx: 700, cy: 950, len: 580, th: 120, dur: 10, delay: -2, o: 0.26 },
+  // cx, cy, length, thickness, opacity
+  { cx: 380, cy: 640, len: 720, th: 140, o: 0.3 },
+  { cx: 790, cy: 190, len: 800, th: 150, o: 0.34 },
+  { cx: 930, cy: 610, len: 480, th: 170, o: 0.28 },
+  { cx: 700, cy: 950, len: 580, th: 120, o: 0.26 },
 ] as const;
 
 /** Thin diagonal lines */
@@ -114,12 +114,13 @@ export function EdgeArt({
         }}
       >
         <div
+          data-edge-art={animate ? "" : undefined}
           className={cn("relative w-full", mirror && "-scale-x-100")}
           style={{ aspectRatio: `${W} / ${H}` }}
         >
           {/* 1. Photo, cropped to the blob */}
           <div
-            className="absolute inset-0"
+            className="edge-art-photo absolute inset-0"
             style={{ clipPath: `url(#${clipId})` }}
           >
             <Image
@@ -128,10 +129,7 @@ export function EdgeArt({
               fill
               priority={priority}
               sizes={`(min-width: 1024px) ${maxSize}px, ${sizeVw}vw`}
-              className={cn(
-                "select-none object-cover",
-                animate && "edge-art-kenburns",
-              )}
+              className="select-none object-cover"
             />
           </div>
 
@@ -151,11 +149,8 @@ export function EdgeArt({
             {PILLS.map((p, i) => (
               <g
                 key={i}
-                className={animate ? "edge-art-drift" : undefined}
-                style={{
-                  animationDuration: `${p.dur}s`,
-                  animationDelay: `${p.delay}s`,
-                }}
+                className="edge-art-in"
+                style={{ "--i": i } as CSSProperties}
               >
                 <rect
                   x={-p.len / 2}
@@ -171,21 +166,18 @@ export function EdgeArt({
             ))}
 
             {LINES.map((l, i) => (
-              <g
+              <line
                 key={i}
-                className={animate ? "edge-art-line" : undefined}
-                style={{ animationDelay: `${-i * 1.7}s` }}
-              >
-                <line
-                  x1={l.x1}
-                  y1={l.y1}
-                  x2={l.x2}
-                  y2={l.y2}
-                  strokeWidth={l.w}
-                  strokeLinecap="round"
-                  className={l.cls}
-                />
-              </g>
+                x1={l.x1}
+                y1={l.y1}
+                x2={l.x2}
+                y2={l.y2}
+                pathLength={1}
+                strokeWidth={l.w}
+                strokeLinecap="round"
+                className={cn("edge-art-draw", l.cls)}
+                style={{ "--i": i } as CSSProperties}
+              />
             ))}
           </svg>
         </div>

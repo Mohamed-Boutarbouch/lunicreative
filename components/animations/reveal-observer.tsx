@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 
 const PENDING =
-  "[data-reveal]:not([data-in-view]), [data-reveal-group]:not([data-in-view]), [data-fuse]:not([data-in-view])";
+  "[data-reveal]:not([data-in-view]), [data-reveal-group]:not([data-in-view]), [data-fuse]:not([data-in-view]), [data-edge-art]:not([data-in-view])";
 
 export function RevealObserver() {
   useEffect(() => {
