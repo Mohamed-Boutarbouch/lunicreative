@@ -11,6 +11,7 @@ import {
 import { useState } from "react";
 
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { EdgeArt } from "@/components/ui/edge-art";
 import { SpotlightCard } from "@/components/ui/spotlight-card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -40,8 +41,9 @@ export function WorkSection() {
   return (
     <section
       id="realisations"
-      className="[content-visibility:auto] [contain-intrinsic-size:auto_900px] py-14 sm:py-22"
+      className="relative isolate py-14 sm:py-22 [content-visibility:visible] contain:none"
     >
+      <EdgeArt side="left" src="/images/2.webp" top="2rem" />
       <div className="flex flex-col items-center gap-10 md:gap-16">
         <div className="w-full max-w-3xl text-left sm:text-center">
           <FuseReveal

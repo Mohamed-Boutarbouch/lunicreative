@@ -3,6 +3,7 @@ import Link from "next/link";
 import { IconArrowUpRight } from "@tabler/icons-react";
 
 import { CardContent } from "@/components/ui/card";
+import { EdgeArt } from "@/components/ui/edge-art";
 import { SpotlightCard } from "@/components/ui/spotlight-card";
 import { services } from "@/data/services";
 import { FuseReveal } from "@/components/animations/fuse-reveal";
@@ -18,8 +19,9 @@ export function ServicesSection() {
   return (
     <section
       id="services"
-      className="[content-visibility:auto] [contain-intrinsic-size:auto_900px] py-14 sm:py-22"
+      className="relative isolate py-14 sm:py-22 [content-visibility:visible] contain:none"
     >
+      <EdgeArt side="right" src="/images/1.webp" top="2rem" />
       <div className="mx-auto mb-10 w-full max-w-3xl text-left sm:mb-14 sm:text-center">
         <FuseReveal
           as="h2"
@@ -61,37 +63,9 @@ export function ServicesSection() {
               className={`h-full ${isFeatured ? "lg:col-span-2" : ""}`}
             >
               <Link href={service.href} className="group block h-full">
-                <SpotlightCard className="relative h-full overflow-hidden border border-border/60 bg-muted/40 p-0 shadow-none transition-all duration-300 ease-out hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10">
-                  <CardContent
-                    className={
-                      isFeatured
-                        ? "relative z-10 grid h-full grid-cols-1 gap-0 p-0 lg:grid-cols-2"
-                        : "relative z-10 flex h-full flex-col gap-0 p-0"
-                    }
-                  >
-                    <div
-                      className={
-                        isFeatured
-                          ? "flex flex-col justify-center p-5 lg:p-7"
-                          : "p-5"
-                      }
-                    >
-                      <h3 className="font-heading text-xl font-semibold tracking-tight transition-colors duration-300 group-hover:text-primary">
-                        {service.title}
-                      </h3>
-
-                      <p className="mt-2 max-w-xl text-sm leading-6 text-muted-foreground">
-                        {service.description}
-                      </p>
-                    </div>
-
-                    <div
-                      className={
-                        isFeatured
-                          ? "relative min-h-56 overflow-hidden bg-muted lg:min-h-full"
-                          : "relative mt-auto aspect-video overflow-hidden bg-muted"
-                      }
-                    >
+                <SpotlightCard className="relative h-full overflow-hidden border border-border bg-card p-0 shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10">
+                  <CardContent className="relative z-10 flex h-full flex-col gap-0 p-0">
+                    <div className="relative aspect-video overflow-hidden bg-muted">
                       <div className="absolute inset-0 z-10 bg-linear-to-t from-black/25 via-black/0 to-black/0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
                       <Image
@@ -105,6 +79,22 @@ export function ServicesSection() {
                         }
                         className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                       />
+                    </div>
+
+                    <div
+                      className={
+                        isFeatured
+                          ? "flex flex-col justify-center p-5 lg:p-7"
+                          : "p-5"
+                      }
+                    >
+                      <h3 className="font-heading text-xl font-semibold tracking-tight transition-colors duration-300 group-hover:text-primary">
+                        {service.title}
+                      </h3>
+
+                      <p className="mt-2 max-w-xl text-sm leading-6 text-foreground/80">
+                        {service.description}
+                      </p>
                     </div>
 
                     <span
