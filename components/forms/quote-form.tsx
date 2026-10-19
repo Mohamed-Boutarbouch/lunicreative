@@ -12,11 +12,6 @@ import {
   FieldGroup,
   FieldLabel,
 } from "@/components/ui/field";
-import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupInput,
-} from "@/components/ui/input-group";
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -27,6 +22,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { PhoneField } from "@/components/forms/phone-field";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { toast, Toaster } from "@/components/ui/toast";
@@ -66,7 +62,7 @@ export function QuoteForm() {
       from_name: "L’unicreative — Demande de devis",
       nomPrenom: output.nomPrenom,
       email: output.email,
-      telephone: `+212 ${output.telephone}`,
+      telephone: `${output.indicatif} ${output.telephone}`,
       service: serviceLabel,
       projet: output.projet,
       replyto: output.email,
@@ -166,40 +162,7 @@ export function QuoteForm() {
                       )}
                     </FormischField>
 
-                    <FormischField of={form} path={["telephone"]}>
-                      {(field) => (
-                        <Field data-invalid={field.errors !== null}>
-                          <FieldLabel htmlFor="quote-telephone">
-                            Téléphone{" "}
-                            <span className="text-destructive">*</span>
-                          </FieldLabel>
-
-                          <InputGroup>
-                            <InputGroupInput
-                              {...field.props}
-                              id="quote-telephone"
-                              name="telephone"
-                              type="tel"
-                              inputMode="tel"
-                              autoComplete="tel"
-                              value={field.input ?? ""}
-                              aria-invalid={field.errors !== null}
-                              placeholder="6 XX XX XX XX"
-                              maxLength={9}
-                            />
-                            <InputGroupAddon>+212</InputGroupAddon>
-                          </InputGroup>
-
-                          {field.errors && (
-                            <FieldError
-                              errors={field.errors.map((message) => ({
-                                message,
-                              }))}
-                            />
-                          )}
-                        </Field>
-                      )}
-                    </FormischField>
+                    <PhoneField form={form} idPrefix="quote" required />
                   </div>
 
                   {/* Service */}

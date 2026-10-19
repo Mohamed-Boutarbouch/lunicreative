@@ -1,26 +1,42 @@
 import * as v from "valibot";
 
+const dialCodeSchema = v.pipe(
+  v.string(),
+  v.regex(/^\+\d{1,4}$/, "Indicatif invalide."),
+);
+
+const phoneNumberSchema = v.pipe(
+  v.string(),
+  v.nonEmpty("Veuillez renseigner votre numéro de téléphone."),
+  v.transform((value) => value.replace(/[\s.-]/g, "").replace(/^0+/, "")),
+  v.regex(/^\d{6,12}$/, "Veuillez renseigner un numéro de téléphone valide."),
+);
+
 export const contactSchema = v.object({
   prenom: v.pipe(
     v.string(),
     v.minLength(2, "Le prénom doit contenir au moins 2 caractères."),
   ),
+
   nom: v.pipe(
     v.string(),
     v.minLength(2, "Le nom doit contenir au moins 2 caractères."),
   ),
+
   email: v.pipe(
     v.string(),
     v.email("Veuillez saisir une adresse email valide."),
   ),
-  telephone: v.pipe(
-    v.string(),
-    v.regex(/^(?:6|7)\d{8}$/, "Veuillez saisir un numéro valide."),
-  ),
+
+  indicatif: dialCodeSchema,
+
+  telephone: phoneNumberSchema,
+
   service: v.pipe(
     v.string(),
     v.minLength(1, "Veuillez sélectionner un service."),
   ),
+
   message: v.pipe(
     v.string(),
     v.minLength(10, "Le message doit contenir au moins 10 caractères."),
@@ -32,6 +48,7 @@ export const contactDefaultValues = {
   prenom: "",
   nom: "",
   email: "",
+  indicatif: "+212",
   telephone: "",
   service: "",
   message: "",
@@ -70,10 +87,9 @@ export const careerSchema = v.object({
     v.email("Veuillez renseigner une adresse e-mail valide."),
   ),
 
-  telephone: v.pipe(
-    v.string(),
-    v.minLength(9, "Veuillez renseigner un numéro de téléphone valide."),
-  ),
+  indicatif: dialCodeSchema,
+
+  telephone: phoneNumberSchema,
 
   cv: v.pipe(
     v.instance(File, "Veuillez joindre votre CV."),
@@ -104,6 +120,7 @@ export const careerDefaultValues = {
   niveau: "",
   specialite: "",
   email: "",
+  indicatif: "+212",
   telephone: "",
   cv: undefined,
   lettreMotivation: undefined,
@@ -122,14 +139,9 @@ export const quoteSchema = v.object({
     v.email("Veuillez renseigner une adresse e-mail valide."),
   ),
 
-  telephone: v.pipe(
-    v.string(),
-    v.nonEmpty("Veuillez renseigner votre numéro de téléphone."),
-    v.regex(
-      /^[5-7]\d{8}$/,
-      "Veuillez renseigner un numéro de téléphone marocain valide.",
-    ),
-  ),
+  indicatif: dialCodeSchema,
+
+  telephone: phoneNumberSchema,
 
   service: v.pipe(v.string(), v.nonEmpty("Veuillez sélectionner un service.")),
 
@@ -147,6 +159,7 @@ export const quoteSchema = v.object({
 export const quoteDefaultValues = {
   nomPrenom: "",
   email: "",
+  indicatif: "+212",
   telephone: "",
   service: "",
   projet: "",

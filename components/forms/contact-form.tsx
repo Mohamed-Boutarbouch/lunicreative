@@ -10,11 +10,6 @@ import {
   FieldLabel,
 } from "@/components/ui/field";
 import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupInput,
-} from "@/components/ui/input-group";
-import {
   Select,
   SelectContent,
   SelectItem,
@@ -23,6 +18,7 @@ import {
 } from "@/components/ui/select";
 import { contactDefaultValues, contactSchema } from "@/lib/schemas";
 import { Input } from "@/components/ui/input";
+import { PhoneField } from "@/components/forms/phone-field";
 import { toast, Toaster } from "@/components/ui/toast";
 import { Textarea } from "@/components/ui/textarea";
 import { CtaButton } from "@/components/cta-button";
@@ -54,7 +50,7 @@ export function ContactForm() {
       prenom: output.prenom,
       nom: output.nom,
       email: output.email,
-      telephone: `+212 ${output.telephone}`,
+      telephone: `${output.indicatif} ${output.telephone}`,
       service: serviceLabel,
       message: output.message,
 
@@ -86,7 +82,9 @@ export function ContactForm() {
             <FormischField of={form} path={["prenom"]}>
               {(field) => (
                 <Field data-invalid={field.errors !== null}>
-                  <FieldLabel htmlFor="contact-prenom">Prénom</FieldLabel>
+                  <FieldLabel htmlFor="contact-prenom">
+                    Prénom <span className="text-destructive">*</span>
+                  </FieldLabel>
                   <Input
                     {...field.props}
                     id="contact-prenom"
@@ -107,7 +105,9 @@ export function ContactForm() {
             <FormischField of={form} path={["nom"]}>
               {(field) => (
                 <Field data-invalid={field.errors !== null}>
-                  <FieldLabel htmlFor="contact-nom">Nom</FieldLabel>
+                  <FieldLabel htmlFor="contact-nom">
+                    Nom <span className="text-destructive">*</span>
+                  </FieldLabel>
                   <Input
                     {...field.props}
                     id="contact-nom"
@@ -130,7 +130,9 @@ export function ContactForm() {
             <FormischField of={form} path={["email"]}>
               {(field) => (
                 <Field data-invalid={field.errors !== null}>
-                  <FieldLabel htmlFor="contact-email">Email</FieldLabel>
+                  <FieldLabel htmlFor="contact-email">
+                    Email <span className="text-destructive">*</span>
+                  </FieldLabel>
                   <Input
                     {...field.props}
                     id="contact-email"
@@ -149,39 +151,15 @@ export function ContactForm() {
               )}
             </FormischField>
 
-            <FormischField of={form} path={["telephone"]}>
-              {(field) => (
-                <Field data-invalid={field.errors !== null}>
-                  <FieldLabel htmlFor="contact-telephone">Téléphone</FieldLabel>
-                  <InputGroup>
-                    <InputGroupInput
-                      {...field.props}
-                      id="contact-telephone"
-                      type="tel"
-                      inputMode="numeric"
-                      value={field.input ?? ""}
-                      aria-invalid={field.errors !== null}
-                      placeholder="6 XX XX XX XX"
-                      autoComplete="tel-national"
-                      maxLength={9}
-                    />
-                    <InputGroupAddon>+212</InputGroupAddon>
-                  </InputGroup>
-
-                  {field.errors && (
-                    <FieldError
-                      errors={field.errors.map((message) => ({ message }))}
-                    />
-                  )}
-                </Field>
-              )}
-            </FormischField>
+            <PhoneField form={form} idPrefix="contact" required />
           </div>
 
           <FormischField of={form} path={["service"]}>
             {(field) => (
               <Field data-invalid={field.errors !== null}>
-                <FieldLabel htmlFor="contact-service">Service</FieldLabel>
+                <FieldLabel htmlFor="contact-service">
+                  Service <span className="text-destructive">*</span>
+                </FieldLabel>
 
                 <Select
                   value={field.input ?? ""}
@@ -222,7 +200,9 @@ export function ContactForm() {
           <FormischField of={form} path={["message"]}>
             {(field) => (
               <Field data-invalid={field.errors !== null}>
-                <FieldLabel htmlFor="contact-message">Message</FieldLabel>
+                <FieldLabel htmlFor="contact-message">
+                  Message <span className="text-destructive">*</span>
+                </FieldLabel>
 
                 <Textarea
                   {...field.props}

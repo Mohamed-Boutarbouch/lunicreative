@@ -38,13 +38,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupInput,
-} from "@/components/ui/input-group";
 import { Card, CardContent } from "@/components/ui/card";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { PhoneField } from "@/components/forms/phone-field";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { FuseReveal } from "@/components/animations/fuse-reveal";
@@ -98,7 +94,7 @@ export function CareerForm() {
       `Spécialité : ${output.specialite}`,
       `Genre : ${output.genre}`,
       `Email : ${output.email}`,
-      `Téléphone : +212 ${output.telephone}`,
+      `Téléphone : ${output.indicatif} ${output.telephone}`,
       "",
       "Documents à joindre manuellement avant l'envoi :",
       `- CV : ${output.cv.name}`,
@@ -418,39 +414,7 @@ export function CareerForm() {
                       )}
                     </FormischField>
 
-                    <FormischField of={form} path={["telephone"]}>
-                      {(field) => (
-                        <Field data-invalid={field.errors !== null}>
-                          <FieldLabel htmlFor="career-telephone">
-                            Téléphone{" "}
-                            <span className="text-destructive">*</span>
-                          </FieldLabel>
-
-                          <InputGroup>
-                            <InputGroupInput
-                              {...field.props}
-                              id="career-telephone"
-                              type="tel"
-                              inputMode="tel"
-                              autoComplete="tel"
-                              value={field.input ?? ""}
-                              aria-invalid={field.errors !== null}
-                              placeholder="6 XX XX XX XX"
-                              maxLength={9}
-                            />
-                            <InputGroupAddon>+212</InputGroupAddon>
-                          </InputGroup>
-
-                          {field.errors && (
-                            <FieldError
-                              errors={field.errors.map((message) => ({
-                                message,
-                              }))}
-                            />
-                          )}
-                        </Field>
-                      )}
-                    </FormischField>
+                    <PhoneField form={form} idPrefix="career" required />
                   </div>
 
                   {/* Documents */}
