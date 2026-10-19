@@ -1,9 +1,21 @@
 "use client";
 
+import { useState } from "react";
 import { IconFileText, IconSend, IconUpload, IconX } from "@tabler/icons-react";
 import { Form, Field as FormischField, useForm } from "@formisch/react";
 import type { SubmitHandler } from "@formisch/react";
+import type { InferOutput } from "valibot";
 
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 import {
   Attachment,
   AttachmentAction,
@@ -33,13 +45,17 @@ import {
 } from "@/components/ui/input-group";
 import { Card, CardContent } from "@/components/ui/card";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { educationLevels, genders, objectives } from "@/data/career";
-import { careerDefaultValues, careerSchema } from "@/lib/schemas";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { FuseReveal } from "@/components/animations/fuse-reveal";
 import { Reveal } from "@/components/animations/reveal";
-import { toast, Toaster } from "@/components/ui/toast";
+import { Toaster } from "@/components/ui/toast";
+import { educationLevels, genders, objectives } from "@/data/career";
+import { careerDefaultValues, careerSchema } from "@/lib/schemas";
+
+const CAREER_EMAIL = "lunicreative.maroc@gmail.com";
+
+type CareerApplication = InferOutput<typeof careerSchema>;
 
 export function CareerForm() {
   const form = useForm({
@@ -47,19 +63,61 @@ export function CareerForm() {
     initialInput: careerDefaultValues,
   });
 
-  const handleSubmit: SubmitHandler<typeof careerSchema> = (output) => {
-    console.log(output);
+  const [pendingApplication, setPendingApplication] =
+    useState<CareerApplication | null>(null);
 
-    toast.promise(
-      new Promise<typeof output>((resolve) => {
-        window.setTimeout(() => resolve(output), 2000);
-      }),
-      {
-        loading: "Envoi de votre candidature…",
-        success: "Votre candidature a bien été envoyée.",
-        error: "Impossible d'envoyer votre candidature.",
-      },
-    );
+  const [dialogOpen, setDialogOpen] = useState(false);
+
+  const handleSubmit: SubmitHandler<typeof careerSchema> = (output) => {
+    setPendingApplication(output);
+    setDialogOpen(true);
+  };
+
+  const handleContinueToEmail = () => {
+    if (!pendingApplication) return;
+
+    const output = pendingApplication;
+
+    const objective =
+      objectives.find((item) => item.value === output.objectif)?.label ??
+      output.objectif;
+
+    const level =
+      educationLevels.find((item) => item.value === output.niveau)?.label ||
+      "Non précisé";
+
+    const body = [
+      "Bonjour,",
+      "",
+      "Je vous adresse ma candidature.",
+      "",
+      `Demande : ${objective}`,
+      `Nom et prénom : ${output.nomPrenom}`,
+      `École / établissement : ${output.ecole}`,
+      `Niveau d'études : ${level}`,
+      `Spécialité : ${output.specialite}`,
+      `Genre : ${output.genre}`,
+      `Email : ${output.email}`,
+      `Téléphone : +212 ${output.telephone}`,
+      "",
+      "Documents à joindre manuellement avant l'envoi :",
+      `- CV : ${output.cv.name}`,
+      ...(output.lettreMotivation
+        ? [`- Lettre de motivation : ${output.lettreMotivation.name}`]
+        : []),
+      "",
+      "Cordialement,",
+      output.nomPrenom,
+    ].join("\n");
+
+    const subject = `Candidature — ${objective} — ${output.nomPrenom}`;
+
+    const mailtoUrl = new URL(`mailto:${CAREER_EMAIL}`);
+    mailtoUrl.searchParams.set("subject", subject);
+    mailtoUrl.searchParams.set("body", body);
+
+    setDialogOpen(false);
+    window.location.href = mailtoUrl.toString();
   };
 
   return (
@@ -90,15 +148,17 @@ export function CareerForm() {
             className="mt-3 text-base leading-relaxed text-muted-foreground sm:text-lg"
           >
             Remplissez le formulaire et joignez vos documents au format PDF.
-            Nous vous répondons par email.
+            Votre application e-mail s&apos;ouvrira pour finaliser l&apos;envoi
+            de votre candidature.
           </Reveal>
         </div>
+
         <Reveal variant="fadeUp" delay={0.4}>
           <Card className="w-full">
             <CardContent>
               <Form of={form} id="career-form" onSubmit={handleSubmit}>
                 <FieldGroup>
-                  {/* Objectif + Genre */}
+                  {/* Demande + Genre */}
                   <div className="grid gap-6 sm:grid-cols-2">
                     <FormischField of={form} path={["objectif"]}>
                       {(field) => (
@@ -122,20 +182,16 @@ export function CareerForm() {
                               <SelectValue placeholder="Sélectionnez votre demande">
                                 {
                                   objectives.find(
-                                    (objective) =>
-                                      objective.value === field.input,
+                                    (item) => item.value === field.input,
                                   )?.label
                                 }
                               </SelectValue>
                             </SelectTrigger>
 
                             <SelectContent>
-                              {objectives.map((objective) => (
-                                <SelectItem
-                                  key={objective.value}
-                                  value={objective.value}
-                                >
-                                  {objective.label}
+                              {objectives.map((item) => (
+                                <SelectItem key={item.value} value={item.value}>
+                                  {item.label}
                                 </SelectItem>
                               ))}
                             </SelectContent>
@@ -277,19 +333,16 @@ export function CareerForm() {
                               <SelectValue placeholder="Sélectionnez votre niveau">
                                 {
                                   educationLevels.find(
-                                    (level) => level.value === field.input,
+                                    (item) => item.value === field.input,
                                   )?.label
                                 }
                               </SelectValue>
                             </SelectTrigger>
 
                             <SelectContent>
-                              {educationLevels.map((level) => (
-                                <SelectItem
-                                  key={level.value}
-                                  value={level.value}
-                                >
-                                  {level.label}
+                              {educationLevels.map((item) => (
+                                <SelectItem key={item.value} value={item.value}>
+                                  {item.label}
                                 </SelectItem>
                               ))}
                             </SelectContent>
@@ -334,7 +387,7 @@ export function CareerForm() {
                     )}
                   </FormischField>
 
-                  {/* Email + Téléphone */}
+                  {/* E-mail + Téléphone */}
                   <div className="grid gap-6 sm:grid-cols-2">
                     <FormischField of={form} path={["email"]}>
                       {(field) => (
@@ -423,9 +476,7 @@ export function CareerForm() {
                                 onChange={(event) => {
                                   const selectedFile = event.target.files?.[0];
 
-                                  if (!selectedFile) {
-                                    return;
-                                  }
+                                  if (!selectedFile) return;
 
                                   if (selectedFile.size > maxFileSize) {
                                     field.onChange(undefined);
@@ -463,9 +514,7 @@ export function CareerForm() {
                                         "career-cv",
                                       ) as HTMLInputElement | null;
 
-                                      if (input) {
-                                        input.value = "";
-                                      }
+                                      if (input) input.value = "";
                                     }}
                                   >
                                     <IconX />
@@ -527,9 +576,7 @@ export function CareerForm() {
                                 onChange={(event) => {
                                   const selectedFile = event.target.files?.[0];
 
-                                  if (!selectedFile) {
-                                    return;
-                                  }
+                                  if (!selectedFile) return;
 
                                   if (selectedFile.size > maxFileSize) {
                                     field.onChange(undefined);
@@ -567,9 +614,7 @@ export function CareerForm() {
                                         "career-lettre-motivation",
                                       ) as HTMLInputElement | null;
 
-                                      if (input) {
-                                        input.value = "";
-                                      }
+                                      if (input) input.value = "";
                                     }}
                                   >
                                     <IconX />
@@ -619,10 +664,55 @@ export function CareerForm() {
                   </div>
                 </FieldGroup>
               </Form>
+
+              <AlertDialog open={dialogOpen} onOpenChange={setDialogOpen}>
+                <AlertDialogContent>
+                  <AlertDialogHeader>
+                    <AlertDialogTitle>
+                      Finaliser votre candidature
+                    </AlertDialogTitle>
+
+                    <AlertDialogDescription>
+                      <span className="block">
+                        L&apos;envoi automatique des candidatures avec pièces
+                        jointes n&apos;est pas disponible actuellement.
+                      </span>
+
+                      <span className="mt-3 block">
+                        Nous allons ouvrir votre application e-mail avec les
+                        informations de votre candidature préremplies.
+                      </span>
+
+                      <span className="mt-3 block font-medium text-foreground">
+                        Vous devrez joindre manuellement votre CV
+                        {pendingApplication?.lettreMotivation
+                          ? " et votre lettre de motivation"
+                          : ""}{" "}
+                        au format PDF avant d&apos;envoyer le message.
+                      </span>
+
+                      <span className="mt-3 block">
+                        Votre candidature ne sera envoyée qu&apos;après avoir
+                        cliqué sur « Envoyer » dans votre application e-mail.
+                      </span>
+                    </AlertDialogDescription>
+                  </AlertDialogHeader>
+
+                  <AlertDialogFooter>
+                    <AlertDialogCancel>Annuler</AlertDialogCancel>
+
+                    <AlertDialogAction onClick={handleContinueToEmail}>
+                      Continuer vers l&apos;e-mail
+                      <IconSend data-icon="inline-end" />
+                    </AlertDialogAction>
+                  </AlertDialogFooter>
+                </AlertDialogContent>
+              </AlertDialog>
             </CardContent>
           </Card>
         </Reveal>
       </section>
+
       <Toaster />
     </Reveal>
   );
