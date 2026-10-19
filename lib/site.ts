@@ -11,9 +11,9 @@ export const siteConfig = {
   locale: "fr_FR",
   description:
     "Agence de communication à Fès : web, identité visuelle, impression, 3D et événementiel.",
-  phone: "+212615660870",
-  phoneDisplay: "06 15 66 08 70",
-  email: "lunicreative.maroc@gmail.com",
+  phone: process.env.NEXT_PUBLIC_CONTACT_PHONE!,
+  phoneDisplay: process.env.NEXT_PUBLIC_CONTACT_PHONE_DISPLAY!,
+  email: process.env.NEXT_PUBLIC_CONTACT_EMAIL!,
   address: {
     street: "Avenue Lalla Hasnae, Bureaux Ibn Yassin",
     city: "Fès",

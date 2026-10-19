@@ -49,8 +49,6 @@ import { Toaster } from "@/components/ui/toast";
 import { educationLevels, genders, objectives } from "@/data/career";
 import { careerDefaultValues, careerSchema } from "@/lib/schemas";
 
-const CAREER_EMAIL = "lunicreative.maroc@gmail.com";
-
 type CareerApplication = InferOutput<typeof careerSchema>;
 
 export function CareerForm() {
@@ -108,7 +106,9 @@ export function CareerForm() {
 
     const subject = `Candidature — ${objective} — ${output.nomPrenom}`;
 
-    const mailtoUrl = new URL(`mailto:${CAREER_EMAIL}`);
+    const mailtoUrl = new URL(
+      `mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL!}`,
+    );
     mailtoUrl.searchParams.set("subject", subject);
     mailtoUrl.searchParams.set("body", body);
 

@@ -20,11 +20,11 @@ export const contactLinks = [
     external: true,
   },
   {
-    label: "06 15 66 08 70",
-    href: "tel:+212615660870",
+    label: process.env.NEXT_PUBLIC_CONTACT_PHONE_DISPLAY!,
+    href: `tel:${process.env.NEXT_PUBLIC_CONTACT_PHONE!}`,
   },
   {
-    label: "lunicreative.maroc@gmail.com",
-    href: "mailto:lunicreative.maroc@gmail.com",
+    label: process.env.NEXT_PUBLIC_CONTACT_EMAIL!,
+    href: `mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL!}`,
   },
 ];
