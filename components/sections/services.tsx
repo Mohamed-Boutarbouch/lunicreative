@@ -21,7 +21,7 @@ export function ServicesSection() {
       id="services"
       className="relative isolate py-14 sm:py-22 [content-visibility:visible] contain:none"
     >
-      <EdgeArt side="right" src="/images/2.webp" top="2rem" />
+      <EdgeArt side="right" src="/images/home_02.webp" top="2rem" />
       <div className="mx-auto mb-10 w-full max-w-3xl text-left sm:mb-14 sm:text-center">
         <FuseReveal
           as="h2"

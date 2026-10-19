@@ -26,7 +26,7 @@ const localBusiness = {
   description: siteConfig.description,
   telephone: siteConfig.phone,
   email: siteConfig.email,
-  logo: `${siteConfig.url}/logo/logo.webp`,
+  logo: `${siteConfig.url}/images/logo.webp`,
   address: {
     "@type": "PostalAddress",
     streetAddress: siteConfig.address.street,

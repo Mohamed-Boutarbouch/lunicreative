@@ -43,7 +43,7 @@ export function WorkSection() {
       id="realisations"
       className="relative isolate py-14 sm:py-22 [content-visibility:visible] contain:none"
     >
-      <EdgeArt side="left" src="/images/2.webp" top="2rem" />
+      <EdgeArt side="left" src="/images/home_03.webp" top="2rem" />
       <div className="flex flex-col items-center gap-10 md:gap-16">
         <div className="w-full max-w-3xl text-left sm:text-center">
           <FuseReveal

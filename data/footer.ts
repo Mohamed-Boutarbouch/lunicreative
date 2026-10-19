@@ -20,8 +20,8 @@ export const contactLinks = [
     external: true,
   },
   {
-    label: "+212 5 35 65 39 85",
-    href: "tel:+212535653985",
+    label: "06 15 66 08 70",
+    href: "tel:+212615660870",
   },
   {
     label: "lunicreative.maroc@gmail.com",

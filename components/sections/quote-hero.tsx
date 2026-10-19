@@ -1,14 +1,13 @@
 import Image from "next/image";
 
-import { IconFileDescription,IconArrowDown } from "@tabler/icons-react";
+import { IconFileDescription, IconArrowDown } from "@tabler/icons-react";
 
 import { FuseReveal } from "@/components/animations/fuse-reveal";
 import { Reveal } from "@/components/animations/reveal";
 import { Badge } from "@/components/ui/badge";
 import { assetPath } from "@/lib/asset";
 
-
-const IMAGE_SRC = assetPath("/devis/espace-creative.webp");
+const IMAGE_SRC = assetPath("/images/devis-hero.webp");
 
 const SLICE_TOPS = [0.14, 0, 0.22, 0.06, 0.18];
 const N = SLICE_TOPS.length;
@@ -36,7 +35,7 @@ export function QuoteHero() {
               Demande de devis
             </Badge>
           </Reveal>
-        
+
           <div className="grid w-full gap-8 lg:grid-cols-12 lg:items-start">
             <FuseReveal
               as="h1"
@@ -46,12 +45,13 @@ export function QuoteHero() {
                 "Parlons de votre ",
                 {
                   text: "projet",
-                  className: "font-serif font-semibold tracking-wider text-primary",
+                  className:
+                    "font-serif font-semibold tracking-wider text-primary",
                 },
               ]}
               eager
             />
-        
+
             <Reveal
               as="p"
               variant="blurIn"
@@ -59,9 +59,9 @@ export function QuoteHero() {
               className="max-w-sm text-base leading-relaxed text-muted-foreground sm:text-lg lg:col-span-4 lg:justify-self-end lg:pt-4"
               eager
             >
-              Afin de répondre au mieux à votre demande de devis, merci de remplir
-              le formulaire ci-dessous en nous donnant quelques détails sur votre
-              projet.
+              Afin de répondre au mieux à votre demande de devis, merci de
+              remplir le formulaire ci-dessous en nous donnant quelques détails
+              sur votre projet.
             </Reveal>
           </div>
         </div>
@@ -143,8 +143,6 @@ export function QuoteHero() {
             <li>Fès, Maroc</li>
           </ul>
         </div>
-
-
       </div>
     </section>
   );

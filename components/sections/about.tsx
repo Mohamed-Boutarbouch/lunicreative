@@ -20,7 +20,7 @@ export function AboutSection() {
       aria-labelledby="about-heading"
       className="relative isolate py-14 sm:py-22 [content-visibility:visible] contain:none"
     >
-      <EdgeArt side="left" src={assetPath("/images/1.webp")} top="2rem" />
+      <EdgeArt side="left" src={assetPath("/images/home_01.webp")} top="2rem" />
       <div className="flex flex-col items-center gap-10 sm:gap-14">
         <div className="w-full max-w-4xl text-left sm:text-center">
           <FuseReveal

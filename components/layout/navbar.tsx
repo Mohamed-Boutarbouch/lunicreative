@@ -96,7 +96,7 @@ export function Navbar() {
         className="flex shrink-0 items-center justify-center gap-2 sm:gap-2.5"
       >
         <Image
-          src={assetPath("/logo/logo.webp")}
+          src={assetPath("/images/logo.webp")}
           alt="L’unicreative Logo"
           width={500}
           height={500}
@@ -141,7 +141,7 @@ export function Navbar() {
                     className="flex shrink-0 items-center justify-center gap-2 sm:gap-2.5"
                   >
                     <Image
-                      src={assetPath("/logo/logo.webp")}
+                      src={assetPath("/images/logo.webp")}
                       alt="L’unicreative Logo"
                       width={500}
                       height={500}
