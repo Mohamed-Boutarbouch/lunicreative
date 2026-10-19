@@ -16,23 +16,22 @@ import { buttonVariants } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { CtaButton } from "@/components/cta-button";
 import { FuseReveal } from "@/components/animations/fuse-reveal";
-import { assetPath } from "@/lib/asset";
 
 const SLIDES = [
   {
-    src: assetPath("/slides/home-1.webp"),
+    src: "/slides/home-1.webp",
     alt: "L'unicreative — création et communication",
   },
   {
-    src: assetPath("/slides/home-2.webp"),
+    src: "/slides/home-2.webp",
     alt: "L'unicreative — événementiel",
   },
   {
-    src: assetPath("/slides/home-3.webp"),
+    src: "/slides/home-3.webp",
     alt: "L'unicreative — impression",
   },
   {
-    src: assetPath("/slides/home-4.webp"),
+    src: "/slides/home-4.webp",
     alt: "L'unicreative — identité visuelle",
   },
 ];

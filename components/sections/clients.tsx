@@ -5,7 +5,6 @@ import { clients } from "@/data/clients";
 import { FuseReveal } from "@/components/animations/fuse-reveal";
 import { Reveal } from "@/components/animations/reveal";
 import { EdgeArt } from "../ui/edge-art";
-import { assetPath } from "@/lib/asset";
 
 export function ClientsSection() {
   return (
@@ -15,7 +14,7 @@ export function ClientsSection() {
     >
       <EdgeArt
         side="right"
-        src={assetPath("/images/home_04.webp")}
+        src={"/images/home_04.webp"}
         top="-10rem"
       />
       <div className="mx-auto mb-12 w-full max-w-3xl px-4 text-left sm:mb-16 sm:text-center md:mb-20">

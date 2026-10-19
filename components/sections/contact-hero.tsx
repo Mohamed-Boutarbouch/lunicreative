@@ -4,9 +4,8 @@ import { IconArrowDown, IconMessage } from "@tabler/icons-react";
 import { FuseReveal } from "@/components/animations/fuse-reveal";
 import { Reveal } from "@/components/animations/reveal";
 import { Badge } from "@/components/ui/badge";
-import { assetPath } from "@/lib/asset";
 
-const IMAGE_SRC = assetPath("/images/contact-us-hero.webp");
+const IMAGE_SRC = "/images/contact-us-hero.webp";
 
 const SLICE_TOPS = [0.14, 0, 0.22, 0.06, 0.18];
 const N = SLICE_TOPS.length;

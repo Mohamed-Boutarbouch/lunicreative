@@ -5,21 +5,20 @@ import { FuseReveal } from "@/components/animations/fuse-reveal";
 import { Reveal } from "@/components/animations/reveal";
 import { Badge } from "@/components/ui/badge";
 import { serviceGroups, type ServiceGroup } from "@/data/services";
-import { assetPath } from "@/lib/asset";
 
 // One image per slice, in the same order as the keys of `serviceGroups`.
 // If there are more groups than images, they cycle.
 const IMAGES = [
   {
-    src: assetPath("/services/service-hero-01.webp"),
+    src: "/services/service-hero-01.webp",
     alt: "Réalisation L'unicreative, 1",
   },
   {
-    src: assetPath("/services/service-hero-02.webp"),
+    src: "/services/service-hero-02.webp",
     alt: "Réalisation L'unicreative, 2",
   },
   {
-    src: assetPath("/services/service-hero-03.webp"),
+    src: "/services/service-hero-03.webp",
     alt: "Réalisation L'unicreative, 3",
   },
 ];

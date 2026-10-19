@@ -26,7 +26,6 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { assetPath } from "@/lib/asset";
 
 const navLinkClass = navigationMenuTriggerStyle({
   className: "px-2 text-base text-muted-foreground hover:text-foreground",
@@ -40,9 +39,9 @@ const mobileLinkClass = buttonVariants({
 
 const navLinks = [
   { href: "/", label: "Accueil" },
+  { href: "/#a-propos", label: "À propos" },
   { href: "/services", label: "Services" },
   { href: "/#realisations", label: "Réalisations" },
-  { href: "/#a-propos", label: "À propos" },
   { href: "/carriere", label: "Carrière" },
 ];
 
@@ -96,7 +95,7 @@ export function Navbar() {
         className="flex shrink-0 items-center justify-center gap-2 sm:gap-2.5"
       >
         <Image
-          src={assetPath("/images/logo.webp")}
+          src={"/images/logo.webp"}
           alt="L’unicreative Logo"
           width={500}
           height={500}
@@ -141,7 +140,7 @@ export function Navbar() {
                     className="flex shrink-0 items-center justify-center gap-2 sm:gap-2.5"
                   >
                     <Image
-                      src={assetPath("/images/logo.webp")}
+                      src={"/images/logo.webp"}
                       alt="L’unicreative Logo"
                       width={500}
                       height={500}
